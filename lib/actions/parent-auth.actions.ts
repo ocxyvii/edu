@@ -36,14 +36,14 @@ export async function getParentEmailByAdmissionNumber(
       }
     }
 
-    const { data: parentLink, error: linkError } = await supabase
+    const { data: parentLink } = await supabase
       .from('parent_student')
       .select('parent_id')
       .eq('student_id', student.id)
       .eq('is_primary', true)
       .maybeSingle()
 
-    const parentId = parentLink?.parent_id
+    let parentId = parentLink?.parent_id
 
     if (!parentId) {
       const { data: anyLink } = await supabase
@@ -60,9 +60,11 @@ export async function getParentEmailByAdmissionNumber(
             'No parent account linked to this student. Contact your school admin.',
         }
       }
+
+      parentId = anyLink.parent_id
     }
 
-    const { data: parentProfile, error: parentError } = await supabase
+    const { data: parentProfile } = await supabase
       .from('profiles')
       .select('email, is_active')
       .eq('id', parentId ?? '')
