@@ -3,6 +3,7 @@
 import { createClient } from '@/lib/supabase/server'
 import { z } from 'zod'
 import { revalidatePath } from 'next/cache'
+import { computeGrade } from '@/lib/grades'
 
 async function getAuthContext() {
   const supabase = await createClient()
@@ -46,7 +47,7 @@ export async function saveMarks(data: z.infer<typeof BulkMarksEntrySchema>) {
     if (!subj) throw new Error(`Subject ${entry.subject_id} not found in exam`)
 
     const percentage = (entry.marks_obtained / subj.max_marks) * 100
-    const grade = await computeGrade(percentage)
+    const grade = computeGrade(percentage)
 
     const { error } = await supabase
       .from('results')
@@ -176,7 +177,7 @@ export async function getAllMarksForExam(examId: string) {
       totalMaxMarks,
       average,
       percentage,
-      overallGrade: await computeGrade(percentage),
+      overallGrade: computeGrade(percentage),
       passed,
       totalSubjects: examSubjects?.length ?? 0,
     }
@@ -197,10 +198,4 @@ export async function getAllMarksForExam(examId: string) {
   }
 }
 
-export async function computeGrade(percentage: number): Promise<string> {
-  if (percentage >= 80) return 'A'
-  if (percentage >= 65) return 'B'
-  if (percentage >= 50) return 'C'
-  if (percentage >= 40) return 'D'
-  return 'F'
-}
+
