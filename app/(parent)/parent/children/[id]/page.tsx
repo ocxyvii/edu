@@ -124,7 +124,7 @@ export default function ChildDetailPage({ params }: { params: Promise<{ id: stri
     return <Card><CardContent className="py-12 text-center text-muted-foreground">Student not found or access denied.</CardContent></Card>
   }
 
-  const student = basic.student
+  const student = basic.student as any
   const stats = basic.attendanceStats
 
   const daysInMonth = new Date(attYear, attMonth, 0).getDate()
