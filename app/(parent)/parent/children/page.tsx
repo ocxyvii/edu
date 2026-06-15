@@ -40,9 +40,7 @@ export default function ChildrenListPage() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {children.map((item: any) => {
             const student = (item as any).students
-            const childAttendance = data?.attendanceData?.filter(a => a.student_id === student?.id) ?? []
-            const presentCount = childAttendance.filter(a => a.status === 'present').length
-            const attendancePct = childAttendance.length > 0 ? Math.round((presentCount / childAttendance.length) * 100) : 0
+            const attStats = item.attendanceStats ?? { total: 0, present: 0, absent: 0, late: 0, percentage: 0 }
 
             return (
               <Link key={student?.id} href={`/parent/children/${student?.id}`}>
@@ -68,7 +66,7 @@ export default function ChildrenListPage() {
                     <div className="grid grid-cols-3 gap-3">
                       <div className="p-3 rounded-lg bg-blue-50 text-center">
                         <p className="text-xs text-blue-600 font-medium">Attendance</p>
-                        <p className="text-xl font-bold text-blue-700">{attendancePct}%</p>
+                        <p className="text-xl font-bold text-blue-700">{attStats.percentage}%</p>
                       </div>
                       <div className="p-3 rounded-lg bg-green-50 text-center">
                         <p className="text-xs text-green-600 font-medium">Results</p>

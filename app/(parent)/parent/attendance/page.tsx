@@ -5,7 +5,6 @@ import { getParentDashboard } from '@/lib/actions/parent'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Skeleton } from '@/components/ui/skeleton'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
-import { Badge } from '@/components/ui/badge'
 
 export default function ParentAttendancePage() {
   const { data, isLoading } = useQuery({
@@ -30,11 +29,7 @@ export default function ParentAttendancePage() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {children.map((item: any) => {
             const student = (item as any).students
-            const childAttendance = data?.attendanceData?.filter(a => a.student_id === student?.id) ?? []
-            const present = childAttendance.filter(a => a.status === 'present').length
-            const absent = childAttendance.filter(a => a.status === 'absent').length
-            const late = childAttendance.filter(a => a.status === 'late').length
-            const pct = childAttendance.length > 0 ? Math.round((present / childAttendance.length) * 100) : 0
+            const stats = item.attendanceStats ?? { present: 0, absent: 0, late: 0, total: 0, percentage: 0 }
 
             return (
               <Card key={student?.id}>
@@ -53,33 +48,26 @@ export default function ParentAttendancePage() {
                 <CardContent>
                   <div className="grid grid-cols-4 gap-3 mb-4">
                     <div className="p-3 rounded-lg bg-blue-50 text-center">
-                      <p className="text-xl font-bold text-blue-700">{pct}%</p>
+                      <p className="text-xl font-bold text-blue-700">{stats.percentage}%</p>
                       <p className="text-xs text-blue-600">Rate</p>
                     </div>
                     <div className="p-3 rounded-lg bg-green-50 text-center">
-                      <p className="text-xl font-bold text-green-700">{present}</p>
+                      <p className="text-xl font-bold text-green-700">{stats.present}</p>
                       <p className="text-xs text-green-600">Present</p>
                     </div>
                     <div className="p-3 rounded-lg bg-red-50 text-center">
-                      <p className="text-xl font-bold text-red-700">{absent}</p>
+                      <p className="text-xl font-bold text-red-700">{stats.absent}</p>
                       <p className="text-xs text-red-600">Absent</p>
                     </div>
                     <div className="p-3 rounded-lg bg-yellow-50 text-center">
-                      <p className="text-xl font-bold text-yellow-700">{late}</p>
+                      <p className="text-xl font-bold text-yellow-700">{stats.late}</p>
                       <p className="text-xs text-yellow-600">Late</p>
                     </div>
                   </div>
                   <div className="space-y-1">
-                    {childAttendance.slice(0, 15).map(a => (
-                      <div key={`${a.date}`} className="flex items-center justify-between text-sm p-1.5 rounded border border-gray-100">
-                        <span>{a.date}</span>
-                        <Badge className={
-                          a.status === 'present' ? 'bg-green-100 text-green-800' :
-                          a.status === 'absent' ? 'bg-red-100 text-red-800' :
-                          a.status === 'late' ? 'bg-amber-100 text-amber-800' : 'bg-blue-100 text-blue-800'
-                        }>{a.status}</Badge>
-                      </div>
-                    ))}
+                    {stats.total > 0 && (
+                      <p className="text-sm text-muted-foreground">{stats.total} total records</p>
+                    )}
                   </div>
                 </CardContent>
               </Card>
