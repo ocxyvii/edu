@@ -96,15 +96,16 @@ function LoginForm() {
         }
       }
 
-      if (userData) {
+      const ud = userData as any
+      if (ud) {
         // Verify the logged-in user's role matches the portal they tried
-        if (userData.role !== role && !['super_admin', 'school_admin'].includes(userData.role)) {
+        if (ud.role !== role && !['super_admin', 'school_admin'].includes(ud.role)) {
           await supabase.auth.signOut()
           toast.error(`This account is not a ${role} account`)
           return
         }
 
-        switch (userData.role) {
+        switch (ud.role) {
           case 'super_admin':
             router.push('/super-admin')
             break
