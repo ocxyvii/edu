@@ -90,7 +90,7 @@ function LoginForm() {
           .eq('user_id', data.user.id)
           .single()
 
-        if (!session || new Date(session.expires_at) < new Date()) {
+        if (!session || new Date((session as any).expires_at) < new Date()) {
           router.push(`/verify-2fa?redirect=/${(userData as any)?.role}`)
           return
         }
