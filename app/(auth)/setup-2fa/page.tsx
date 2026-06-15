@@ -25,7 +25,7 @@ export default function Setup2FAPage() {
   const [QRCode, setQRCode] = useState<any>(null)
 
   useEffect(() => {
-    import('qrcode.react').then(mod => setQRCode(() => mod.QRCode))
+    import('qrcode.react').then(mod => setQRCode(() => mod.QRCodeSVG))
   }, [])
 
   const generateSecret = async () => {
