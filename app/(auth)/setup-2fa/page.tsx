@@ -125,8 +125,9 @@ export default function Setup2FAPage() {
   const downloadCodes = () => {
     const text = `EduCore Backup Codes\n\nStore these securely. Each code can only be used once.\n\n${backupCodes.join('\n')}\n\nGenerated: ${new Date().toISOString()}`
     const blob = new Blob([text], { type: 'text/plain' })
+    const url = URL.createObjectURL(blob)
     const a = document.createElement('a')
-    a.href = URL.createObjectURL(blob)
+    a.href = url
     a.download = 'educore-backup-codes.txt'
     a.click()
     URL.revokeObjectURL(url)
