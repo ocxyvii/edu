@@ -125,7 +125,7 @@ export default function AttendanceReportPage() {
       {/* Summary KPIs */}
       {isLoading ? (
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          {[...Array(4)].map((_, i) => <Skeleton key={i} className="h-28 rounded-xl" />)}
+          {[...Array(4)].map((_: any, i: any) => <Skeleton key={i} className="h-28 rounded-xl" />)}
         </div>
       ) : report ? (
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -212,7 +212,7 @@ export default function AttendanceReportPage() {
                 {filteredStudents.length === 0 ? (
                   <tr><td colSpan={8} className="text-center py-8 text-muted-foreground">No matching students</td></tr>
                 ) : (
-                  filteredStudents.map((s, i) => (
+                  filteredStudents.map((s: any, i: any) => (
                     <tr key={s.student_id} className={cn(
                       'border-b last:border-0 hover:bg-gray-50/50',
                       s.percentage < 75 ? 'bg-red-50/50' : '',

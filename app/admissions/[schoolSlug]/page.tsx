@@ -97,7 +97,7 @@ export default function PublicAdmissionsPage() {
             <div className="space-y-4">
               <Skeleton className="h-8 w-48 mx-auto" />
               <Skeleton className="h-4 w-64 mx-auto" />
-              {[...Array(6)].map((_, i) => <Skeleton key={i} className="h-10 w-full" />)}
+              {[...Array(6)].map((_: any, i: any) => <Skeleton key={i} className="h-10 w-full" />)}
             </div>
           </CardContent>
         </Card>
@@ -255,10 +255,10 @@ export default function PublicAdmissionsPage() {
                   </div>
                   {files.length > 0 && (
                     <div className="flex flex-wrap gap-2 mt-2">
-                      {files.map((f, i) => (
+                      {files.map((f: any, i: any) => (
                         <div key={i} className="flex items-center gap-2 bg-gray-50 rounded-full px-3 py-1 text-sm border">
                           <span className="truncate max-w-[200px]">{f.name}</span>
-                          <button type="button" className="text-gray-400 hover:text-red-500" onClick={() => setFiles(prev => prev.filter((_, j) => j !== i))}>
+                          <button type="button" className="text-gray-400 hover:text-red-500" onClick={() => setFiles(prev => prev.filter((_: any, j: any) => j !== i))}>
                             &times;
                           </button>
                         </div>

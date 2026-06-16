@@ -125,7 +125,7 @@ export default function ClassesPage() {
 
       {isLoading ? (
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {[...Array(6)].map((_, i) => <Skeleton key={i} className="h-48 w-full" />)}
+          {[...Array(6)].map((_: any, i: any) => <Skeleton key={i} className="h-48 w-full" />)}
         </div>
       ) : classes?.length === 0 ? (
         <Card>

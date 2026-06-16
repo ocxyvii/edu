@@ -103,7 +103,7 @@ export default function AttendancePage() {
                 {['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map((d: any) => (
                   <div key={d} className="text-center text-xs font-medium text-muted-foreground py-1">{d}</div>
                 ))}
-                {calendarDays.map((day, i) => (
+                {calendarDays.map((day: any, i: any) => (
                   <div
                     key={i}
                     className={`aspect-square rounded-md flex items-center justify-center text-sm

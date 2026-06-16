@@ -12,7 +12,7 @@ export default function PortalLoading() {
       </div>
 
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
-        {[...Array(4)].map((_, i) => (
+        {[...Array(4)].map((_: any, i: any) => (
           <div key={i} className="rounded-xl border bg-white p-5">
             <div className="flex items-start justify-between">
               <div className="space-y-2">

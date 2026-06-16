@@ -65,7 +65,7 @@ export default function AdminSettingsPage() {
     onError: (e: Error) => toast.error(e.message),
   })
 
-  if (schoolLoading) return <div className="space-y-4">{[...Array(4)].map((_, i) => <Skeleton key={i} className="h-24 w-full" />)}</div>
+  if (schoolLoading) return <div className="space-y-4">{[...Array(4)].map((_: any, i: any) => <Skeleton key={i} className="h-24 w-full" />)}</div>
 
   return (
     <div className="space-y-6">

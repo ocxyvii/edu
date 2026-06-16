@@ -56,7 +56,7 @@ export default function ResultsPage() {
       </div>
 
       {isLoading ? (
-        <div className="space-y-4">{[...Array(3)].map((_, i) => <Skeleton key={i} className="h-48 w-full" />)}</div>
+        <div className="space-y-4">{[...Array(3)].map((_: any, i: any) => <Skeleton key={i} className="h-48 w-full" />)}</div>
       ) : !results?.length ? (
         <Card><CardContent className="py-12 text-center text-muted-foreground">No results published yet.</CardContent></Card>
       ) : (

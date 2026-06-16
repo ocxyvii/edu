@@ -21,7 +21,7 @@ export default function SchoolOverviewPage() {
 
       {isLoading ? (
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-          {[...Array(6)].map((_, i) => <Skeleton key={i} className="h-28 rounded-xl" />)}
+          {[...Array(6)].map((_: any, i: any) => <Skeleton key={i} className="h-28 rounded-xl" />)}
         </div>
       ) : overview ? (
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4">

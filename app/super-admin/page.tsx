@@ -90,7 +90,7 @@ async function fetchDashboardStats() {
 function KPISkeleton() {
   return (
     <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-      {Array.from({ length: 4 }).map((_, i) => (
+      {Array.from({ length: 4 }).map((_: any, i: any) => (
         <Card key={i}>
           <CardHeader className="pb-2">
             <Skeleton className="h-4 w-24" />
@@ -107,7 +107,7 @@ function KPISkeleton() {
 function ChartSkeleton() {
   return (
     <div className="grid gap-4 lg:grid-cols-2">
-      {Array.from({ length: 2 }).map((_, i) => (
+      {Array.from({ length: 2 }).map((_: any, i: any) => (
         <Card key={i}>
           <CardHeader>
             <Skeleton className="h-5 w-40" />
@@ -128,7 +128,7 @@ function TableSkeleton() {
         <Skeleton className="h-5 w-40" />
       </CardHeader>
       <CardContent>
-        {Array.from({ length: 5 }).map((_, i) => (
+        {Array.from({ length: 5 }).map((_: any, i: any) => (
           <Skeleton key={i} className="mb-2 h-10 w-full" />
         ))}
       </CardContent>

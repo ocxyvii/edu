@@ -157,7 +157,7 @@ export default function ParentOnboardingPage() {
             {children.length > 0 && (
               <div className="bg-emerald-50 rounded-xl p-4 text-sm space-y-2">
                 <p className="text-xs font-medium text-emerald-700 uppercase tracking-wide">Your Children</p>
-                {children.map((child, i) => (
+                {children.map((child: any, i: any) => (
                   <div key={i} className="flex justify-between">
                     <span className="font-medium">{child.profiles?.first_name} {child.profiles?.last_name}</span>
                     <span className="text-muted-foreground">

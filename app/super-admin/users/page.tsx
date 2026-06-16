@@ -64,7 +64,7 @@ export default function SuperAdminUsersPage() {
       </div>
 
       {isLoading ? (
-        <div className="space-y-2">{[...Array(8)].map((_, i) => <Skeleton key={i} className="h-16 w-full rounded-lg" />)}</div>
+        <div className="space-y-2">{[...Array(8)].map((_: any, i: any) => <Skeleton key={i} className="h-16 w-full rounded-lg" />)}</div>
       ) : !filtered?.length ? (
         <Card><CardContent className="py-12 text-center text-sm text-muted-foreground">No users found.</CardContent></Card>
       ) : (

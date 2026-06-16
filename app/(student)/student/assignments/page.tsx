@@ -75,7 +75,7 @@ export default function StudentAssignmentsPage() {
       </div>
 
       {isLoading ? (
-        <div className="space-y-4">{[...Array(4)].map((_, i) => <Skeleton key={i} className="h-24 w-full" />)}</div>
+        <div className="space-y-4">{[...Array(4)].map((_: any, i: any) => <Skeleton key={i} className="h-24 w-full" />)}</div>
       ) : !assignments?.length ? (
         <Card><CardContent className="py-12 text-center text-muted-foreground">No assignments posted yet.</CardContent></Card>
       ) : (
@@ -132,11 +132,11 @@ export default function StudentAssignmentsPage() {
                                   </div>
                                   {attachments.length > 0 && (
                                     <div className="mt-2 space-y-1">
-                                      {attachments.map((att, i) => (
+                                      {attachments.map((att: any, i: any) => (
                                         <div key={i} className="flex items-center gap-2 text-sm p-2.5 rounded border border-gray-200 bg-gray-50">
                                           <Paperclip className="h-4 w-4 text-gray-400 shrink-0" />
                                           <span className="flex-1 truncate text-xs sm:text-sm">{att.name}</span>
-                                          <button onClick={() => setAttachments(prev => prev.filter((_, j) => j !== i))} className="text-gray-400 hover:text-red-500 p-1">
+                                          <button onClick={() => setAttachments(prev => prev.filter((_: any, j: any) => j !== i))} className="text-gray-400 hover:text-red-500 p-1">
                                             <X className="h-4 w-4" />
                                           </button>
                                         </div>

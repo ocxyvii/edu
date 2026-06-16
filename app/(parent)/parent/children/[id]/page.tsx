@@ -117,7 +117,7 @@ export default function ChildDetailPage({ params }: { params: Promise<{ id: stri
   })
 
   if (basicLoading) {
-    return <div className="space-y-6">{[...Array(4)].map((_, i) => <Skeleton key={i} className="h-48 w-full" />)}</div>
+    return <div className="space-y-6">{[...Array(4)].map((_: any, i: any) => <Skeleton key={i} className="h-48 w-full" />)}</div>
   }
 
   if (!basic?.student) {
@@ -220,7 +220,7 @@ export default function ChildDetailPage({ params }: { params: Promise<{ id: stri
         <TabsContent value="attendance" className="space-y-6 mt-6">
           {/* Stats */}
           {attLoading ? (
-            <div className="grid grid-cols-5 gap-4">{[...Array(5)].map((_, i) => <Skeleton key={i} className="h-24" />)}</div>
+            <div className="grid grid-cols-5 gap-4">{[...Array(5)].map((_: any, i: any) => <Skeleton key={i} className="h-24" />)}</div>
           ) : (
             <div className="grid grid-cols-2 lg:grid-cols-5 gap-4">
               <Card><CardContent className="py-4 text-center">
@@ -276,10 +276,10 @@ export default function ChildDetailPage({ params }: { params: Promise<{ id: stri
                   <div key={d} className="text-center text-xs font-medium text-muted-foreground py-1">{d}</div>
                 ))}
                 {/* Empty cells for first day offset */}
-                {monthDays.length > 0 && Array.from({ length: new Date(attYear, attMonth - 1, 1).getDay() }).map((_, i) => (
+                {monthDays.length > 0 && Array.from({ length: new Date(attYear, attMonth - 1, 1).getDay() }).map((_: any, i: any) => (
                   <div key={`empty-${i}`} />
                 ))}
-                {monthDays.map(({ date, day, status }) => (
+                {monthDays.map(({ date, day, status }: any) => (
                   <div
                     key={date}
                     className={cn(
@@ -308,7 +308,7 @@ export default function ChildDetailPage({ params }: { params: Promise<{ id: stri
         {/* ── TAB 3: Results ── */}
         <TabsContent value="results" className="space-y-6 mt-6">
           {resultsLoading ? (
-            <div className="space-y-4">{[...Array(3)].map((_, i) => <Skeleton key={i} className="h-20 w-full" />)}</div>
+            <div className="space-y-4">{[...Array(3)].map((_: any, i: any) => <Skeleton key={i} className="h-20 w-full" />)}</div>
           ) : !results?.length ? (
             <Card><CardContent className="py-12 text-center text-muted-foreground">No results published yet.</CardContent></Card>
           ) : (
@@ -375,7 +375,7 @@ export default function ChildDetailPage({ params }: { params: Promise<{ id: stri
         {/* ── TAB 4: Fees ── */}
         <TabsContent value="fees" className="space-y-6 mt-6">
           {feesLoading ? (
-            <div className="space-y-4">{[...Array(4)].map((_, i) => <Skeleton key={i} className="h-24" />)}</div>
+            <div className="space-y-4">{[...Array(4)].map((_: any, i: any) => <Skeleton key={i} className="h-24" />)}</div>
           ) : !feesData?.invoices?.length ? (
             <Card><CardContent className="py-12 text-center text-muted-foreground">No fee records found.</CardContent></Card>
           ) : (
@@ -489,7 +489,7 @@ export default function ChildDetailPage({ params }: { params: Promise<{ id: stri
           </div>
 
           {assignmentsLoading ? (
-            <div className="space-y-3">{[...Array(3)].map((_, i) => <Skeleton key={i} className="h-24 w-full" />)}</div>
+            <div className="space-y-3">{[...Array(3)].map((_: any, i: any) => <Skeleton key={i} className="h-24 w-full" />)}</div>
           ) : !assignments?.length ? (
             <Card><CardContent className="py-12 text-center text-muted-foreground">No {assignFilter !== 'all' ? assignFilter : ''} assignments found.</CardContent></Card>
           ) : (
@@ -546,7 +546,7 @@ export default function ChildDetailPage({ params }: { params: Promise<{ id: stri
         {/* ── TAB 6: Teachers ── */}
         <TabsContent value="teachers" className="space-y-6 mt-6">
           {teachersLoading ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">{[...Array(3)].map((_, i) => <Skeleton key={i} className="h-32" />)}</div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">{[...Array(3)].map((_: any, i: any) => <Skeleton key={i} className="h-32" />)}</div>
           ) : !teachers?.length ? (
             <Card><CardContent className="py-12 text-center text-muted-foreground">No teachers assigned to this class yet.</CardContent></Card>
           ) : (

@@ -148,7 +148,7 @@ export default function NewSchoolPage() {
       </div>
 
       <div className="flex items-center justify-between">
-        {steps.map((s, idx) => (
+        {steps.map((s: any, idx: any) => (
           <div key={s.id} className="flex items-center">
             <div className="flex items-center gap-2">
               <div

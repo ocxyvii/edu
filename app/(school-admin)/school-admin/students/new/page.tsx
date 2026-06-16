@@ -61,7 +61,7 @@ export default function NewStudentPage() {
       </div>
 
       <div className="flex items-center gap-2">
-        {steps.map((s, i) => (
+        {steps.map((s: any, i: any) => (
           <div key={s} className="flex items-center gap-2 flex-1">
             <div className={`flex h-8 w-8 items-center justify-center rounded-full text-sm font-medium ${
               i < step ? 'bg-green-500 text-white' :

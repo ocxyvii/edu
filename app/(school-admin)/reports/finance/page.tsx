@@ -76,7 +76,7 @@ export default function FinanceReportPage() {
       {/* Summary KPIs */}
       {isLoading ? (
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          {[...Array(4)].map((_, i) => <Skeleton key={i} className="h-28 rounded-xl" />)}
+          {[...Array(4)].map((_: any, i: any) => <Skeleton key={i} className="h-28 rounded-xl" />)}
         </div>
       ) : report ? (
         <>

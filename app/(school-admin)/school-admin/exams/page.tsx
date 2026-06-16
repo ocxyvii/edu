@@ -48,7 +48,7 @@ export default function AdminExamsPage() {
       </div>
 
       {isLoading ? (
-        <div className="space-y-3">{[...Array(4)].map((_, i) => <Skeleton key={i} className="h-28 w-full" />)}</div>
+        <div className="space-y-3">{[...Array(4)].map((_: any, i: any) => <Skeleton key={i} className="h-28 w-full" />)}</div>
       ) : exams?.length === 0 ? (
         <Card>
           <CardContent className="py-16 text-center text-muted-foreground">

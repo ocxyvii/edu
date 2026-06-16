@@ -126,7 +126,7 @@ export default function AdmissionsPage() {
 
           {/* List */}
           {isLoading ? (
-            <div className="space-y-3">{[...Array(5)].map((_, i) => <Skeleton key={i} className="h-20 w-full rounded-lg" />)}</div>
+            <div className="space-y-3">{[...Array(5)].map((_: any, i: any) => <Skeleton key={i} className="h-20 w-full rounded-lg" />)}</div>
           ) : applications && applications.length > 0 ? (
             <div className="space-y-2">
               {applications.map((app: Application) => {

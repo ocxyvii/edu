@@ -156,12 +156,12 @@ export default function ClassRosterPage() {
       <div className="space-y-4">
         <div className="h-8 w-64 bg-gray-200 rounded animate-pulse" />
         <div className="grid grid-cols-4 gap-4">
-          {[...Array(4)].map((_, i) => (
+          {[...Array(4)].map((_: any, i: any) => (
             <div key={i} className="h-24 bg-gray-200 rounded-xl animate-pulse" />
           ))}
         </div>
         <div className="space-y-3">
-          {[...Array(5)].map((_, i) => (
+          {[...Array(5)].map((_: any, i: any) => (
             <div key={i} className="h-16 bg-gray-200 rounded-lg animate-pulse" />
           ))}
         </div>

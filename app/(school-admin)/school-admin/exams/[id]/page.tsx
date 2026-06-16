@@ -44,7 +44,7 @@ export default function ExamDetailPage() {
   })
 
   if (isLoading) {
-    return <div className="space-y-3">{[...Array(6)].map((_, i) => <Skeleton key={i} className="h-12 w-full" />)}</div>
+    return <div className="space-y-3">{[...Array(6)].map((_: any, i: any) => <Skeleton key={i} className="h-12 w-full" />)}</div>
   }
 
   if (!exam) {
@@ -159,7 +159,7 @@ export default function ExamDetailPage() {
               Select a subject to view and enter marks
             </p>
           ) : marksLoading ? (
-            <div className="space-y-2">{[...Array(8)].map((_, i) => <Skeleton key={i} className="h-10 w-full" />)}</div>
+            <div className="space-y-2">{[...Array(8)].map((_: any, i: any) => <Skeleton key={i} className="h-10 w-full" />)}</div>
           ) : (
             <MarksEntryTable
               examId={examId}

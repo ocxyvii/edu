@@ -263,7 +263,7 @@ export default function StudentProfilePage() {
               </div>
 
               {notesLoading ? (
-                <div className="space-y-2">{[...Array(2)].map((_, i) => <Skeleton key={i} className="h-16 w-full" />)}</div>
+                <div className="space-y-2">{[...Array(2)].map((_: any, i: any) => <Skeleton key={i} className="h-16 w-full" />)}</div>
               ) : !notes?.length ? (
                 <p className="text-sm text-muted-foreground text-center py-4">No notes yet</p>
               ) : (

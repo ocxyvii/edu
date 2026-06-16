@@ -21,7 +21,7 @@ export default function ChildrenListPage() {
       <div className="space-y-6">
         <Skeleton className="h-10 w-64" />
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {[...Array(2)].map((_, i) => <Skeleton key={i} className="h-48" />)}
+          {[...Array(2)].map((_: any, i: any) => <Skeleton key={i} className="h-48" />)}
         </div>
       </div>
     )

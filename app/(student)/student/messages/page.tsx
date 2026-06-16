@@ -95,7 +95,7 @@ export default function StudentMessagesPage() {
       )}
 
       {isLoading ? (
-        <div className="space-y-3">{[...Array(5)].map((_, i) => <Skeleton key={i} className="h-20 w-full" />)}</div>
+        <div className="space-y-3">{[...Array(5)].map((_: any, i: any) => <Skeleton key={i} className="h-20 w-full" />)}</div>
       ) : !messages?.received?.length ? (
         <Card><CardContent className="py-12 text-center text-muted-foreground">No messages yet.</CardContent></Card>
       ) : (

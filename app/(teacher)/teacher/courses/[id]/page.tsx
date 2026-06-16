@@ -179,7 +179,7 @@ export default function TeacherCourseDetailPage() {
   }
 
   const updateQuizQuestion = (index: number, field: string, value: any) => {
-    setQuizQuestions(prev => prev.map((q, i) => i === index ? { ...q, [field]: value } : q))
+    setQuizQuestions(prev => prev.map((q: any, i: any) => i === index ? { ...q, [field]: value } : q))
   }
 
   if (isLoading) {
@@ -398,12 +398,12 @@ export default function TeacherCourseDetailPage() {
               <Label>Quiz Title *</Label>
               <Input value={quizTitle} onChange={(e) => setQuizTitle(e.target.value)} placeholder="e.g. Algebra Quiz 1" />
             </div>
-            {quizQuestions.map((q, i) => (
+            {quizQuestions.map((q: any, i: any) => (
               <Card key={i}>
                 <CardHeader className="pb-2">
                   <CardTitle className="text-sm flex items-center justify-between">
                     <span>Question {i + 1}</span>
-                    <Button variant="ghost" size="icon" className="h-6 w-6 text-red-500" onClick={() => setQuizQuestions(prev => prev.filter((_, j) => j !== i))}>
+                    <Button variant="ghost" size="icon" className="h-6 w-6 text-red-500" onClick={() => setQuizQuestions(prev => prev.filter((_: any, j: any) => j !== i))}>
                       <Trash2 className="h-3.5 w-3.5" />
                     </Button>
                   </CardTitle>

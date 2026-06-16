@@ -31,7 +31,7 @@ export default function StudentDashboard() {
       <div className="space-y-6">
         <Skeleton className="h-10 w-64" />
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-          {[...Array(4)].map((_, i) => <Skeleton key={i} className="h-28" />)}
+          {[...Array(4)].map((_: any, i: any) => <Skeleton key={i} className="h-28" />)}
         </div>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           <Skeleton className="h-64" />

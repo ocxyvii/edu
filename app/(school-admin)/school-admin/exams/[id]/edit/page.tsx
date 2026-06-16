@@ -33,7 +33,7 @@ export default function EditExamPage() {
       </div>
 
       {isLoading ? (
-        <div className="space-y-3">{[...Array(6)].map((_, i) => <Skeleton key={i} className="h-12 w-full" />)}</div>
+        <div className="space-y-3">{[...Array(6)].map((_: any, i: any) => <Skeleton key={i} className="h-12 w-full" />)}</div>
       ) : (
         <Card>
           <CardHeader>

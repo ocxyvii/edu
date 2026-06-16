@@ -148,7 +148,7 @@ export default function AcademicPage() {
           <CardContent>
             {isLoading ? (
               <div className="space-y-3">
-                {[...Array(3)].map((_, i) => <Skeleton key={i} className="h-16 w-full" />)}
+                {[...Array(3)].map((_: any, i: any) => <Skeleton key={i} className="h-16 w-full" />)}
               </div>
             ) : years?.length === 0 ? (
               <p className="text-muted-foreground text-sm py-8 text-center">No academic years yet</p>

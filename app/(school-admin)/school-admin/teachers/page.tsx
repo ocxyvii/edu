@@ -90,7 +90,7 @@ export default function TeachersPage() {
 
           {isLoading ? (
             <div className="space-y-3">
-              {[...Array(5)].map((_, i) => <Skeleton key={i} className="h-16 w-full" />)}
+              {[...Array(5)].map((_: any, i: any) => <Skeleton key={i} className="h-16 w-full" />)}
             </div>
           ) : filtered.length === 0 ? (
             <p className="text-center py-12 text-muted-foreground">No teachers found</p>

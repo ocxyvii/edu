@@ -118,7 +118,7 @@ export default function HRPage() {
                   <Select value={String(payrollMonth)} onValueChange={v => setPayrollMonth(Number(v))}>
                     <SelectTrigger className="w-32 h-9"><SelectValue /></SelectTrigger>
                     <SelectContent>
-                      {MONTHS.map((m, i) => <SelectItem key={i} value={String(i + 1)}>{m}</SelectItem>)}
+                      {MONTHS.map((m: any, i: any) => <SelectItem key={i} value={String(i + 1)}>{m}</SelectItem>)}
                     </SelectContent>
                   </Select>
                   <Select value={String(payrollYear)} onValueChange={v => setPayrollYear(Number(v))}>
@@ -139,7 +139,7 @@ export default function HRPage() {
             </CardHeader>
             <CardContent className="p-0">
               {payrollLoading ? (
-                <div className="p-4 space-y-2">{[...Array(5)].map((_, i) => <Skeleton key={i} className="h-12 w-full" />)}</div>
+                <div className="p-4 space-y-2">{[...Array(5)].map((_: any, i: any) => <Skeleton key={i} className="h-12 w-full" />)}</div>
               ) : !payrollEntries?.length ? (
                 <div className="p-8 text-center text-sm text-muted-foreground">
                   No payroll entries for {MONTHS[payrollMonth - 1]} {payrollYear}. Click Generate to create.

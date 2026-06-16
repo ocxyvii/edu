@@ -144,7 +144,7 @@ export default function TeacherAttendancePage() {
         <>
           {studentsLoading ? (
             <div className="space-y-3">
-              {[...Array(5)].map((_, i) => (
+              {[...Array(5)].map((_: any, i: any) => (
                 <div key={i} className="h-16 bg-gray-200 rounded-lg animate-pulse" />
               ))}
             </div>

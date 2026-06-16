@@ -254,7 +254,7 @@ export default function TeacherDashboard() {
           </CardHeader>
           <CardContent>
             {isLoading ? (
-              <div className="space-y-3">{[...Array(3)].map((_, i) => <Skeleton key={i} className="h-16 w-full" />)}</div>
+              <div className="space-y-3">{[...Array(3)].map((_: any, i: any) => <Skeleton key={i} className="h-16 w-full" />)}</div>
             ) : data?.todayClasses.length === 0 ? (
               <p className="text-sm text-muted-foreground py-8 text-center">No classes scheduled for today</p>
             ) : (
@@ -288,7 +288,7 @@ export default function TeacherDashboard() {
           </CardHeader>
           <CardContent>
             {isLoading ? (
-              <div className="space-y-3">{[...Array(3)].map((_, i) => <Skeleton key={i} className="h-16 w-full" />)}</div>
+              <div className="space-y-3">{[...Array(3)].map((_: any, i: any) => <Skeleton key={i} className="h-16 w-full" />)}</div>
             ) : data?.unreadMessages.length === 0 ? (
               <p className="text-sm text-muted-foreground py-8 text-center">No unread messages</p>
             ) : (
@@ -318,7 +318,7 @@ export default function TeacherDashboard() {
         </CardHeader>
         <CardContent>
           {isLoading ? (
-            <div className="space-y-3">{[...Array(3)].map((_, i) => <Skeleton key={i} className="h-12 w-full" />)}</div>
+            <div className="space-y-3">{[...Array(3)].map((_: any, i: any) => <Skeleton key={i} className="h-12 w-full" />)}</div>
           ) : data?.pendingAssignments.length === 0 ? (
             <p className="text-sm text-muted-foreground py-4 text-center">No pending assignments</p>
           ) : (

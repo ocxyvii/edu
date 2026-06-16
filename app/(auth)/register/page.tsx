@@ -708,7 +708,7 @@ export default function RegisterPage() {
         <p className="text-xs text-amber-700">Upload clear scans or photos of the required documents. Maximum file size: 20MB each.</p>
       </div>
 
-      {docFields.map(({ key, label, desc, required }) => {
+      {docFields.map(({ key, label, desc, required }: any) => {
         const doc = form.documents.find((d: any) => d.type === key)
         return (
           <div key={key} className="border rounded-lg p-4">
@@ -814,7 +814,7 @@ export default function RegisterPage() {
               <FileText className="h-3.5 w-3.5" /> Documents ({form.documents.length})
             </h3>
             <div className="space-y-1 text-sm">
-              {form.documents.map((doc, i) => (
+              {form.documents.map((doc: any, i: any) => (
                 <div key={i} className="flex items-center gap-2 text-green-600">
                   <CheckCircle2 className="h-3.5 w-3.5" />
                   <span className="capitalize">{doc.type.replace(/_/g, ' ')}</span>

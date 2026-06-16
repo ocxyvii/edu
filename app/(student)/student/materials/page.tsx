@@ -24,7 +24,7 @@ export default function StudentMaterialsPage() {
       </div>
 
       {isLoading ? (
-        <div className="space-y-4">{[...Array(3)].map((_, i) => <Skeleton key={i} className="h-32 w-full" />)}</div>
+        <div className="space-y-4">{[...Array(3)].map((_: any, i: any) => <Skeleton key={i} className="h-32 w-full" />)}</div>
       ) : courses.length === 0 ? (
         <Card><CardContent className="py-12 text-center text-muted-foreground">No course materials available yet.</CardContent></Card>
       ) : (

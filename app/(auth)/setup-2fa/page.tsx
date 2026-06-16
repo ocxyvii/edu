@@ -231,7 +231,7 @@ export default function Setup2FAPage() {
             </div>
             <div className="bg-muted rounded-lg p-4">
               <div className="grid grid-cols-2 gap-2">
-                {backupCodes.map((code, i) => (
+                {backupCodes.map((code: any, i: any) => (
                   <div key={i} className="font-mono text-sm bg-background rounded px-2 py-1.5 text-center select-all">
                     {code}
                   </div>

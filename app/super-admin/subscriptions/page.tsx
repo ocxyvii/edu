@@ -183,7 +183,7 @@ export default function SubscriptionsPage() {
         <CardContent>
           {isLoading ? (
             <div className="space-y-3">
-              {Array.from({ length: 5 }).map((_, i) => (
+              {Array.from({ length: 5 }).map((_: any, i: any) => (
                 <Skeleton key={i} className="h-12 w-full" />
               ))}
             </div>

@@ -163,7 +163,7 @@ export default function AuditLogsPage() {
         </CardHeader>
         <CardContent>
           {isLoading ? (
-            <div className="space-y-3">{Array.from({ length: 10 }).map((_, i) => <Skeleton key={i} className="h-10 w-full" />)}</div>
+            <div className="space-y-3">{Array.from({ length: 10 }).map((_: any, i: any) => <Skeleton key={i} className="h-10 w-full" />)}</div>
           ) : (
             <>
               <div className="overflow-x-auto">

@@ -60,7 +60,7 @@ export default function TeacherCoursesPage() {
 
       {isLoading ? (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {[...Array(3)].map((_, i) => <Skeleton key={i} className="h-40 w-full" />)}
+          {[...Array(3)].map((_: any, i: any) => <Skeleton key={i} className="h-40 w-full" />)}
         </div>
       ) : courses && courses.length > 0 ? (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">

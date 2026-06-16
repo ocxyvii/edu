@@ -21,7 +21,7 @@ export default function NotificationsPage() {
       </div>
 
       {isLoading ? (
-        <div className="space-y-4">{[...Array(3)].map((_, i) => <Skeleton key={i} className="h-24 w-full" />)}</div>
+        <div className="space-y-4">{[...Array(3)].map((_: any, i: any) => <Skeleton key={i} className="h-24 w-full" />)}</div>
       ) : !announcements?.length ? (
         <Card><CardContent className="py-12 text-center text-muted-foreground">No notifications yet.</CardContent></Card>
       ) : (

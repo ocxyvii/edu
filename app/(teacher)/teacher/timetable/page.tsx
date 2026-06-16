@@ -371,7 +371,7 @@ export default function TeacherTimetablePage() {
           <CardHeader><CardTitle>Weekly Overview</CardTitle></CardHeader>
           <CardContent>
             <div className="space-y-4">
-              {DAYS.map((day, di) => {
+              {DAYS.map((day: any, di: any) => {
                 const dayEntries_list = dayEntries[day] ?? []
                 if (!dayEntries_list.length) return null
                 return (

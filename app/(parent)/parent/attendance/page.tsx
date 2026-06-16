@@ -22,7 +22,7 @@ export default function ParentAttendancePage() {
       </div>
 
       {isLoading ? (
-        <div className="space-y-4">{[...Array(2)].map((_, i) => <Skeleton key={i} className="h-48 w-full" />)}</div>
+        <div className="space-y-4">{[...Array(2)].map((_: any, i: any) => <Skeleton key={i} className="h-48 w-full" />)}</div>
       ) : children.length === 0 ? (
         <Card><CardContent className="py-12 text-center text-muted-foreground">No children linked to your account.</CardContent></Card>
       ) : (

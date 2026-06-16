@@ -89,7 +89,7 @@ export default function ReportsHubPage() {
       {/* KPI Strip */}
       {isLoading ? (
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">
-          {[...Array(5)].map((_, i) => <Skeleton key={i} className="h-28 rounded-xl" />)}
+          {[...Array(5)].map((_: any, i: any) => <Skeleton key={i} className="h-28 rounded-xl" />)}
         </div>
       ) : overview ? (
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">

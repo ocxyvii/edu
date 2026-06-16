@@ -124,7 +124,7 @@ export default function DevicesPage() {
         </CardHeader>
         <CardContent>
           {loading ? (
-            <div className="space-y-4">{[...Array(3)].map((_, i) => <div key={i} className="h-20 bg-muted animate-pulse rounded-lg" />)}</div>
+            <div className="space-y-4">{[...Array(3)].map((_: any, i: any) => <div key={i} className="h-20 bg-muted animate-pulse rounded-lg" />)}</div>
           ) : !sessions.length ? (
             <p className="text-sm text-muted-foreground text-center py-8">No active sessions</p>
           ) : (

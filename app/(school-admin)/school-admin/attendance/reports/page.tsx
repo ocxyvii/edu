@@ -332,7 +332,7 @@ export default function AttendanceReportsPage() {
         <CardContent className="p-0">
           {reportLoading ? (
             <div className="p-6 space-y-3">
-              {[...Array(8)].map((_, i) => <Skeleton key={i} className="h-12 w-full" />)}
+              {[...Array(8)].map((_: any, i: any) => <Skeleton key={i} className="h-12 w-full" />)}
             </div>
           ) : filtered.length === 0 ? (
             <p className="text-center py-12 text-muted-foreground">

@@ -185,7 +185,7 @@ export default function SuperAdminFinancePage() {
             </CardHeader>
             <CardContent>
               {isLoading ? (
-                <div className="space-y-3">{[...Array(3)].map((_, i) => <Skeleton key={i} className="h-16 w-full" />)}</div>
+                <div className="space-y-3">{[...Array(3)].map((_: any, i: any) => <Skeleton key={i} className="h-16 w-full" />)}</div>
               ) : (
                 <div className="overflow-x-auto">
                   <table className="w-full text-sm">

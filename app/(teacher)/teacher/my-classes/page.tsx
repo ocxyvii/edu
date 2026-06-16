@@ -23,7 +23,7 @@ export default function MyClassesPage() {
           <Skeleton className="h-5 w-72 mt-1" />
         </div>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          {[...Array(4)].map((_, i) => <Skeleton key={i} className="h-52 w-full" />)}
+          {[...Array(4)].map((_: any, i: any) => <Skeleton key={i} className="h-52 w-full" />)}
         </div>
       </div>
     )

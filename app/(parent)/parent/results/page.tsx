@@ -18,7 +18,7 @@ export default function ParentResultsPage() {
   const allResults = data?.results ?? []
 
   if (isLoading) {
-    return <div className="space-y-6">{[...Array(3)].map((_, i) => <Skeleton key={i} className="h-48 w-full" />)}</div>
+    return <div className="space-y-6">{[...Array(3)].map((_: any, i: any) => <Skeleton key={i} className="h-48 w-full" />)}</div>
   }
 
   return (
