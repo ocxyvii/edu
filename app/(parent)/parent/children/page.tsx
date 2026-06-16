@@ -70,7 +70,7 @@ export default function ChildrenListPage() {
                       </div>
                       <div className="p-3 rounded-lg bg-green-50 text-center">
                         <p className="text-xs text-green-600 font-medium">Results</p>
-                        <p className="text-xl font-bold text-green-700">{data?.results?.filter(r => r.student_id === student?.id).length ?? 0}</p>
+                        <p className="text-xl font-bold text-green-700">{data?.results?.filter((r: any) => r.student_id === student?.id).length ?? 0}</p>
                       </div>
                       <div className="p-3 rounded-lg bg-purple-50 text-center">
                         <p className="text-xs text-purple-600 font-medium">Status</p>
