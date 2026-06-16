@@ -163,7 +163,7 @@ export default function SchoolAdminDashboard() {
       <div>
         <h2 className="text-lg font-semibold text-gray-900 mb-4">Quick Actions</h2>
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-          {quickActions.map((action) => {
+          {quickActions.map((action: any) => {
             const Icon = action.icon
             return (
               <Link key={action.href} href={action.href}>

@@ -135,7 +135,7 @@ export default function ClassesPage() {
         </Card>
       ) : (
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {classes?.map((cls) => (
+          {classes?.map((cls: any) => (
             <Card key={cls.id}>
               <CardHeader className="flex flex-row items-start justify-between space-y-0 pb-2">
                 <div>
@@ -194,7 +194,7 @@ export default function ClassesPage() {
                                 <SelectValue placeholder="Select teacher" />
                               </SelectTrigger>
                               <SelectContent>
-                                {teachers?.map((t) => {
+                                {teachers?.map((t: any) => {
                                   return (
                                     <SelectItem key={t.id} value={t.id}>
                                       <div className="flex items-center gap-2">

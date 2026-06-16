@@ -77,7 +77,7 @@ export default function OnlineExamEngine() {
         setAnswers(savedAnswers)
       } else {
         const initial: Record<string, string> = {}
-        questions.forEach(q => { initial[q.id] = '' })
+        questions.forEach((q: any) => { initial[q.id] = '' })
         setAnswers(initial)
       }
     }

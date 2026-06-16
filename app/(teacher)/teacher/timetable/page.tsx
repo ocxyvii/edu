@@ -151,8 +151,8 @@ export default function TeacherTimetablePage() {
 
   const dayEntries = useMemo(() => {
     const map: Record<string, typeof timetable> = {}
-    DAYS.forEach(d => { map[d] = [] })
-    timetable?.forEach(e => {
+    DAYS.forEach((d: any) => { map[d] = [] })
+    timetable?.forEach((e: any) => {
       if (map[e.day_of_week]) map[e.day_of_week].push(e)
     })
     return map

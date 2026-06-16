@@ -154,7 +154,7 @@ export default function AcademicPage() {
               <p className="text-muted-foreground text-sm py-8 text-center">No academic years yet</p>
             ) : (
               <div className="space-y-3">
-                {years?.map((year) => (
+                {years?.map((year: any) => (
                   <div key={year.id} className="flex items-center justify-between p-4 rounded-lg border border-gray-200">
                     <div className="flex items-center gap-3">
                       <Calendar className="h-5 w-5 text-gray-400" />
@@ -212,7 +212,7 @@ export default function AcademicPage() {
               <p className="text-muted-foreground text-sm py-8 text-center">No terms for this year</p>
             ) : (
               <div className="space-y-3">
-                {terms?.map((term) => (
+                {terms?.map((term: any) => (
                   <div key={term.id} className="flex items-center justify-between p-4 rounded-lg border border-gray-200">
                     <div>
                       <p className="font-medium text-gray-900">{term.name}</p>

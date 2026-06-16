@@ -39,7 +39,7 @@ export function PendingStudentsClient({
     try {
       await approveStudent(id)
       toast.success('Student approved successfully')
-      setLocalPending((prev) => prev.filter((p) => p.id !== id))
+      setLocalPending((prev) => prev.filter((p: any) => p.id !== id))
     } catch (e: any) {
       toast.error(e.message || 'Failed to approve student')
     } finally {
@@ -52,7 +52,7 @@ export function PendingStudentsClient({
     try {
       await rejectStudent(id)
       toast.success('Student registration rejected')
-      setLocalPending((prev) => prev.filter((p) => p.id !== id))
+      setLocalPending((prev) => prev.filter((p: any) => p.id !== id))
     } catch (e: any) {
       toast.error(e.message || 'Failed to reject student')
     } finally {
@@ -93,7 +93,7 @@ export function PendingStudentsClient({
         </Card>
       ) : (
         <div className="grid gap-4">
-          {localPending.map((student) => (
+          {localPending.map((student: any) => (
             <Card key={student.id} className="border-l-4 border-l-amber-400">
               <CardContent className="p-5">
                 <div className="flex items-start justify-between gap-4">
@@ -171,7 +171,7 @@ export function PendingStudentsClient({
             Recently Approved
           </h2>
           <div className="grid gap-2">
-            {approved.map((student) => (
+            {approved.map((student: any) => (
               <Card key={student.id} className="border-l-4 border-l-green-400">
                 <CardContent className="p-4">
                   <div className="flex items-center justify-between">

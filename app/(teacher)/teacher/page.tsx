@@ -128,7 +128,7 @@ export default function TeacherDashboard() {
           </CardHeader>
           <CardContent>
             <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-              {data.sectionAttendanceStats.map((section) => {
+              {data.sectionAttendanceStats.map((section: any) => {
                 const pct = section.totalStudents > 0
                   ? Math.round((section.todayPresent / section.totalStudents) * 100)
                   : 0
@@ -211,7 +211,7 @@ export default function TeacherDashboard() {
             <BookOpen className="h-5 w-5 text-edu-blue-600" /> My Classes
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {myClasses.map((cls) => (
+            {myClasses.map((cls: any) => (
               <Link key={cls.section_id} href={`/teacher/my-classes/${cls.section_id}`} className="block">
                 <Card className="hover:shadow-md transition-shadow cursor-pointer h-full">
                   <CardContent className="p-4">

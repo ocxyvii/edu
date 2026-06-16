@@ -195,7 +195,7 @@ export default function StudentsPage() {
                     </tr>
                   </thead>
                   <tbody>
-                    {paginated.map((student) => (
+                    {paginated.map((student: any) => (
                       <tr key={student.id} className="border-b border-gray-100 hover:bg-gray-50">
                         <td className="py-3 px-2">
                           <Link href={`/school-admin/students/${student.id}`} className="flex items-center gap-3">

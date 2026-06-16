@@ -182,7 +182,7 @@ export default function CreateAssignmentPage() {
                     }}
                   >
                     <option value="">— Select a class —</option>
-                    {myClasses.map((cls) => (
+                    {myClasses.map((cls: any) => (
                       <option
                         key={`${cls.class_id}|${cls.section_id}`}
                         value={`${cls.class_id}|${cls.section_id}`}

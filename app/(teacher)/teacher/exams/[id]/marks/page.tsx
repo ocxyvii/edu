@@ -40,11 +40,11 @@ export default function MarksEntryPage() {
     if (examData?.results) {
       const initial: Record<string, string> = {}
       const saved: Record<string, number> = {}
-      examData.results.forEach(r => {
+      examData.results.forEach((r: any) => {
         initial[r.student_id] = String(r.marks_obtained)
         saved[r.student_id] = r.marks_obtained
       })
-      examData.students.forEach(s => {
+      examData.students.forEach((s: any) => {
         if (!initial[s.id]) initial[s.id] = ''
       })
       setMarks(initial)

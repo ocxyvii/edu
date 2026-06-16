@@ -104,7 +104,7 @@ export default function LandingPage() {
       {/* Portal Cards */}
       <section className="max-w-5xl mx-auto px-4 pb-20">
         <div className="grid md:grid-cols-3 gap-6">
-          {portals.map((portal) => {
+          {portals.map((portal: any) => {
             const Icon = portal.icon
             return (
               <Card

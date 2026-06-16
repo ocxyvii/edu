@@ -134,7 +134,7 @@ export default function NewTeacherPage() {
             <p className="text-sm text-muted-foreground">No subjects created yet. Add subjects in Academic Setup first.</p>
           ) : (
             <div className="flex flex-wrap gap-2">
-              {subjects?.map((subject) => (
+              {subjects?.map((subject: any) => (
                 <Badge
                   key={subject.id}
                   variant={selectedSubjectIds.includes(subject.id) ? 'default' : 'outline'}

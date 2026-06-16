@@ -120,7 +120,7 @@ export default function SubscriptionsPage() {
   })
 
   const counts = data?.counts ?? {}
-  const plans = planTiers.map((p) => ({
+  const plans = planTiers.map((p: any) => ({
     ...p,
     schools: counts[p.id] ?? 0,
   }))
@@ -146,7 +146,7 @@ export default function SubscriptionsPage() {
       </div>
 
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        {plans.map((plan) => (
+        {plans.map((plan: any) => (
           <Card key={plan.id}>
             <CardHeader className="pb-2">
               <CardTitle className="text-base">{plan.name}</CardTitle>

@@ -109,7 +109,7 @@ export default function AdmissionsPage() {
           </div>
 
           <div className="flex gap-1 mb-5 overflow-x-auto pb-1">
-            {statusTabs.map((tab) => (
+            {statusTabs.map((tab: any) => (
               <button
                 key={tab.value}
                 onClick={() => setStatusFilter(tab.value)}

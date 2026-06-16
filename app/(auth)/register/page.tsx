@@ -210,7 +210,7 @@ export default function RegisterPage() {
     setForm(prev => ({ ...prev, ...updates }))
     setErrors(prev => {
       const next = { ...prev }
-      Object.keys(updates).forEach(k => delete next[k])
+      Object.keys(updates).forEach((k: any) => delete next[k])
       return next
     })
   }, [])
@@ -406,7 +406,7 @@ export default function RegisterPage() {
             {schools.length === 0 && !schoolsLoading ? (
               <div className="p-3 text-sm text-muted-foreground text-center">No schools available at this time</div>
             ) : (
-              schools.map((school) => (
+              schools.map((school: any) => (
                 <SelectItem key={school.id} value={school.id} className="py-2.5">
                   <div className="flex items-center gap-3">
                     {school.logo_url ? (
@@ -455,7 +455,7 @@ export default function RegisterPage() {
             {academicYears.length === 0 && !yearsLoading ? (
               <div className="p-3 text-sm text-muted-foreground text-center">No active academic years found</div>
             ) : (
-              academicYears.map((ay) => (
+              academicYears.map((ay: any) => (
                 <SelectItem key={ay.id} value={ay.id} className="py-2.5">
                   <div className="flex items-center justify-between w-full gap-3">
                     <div>
@@ -513,7 +513,7 @@ export default function RegisterPage() {
             {classes.length === 0 && !classesLoading ? (
               <div className="p-3 text-sm text-muted-foreground text-center">No classes available for this year</div>
             ) : (
-              classes.map((cls) => (
+              classes.map((cls: any) => (
                 <SelectItem key={cls.id} value={cls.id} className="py-2.5">
                   <div>
                     <div className="text-sm font-medium">
@@ -901,7 +901,7 @@ export default function RegisterPage() {
             <div className="mb-6">
               <Progress value={progressPercent} className="h-2" />
               <div className="flex justify-between mt-2">
-                {steps.map((s) => (
+                {steps.map((s: any) => (
                   <div key={s.id} className="flex flex-col items-center" style={{ width: `${100 / steps.length}%` }}>
                     <div className={`flex items-center justify-center w-7 h-7 rounded-full text-xs font-medium transition-colors ${
                       s.id < step ? 'bg-green-500 text-white' :

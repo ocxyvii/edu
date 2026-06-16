@@ -355,7 +355,7 @@ export default function AttendanceReportsPage() {
                   </tr>
                 </thead>
                 <tbody>
-                  {filtered.map((row) => {
+                  {filtered.map((row: any) => {
                     const colorClass =
                       row.percentage < 75 ? 'text-red-600 bg-red-50' :
                       row.percentage < 90 ? 'text-yellow-600 bg-yellow-50' :

@@ -129,7 +129,7 @@ export default function DevicesPage() {
             <p className="text-sm text-muted-foreground text-center py-8">No active sessions</p>
           ) : (
             <div className="space-y-3">
-              {sessions.map((session) => {
+              {sessions.map((session: any) => {
                 const Icon = getDeviceIcon(session.device_info)
                 const isExpired = new Date(session.expires_at) < new Date()
                 return (

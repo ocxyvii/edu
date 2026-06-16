@@ -297,7 +297,7 @@ export default function ClassRosterPage() {
               </div>
 
               <div className="divide-y divide-gray-100">
-                {filtered.map((student) => (
+                {filtered.map((student: any) => (
                   <div
                     key={student.id}
                     className="grid grid-cols-12 gap-4 px-4 py-4 items-center hover:bg-gray-50 transition-colors"

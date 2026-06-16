@@ -29,7 +29,7 @@ export default function AttendancePage() {
     const firstDay = new Date(year, month, 1).getDay()
 
     const attendanceMap = new Map<string, string>()
-    data.records.forEach(r => {
+    data.records.forEach((r: any) => {
       attendanceMap.set(r.date, r.status)
     })
 

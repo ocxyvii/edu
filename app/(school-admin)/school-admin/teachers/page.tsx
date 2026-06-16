@@ -96,7 +96,7 @@ export default function TeachersPage() {
             <p className="text-center py-12 text-muted-foreground">No teachers found</p>
           ) : (
             <div className="space-y-3">
-              {filtered.map((teacher) => (
+              {filtered.map((teacher: any) => (
                 <div key={teacher.id} className="flex items-center justify-between p-4 rounded-lg border border-gray-200 hover:bg-gray-50">
                   <div className="flex items-center gap-4 min-w-0">
                     <Avatar className="h-10 w-10">

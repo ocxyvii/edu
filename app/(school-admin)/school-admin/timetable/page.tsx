@@ -85,7 +85,7 @@ export default function TimetablePage() {
         toast.success(`Auto-generated ${result.created} periods`)
       }
       if (result.errors.length > 0) {
-        result.errors.forEach(e => toast.error(e))
+        result.errors.forEach((e: any) => toast.error(e))
       }
     },
     onError: (err: Error) => toast.error(err.message),

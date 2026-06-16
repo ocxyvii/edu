@@ -117,7 +117,7 @@ export default function TeacherAttendancePage() {
             className="w-full border border-gray-300 rounded-lg px-3 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white"
           >
             <option value="">— Select a class —</option>
-            {myClasses.map((cls) => (
+            {myClasses.map((cls: any) => (
               <option key={cls.section_id} value={cls.section_id}>
                 {cls.class_name} — {cls.section_name} ({cls.student_count} students)
               </option>

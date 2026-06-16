@@ -365,7 +365,7 @@ export default function NewSchoolPage() {
                 Choose a subscription plan for the school
               </p>
               <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-                {plans.map((plan) => (
+                {plans.map((plan: any) => (
                   <button
                     key={plan.id}
                     type="button"
@@ -394,7 +394,7 @@ export default function NewSchoolPage() {
                     </div>
                     <Separator className="my-3" />
                     <ul className="space-y-1">
-                      {plan.features.map((f) => (
+                      {plan.features.map((f: any) => (
                         <li
                           key={f}
                           className="flex items-start gap-1 text-xs text-gray-600"

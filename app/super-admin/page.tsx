@@ -228,7 +228,7 @@ export default function SuperAdminDashboard() {
       </div>
 
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-        {kpis.map((kpi) => {
+        {kpis.map((kpi: any) => {
           const Icon = kpi.icon
           return (
             <Card key={kpi.title}>

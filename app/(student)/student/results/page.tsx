@@ -35,7 +35,7 @@ export default function ResultsPage() {
     const avg = totalMarks / results.length
     const grades = results.map((r: any) => r.grade)
     const gradeCounts: Record<string, number> = {}
-    grades.forEach(g => { gradeCounts[g] = (gradeCounts[g] || 0) + 1 })
+    grades.forEach((g: any) => { gradeCounts[g] = (gradeCounts[g] || 0) + 1 })
     return { average: Math.round(avg * 10) / 10, total: results.length, gradeCounts }
   }, [results])
 
