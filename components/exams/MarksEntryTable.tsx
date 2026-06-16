@@ -53,15 +53,15 @@ export function MarksEntryTable({
   const queryClient = useQueryClient()
   const resultMap = useMemo(() => {
     const map = new Map<string, ExistingResult>()
-    existingResults.forEach(r => map.set(r.student_id, r))
+    existingResults.forEach((r: any) => map.set(r.student_id, r))
     return map
   }, [existingResults])
 
   const [marks, setMarks] = useState<Record<string, Record<string, string>>>(() => {
     const initial: Record<string, Record<string, string>> = {}
-    students.forEach(s => {
+    students.forEach((s: any) => {
       initial[s.id] = {}
-      subjects.forEach(sub => {
+      subjects.forEach((sub: any) => {
         const existing = resultMap.get(s.id)
         if (existing && existing.marks_obtained !== undefined) {
           initial[s.id][sub.subject_id] = String(existing.marks_obtained)
@@ -79,7 +79,7 @@ export function MarksEntryTable({
   const inputRefs = useRef<Map<string, HTMLInputElement | null>>(new Map())
   const autoSaveTimer = useRef<NodeJS.Timeout | null>(null)
 
-  const subjectKeys = subjects.map(s => s.subject_id)
+  const subjectKeys = subjects.map((s: any) => s.subject_id)
 
   function getCellKey(studentId: string, subjectId: string) {
     return `${studentId}:${subjectId}`
@@ -193,8 +193,8 @@ export function MarksEntryTable({
   }
 
   const allSaved = useMemo(() => {
-    return students.every(s => {
-      return subjects.every(sub => {
+    return students.every((s: any) => {
+      return subjects.every((sub: any) => {
         const key = getCellKey(s.id, sub.subject_id)
         return !dirtyCells.has(key)
       })
@@ -256,7 +256,7 @@ export function MarksEntryTable({
               <th className="text-left py-3 px-4 text-xs font-medium text-gray-500 uppercase sticky left-0 bg-gray-50 z-10 w-10">#</th>
               <th className="text-left py-3 px-4 text-xs font-medium text-gray-500 uppercase sticky left-10 bg-gray-50 z-10 min-w-[180px]">Student</th>
               <th className="text-left py-3 px-4 text-xs font-medium text-gray-500 uppercase sticky left-[190px] bg-gray-50 z-10 w-24">Admission</th>
-              {subjects.map(sub => (
+              {subjects.map((sub: any) => (
                 <th key={sub.subject_id} className="text-center py-3 px-2 text-xs font-medium text-gray-500 uppercase min-w-[120px]">
                   {sub.subject_code}<br />
                   <span className="text-[10px] font-normal">Max {sub.max_marks}</span>

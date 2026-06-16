@@ -153,7 +153,7 @@ export default function TeacherTimetablePage() {
     const map: Record<string, typeof timetable> = {}
     DAYS.forEach((d: any) => { map[d] = [] })
     timetable?.forEach((e: any) => {
-      if (map[e.day_of_week]) map[e.day_of_week].push(e)
+      map[e.day_of_week]?.push(e)
     })
     return map
   }, [timetable])
@@ -180,7 +180,7 @@ export default function TeacherTimetablePage() {
           <Select value={selectedSectionId} onValueChange={setSelectedSectionId}>
             <SelectTrigger className="w-[260px]"><SelectValue placeholder="Select your section" /></SelectTrigger>
             <SelectContent>
-              {sections.map((s: any) => (
+              {sections?.map((s: any) => (
                 <SelectItem key={s.section_id} value={s.section_id}>
                   {s.class_name} - {s.section_name}
                 </SelectItem>

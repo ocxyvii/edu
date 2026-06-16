@@ -124,20 +124,20 @@ export function LeaveManagement() {
             }}>Next</Button>
           </div>
           <div className="grid grid-cols-7 gap-1 text-xs">
-            {['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map(d => (
+            {['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map((d: any) => (
               <div key={d} className="text-center font-medium text-muted-foreground py-1">{d}</div>
             ))}
             {Array.from({ length: new Date(calendarYear, calendarMonth - 1, 1).getDay() }, (_, i) => (
               <div key={`empty-${i}`} />
             ))}
-            {calendarDays.map(day => {
+            {calendarDays.map((day: any) => {
               const key = `${calendarYear}-${String(calendarMonth).padStart(2, '0')}-${String(day).padStart(2, '0')}`
               const leaves = leaveMap.get(key) ?? []
               const isToday = new Date().toISOString().split('T')[0] === key
               return (
                 <div key={day} className={`min-h-16 p-1 rounded border ${isToday ? 'border-blue-400 bg-blue-50' : 'border-gray-100'}`}>
                   <span className={`text-xs ${isToday ? 'font-bold text-blue-600' : ''}`}>{day}</span>
-                  {leaves.slice(0, 2).map((l, i) => (
+                  {leaves.slice(0, 2).map((l: any, i: any) => (
                     <div key={i} className={`${LEAVE_COLORS[l.type] ?? 'bg-gray-400'} text-white text-[10px] px-1 rounded mt-0.5 truncate`} title={l.name}>
                       {l.name.split(' ')[0]}
                     </div>
@@ -156,7 +156,7 @@ export function LeaveManagement() {
         </CardHeader>
         <CardContent>
           {isLoading ? (
-            <div className="space-y-2">{[...Array(3)].map((_, i) => <Skeleton key={i} className="h-14 w-full" />)}</div>
+            <div className="space-y-2">{[...Array(3)].map((_: any, i: any) => <Skeleton key={i} className="h-14 w-full" />)}</div>
           ) : requests?.length === 0 ? (
             <p className="text-center py-8 text-muted-foreground">No leave requests found.</p>
           ) : (

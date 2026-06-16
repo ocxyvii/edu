@@ -83,7 +83,7 @@ export function DataTable<T extends Record<string, any>>({
   const totalPages = externalTotal ? Math.ceil(externalTotal / pageSize) : Math.ceil(data.length / pageSize)
 
   const visibleColumns = useMemo(
-    () => columns.filter(c => !c.hidden),
+    () => columns.filter((c: any) => !c.hidden),
     [columns],
   )
 
@@ -92,8 +92,8 @@ export function DataTable<T extends Record<string, any>>({
     let filtered = data
     if (search && !onSearch) {
       const q = search.toLowerCase()
-      filtered = data.filter(row =>
-        columns.some(col => {
+      filtered = data.filter((row: any) =>
+        columns.some((col: any) => {
           const val = row[col.key as keyof T]
           return val != null && String(val).toLowerCase().includes(q)
         })
@@ -138,7 +138,7 @@ export function DataTable<T extends Record<string, any>>({
     if (selectedRows.size === processedData.length) {
       setSelectedRows(new Set())
     } else {
-      setSelectedRows(new Set(processedData.map(r => keyExtractor(r))))
+      setSelectedRows(new Set(processedData.map((r: any) => keyExtractor(r))))
     }
   }
 
@@ -154,15 +154,15 @@ export function DataTable<T extends Record<string, any>>({
         <div className="rounded-md border">
           <div className="border-b bg-muted/50 p-4">
             <div className="flex gap-4">
-              {visibleColumns.map((col, i) => (
+              {visibleColumns.map((col: any, i: any) => (
                 <Skeleton key={i} className="h-4 flex-1" />
               ))}
             </div>
           </div>
-          {[...Array(5)].map((_, i) => (
+          {[...Array(5)].map((_: any, i: any) => (
             <div key={i} className="border-b p-4">
               <div className="flex gap-4">
-                {visibleColumns.map((col, j) => (
+                {visibleColumns.map((col: any, j: any) => (
                   <Skeleton key={j} className="h-4 flex-1" />
                 ))}
               </div>
@@ -219,7 +219,7 @@ export function DataTable<T extends Record<string, any>>({
                   />
                 </TableHead>
               )}
-              {visibleColumns.map(col => (
+              {visibleColumns.map((col: any) => (
                 <TableHead
                   key={String(col.key)}
                   className={cn(
@@ -266,7 +266,7 @@ export function DataTable<T extends Record<string, any>>({
                       />
                     </TableCell>
                   )}
-                  {visibleColumns.map(col => (
+                  {visibleColumns.map((col: any) => (
                     <TableCell key={String(col.key)} className={cn('whitespace-nowrap', col.cellClassName)}>
                       {col.render
                         ? col.render(row[col.key as keyof T], row, rowIndex)

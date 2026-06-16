@@ -251,8 +251,8 @@ export async function generateReportCard(studentId: string, examId: string): Pro
 
   const totalMarks = subjectsWithMarks.reduce((sum: number, s: any) => sum + (s.marksObtained ?? 0), 0)
   const totalMaxMarks = subjectsWithMarks.reduce((sum: number, s: any) => sum + s.maxMarks, 0)
-  const average = subjectsWithMarks.filter(s => s.marksObtained !== null).length > 0
-    ? totalMarks / subjectsWithMarks.filter(s => s.marksObtained !== null).length
+  const average = subjectsWithMarks.filter((s: any) => s.marksObtained !== null).length > 0
+    ? totalMarks / subjectsWithMarks.filter((s: any) => s.marksObtained !== null).length
     : 0
   const percentage = totalMaxMarks > 0 ? Math.round((totalMarks / totalMaxMarks) * 100) : 0
 
@@ -265,7 +265,7 @@ export async function generateReportCard(studentId: string, examId: string): Pro
   const passed = subjectsWithMarks.filter(
     (s: any) => s.marksObtained !== null && s.marksObtained >= s.passMarks
   ).length
-  const totalSubjects = subjectsWithMarks.filter(s => s.marksObtained !== null).length
+  const totalSubjects = subjectsWithMarks.filter((s: any) => s.marksObtained !== null).length
 
   const { data: allStudents } = await supabase
     .from('students')
@@ -304,9 +304,9 @@ export async function generateReportCard(studentId: string, examId: string): Pro
     term: exam.terms?.name ?? '',
     className: `${exam.classes?.name ?? ''} ${exam.classes?.level ?? ''}`.trim(),
     student: {
-      name: `${student.profiles.first_name} ${student.profiles.last_name}`,
+      name: `${(student.profiles as any).first_name} ${(student.profiles as any).last_name}`,
       admissionNumber: student.admission_number,
-      section: student.sections?.name ?? '',
+      section: (student.sections as any)?.name ?? '',
     },
     subjects: subjectsWithMarks,
     summary: {

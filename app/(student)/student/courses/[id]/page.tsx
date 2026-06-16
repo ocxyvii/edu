@@ -284,12 +284,8 @@ export default function StudentCourseDetailPage() {
                       setQuizLoading(true)
                       try {
                         const result = await submitQuiz({
-                          course_id: id,
-                          material_id: activeMaterial.id,
-                          answers: Object.entries(answers).map(([question, answer]) => ({
-                            question_text: question,
-                            answer: answer as string,
-                          })),
+                          quiz_id: activeMaterial.id,
+                          answers,
                         })
                         await markMaterialComplete(activeMaterial.id)
                         queryClient.invalidateQueries({ queryKey: ['student-course-detail', id] })

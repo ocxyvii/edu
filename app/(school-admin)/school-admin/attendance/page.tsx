@@ -83,7 +83,7 @@ export default function AttendancePage() {
       {selectedClass ? (
         <AttendanceSheet
           classId={selectedClass}
-          sectionName={selectedSection || undefined}
+          sectionId={selectedSection || undefined}
           date={selectedDate}
         />
       ) : (

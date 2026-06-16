@@ -64,7 +64,7 @@ export async function getParentEmailByAdmissionNumber(
       parentId = anyLink.parent_id
     }
 
-    const { data: parentProfile } = await supabase
+    const { data: parentProfile, error: parentError } = await supabase
       .from('profiles')
       .select('email, is_active')
       .eq('id', parentId ?? '')

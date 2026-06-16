@@ -29,7 +29,7 @@ export async function getSectionRoster(sectionId: string): Promise<any> {
     .eq('school_id', schoolId)
     .single()
 
-  const classId = (section.classes as any)?.id ?? section.class_id
+  const classId = (section?.classes as any)?.id ?? section?.class_id
 
   // Fetch students assigned to this section
   const { data: sectionStudents } = await supabase
@@ -268,7 +268,7 @@ export async function notifyClassTeacherEnrollment(params: {
     school_id: schoolId,
     user_id: section.class_teacher_id,
     title: 'New Student Enrolled',
-    body: `${params.studentName} (${params.admissionNumber}) has been enrolled in ${params.className} - ${section.classes?.name}`,
+    body: `${params.studentName} (${params.admissionNumber}) has been enrolled in ${params.className} - ${(section.classes as any)?.name}`,
     type: 'info',
     action_url: `/teacher/my-classes/${params.sectionId}`,
     metadata: { section_id: params.sectionId, type: 'enrollment' },

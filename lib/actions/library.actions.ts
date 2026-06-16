@@ -282,7 +282,7 @@ export async function getMembers(search: string) {
   students.data?.forEach(s => {
     results.push({
       id: s.id,
-      name: `${s.profiles?.first_name ?? ''} ${s.profiles?.last_name ?? ''}`.trim(),
+      name: `${(s.profiles as any)?.first_name ?? ''} ${(s.profiles as any)?.last_name ?? ''}`.trim(),
       type: 'student',
       identifier: s.admission_number ?? '',
     })
@@ -291,7 +291,7 @@ export async function getMembers(search: string) {
   teachers.data?.forEach(t => {
     results.push({
       id: t.id,
-      name: `${t.profiles?.first_name ?? ''} ${t.profiles?.last_name ?? ''}`.trim(),
+      name: `${(t.profiles as any)?.first_name ?? ''} ${(t.profiles as any)?.last_name ?? ''}`.trim(),
       type: 'teacher',
       identifier: t.employee_number ?? '',
     })

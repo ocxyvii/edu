@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { useQuery } from '@tanstack/react-query'
 import { createClient } from '@/lib/supabase/client'
 import { useTeacherClassesRealtime } from '@/lib/hooks/useTeacherClasses'
+import { Button } from '@/components/ui/button'
 import { AttendanceSheet } from '@/components/teacher/AttendanceSheet'
 
 export default function TeacherAttendancePage() {

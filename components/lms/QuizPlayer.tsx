@@ -98,7 +98,7 @@ export function QuizPlayer({ quizTitle, questions, totalMarks, onSubmit }: QuizP
         </Card>
 
         <div className="space-y-3">
-          {result.results.map((r, i) => (
+          {result.results.map((r: any, i: any) => (
             <Card key={i} className={cn(r.is_correct ? 'border-green-200 bg-green-50/50' : 'border-red-200 bg-red-50/50')}>
               <CardContent className="pt-4 text-sm space-y-2">
                 <div className="flex items-start justify-between gap-2">
@@ -175,7 +175,7 @@ export function QuizPlayer({ quizTitle, questions, totalMarks, onSubmit }: QuizP
               onValueChange={(v) => setAnswer(currentQuestion.question_text, v)}
             >
               <div className="space-y-3">
-                {currentQuestion.options.map((opt, i) => (
+                {currentQuestion.options.map((opt: any, i: any) => (
                   <div key={i} className="flex items-center space-x-2">
                     <RadioGroupItem value={opt} id={`q${currentIndex}_opt${i}`} />
                     <Label htmlFor={`q${currentIndex}_opt${i}`} className="cursor-pointer font-normal">{opt}</Label>
@@ -191,7 +191,7 @@ export function QuizPlayer({ quizTitle, questions, totalMarks, onSubmit }: QuizP
               onValueChange={(v) => setAnswer(currentQuestion.question_text, v)}
             >
               <div className="flex gap-4">
-                {['True', 'False'].map(opt => (
+                {['True', 'False'].map((opt: any) => (
                   <div key={opt} className="flex items-center space-x-2">
                     <RadioGroupItem value={opt} id={`q${currentIndex}_${opt}`} />
                     <Label htmlFor={`q${currentIndex}_${opt}`} className="cursor-pointer font-normal">{opt}</Label>

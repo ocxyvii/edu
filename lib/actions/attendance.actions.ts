@@ -257,7 +257,7 @@ export async function generateAbsenceNotifications() {
     .select('id, profiles!inner(id, first_name, last_name)')
     .in('id', absentStudents.map(s => s.studentId))
 
-  const profileMap = new Map(studentProfiles?.map(s => [s.id, s.profiles]) ?? [])
+  const profileMap = new Map(studentProfiles?.map(s => [s.id, (s.profiles as any)]) ?? [])
 
   const notifications = absentStudents.map(s => ({
     school_id: schoolId,

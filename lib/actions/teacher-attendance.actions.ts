@@ -85,7 +85,7 @@ export async function markTeacherAttendance(raw: MarkTeacherAttendanceInput) {
   return { success: true }
 }
 
-export async function bulkMarkTeacherAttendance(raw: BulkTeacherAttendanceSchema) {
+export async function bulkMarkTeacherAttendance(raw: z.infer<typeof BulkTeacherAttendanceSchema>) {
   const parsed = BulkTeacherAttendanceSchema.safeParse(raw)
   if (!parsed.success) throw new Error(parsed.error.errors.map(e => e.message).join(', '))
 

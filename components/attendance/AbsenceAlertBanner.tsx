@@ -30,7 +30,7 @@ export function AbsenceAlertBanner({
 
   if (isLoading) return null
 
-  const activeAlerts = alerts?.filter(a => a.consecutiveCount >= 3) ?? []
+  const activeAlerts = alerts?.filter((a: any) => a.consecutiveCount >= 3) ?? []
 
   if (dismissed || activeAlerts.length === 0) {
     return (
@@ -79,7 +79,7 @@ export function AbsenceAlertBanner({
                   : 'These students may need follow-up.'}
               </p>
               <div className="flex flex-wrap gap-1.5 mt-2">
-                {activeAlerts.slice(0, 10).map((alert) => (
+                {activeAlerts.slice(0, 10).map((alert: any) => (
                   <Badge key={alert.studentId} variant="outline" className="bg-white text-xs border-amber-200">
                     {alert.consecutiveCount} days absent
                   </Badge>

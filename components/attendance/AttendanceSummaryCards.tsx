@@ -24,7 +24,7 @@ export function AttendanceSummaryCards({ summary, isLoading, title }: Attendance
   if (isLoading) {
     return (
       <div className="grid grid-cols-2 lg:grid-cols-5 gap-4">
-        {[...Array(5)].map((_, i) => (
+        {[...Array(5)].map((_: any, i: any) => (
           <Card key={i}>
             <CardContent className="py-4">
               <Skeleton className="h-8 w-16 mx-auto mb-2" />

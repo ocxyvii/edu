@@ -243,7 +243,7 @@ export function ReportCardPDF({ data }: ReportCardProps) {
             <Text style={styles.colGrade}>Grade</Text>
             <Text style={styles.colRemark}>Status</Text>
           </View>
-          {subjects.map((s, i) => (
+          {subjects.map((s: any, i: any) => (
             <View key={i} style={styles.tableRow}>
               <Text style={styles.colSubject}>{s.subject}</Text>
               <Text style={styles.colCode}>{s.code}</Text>

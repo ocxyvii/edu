@@ -36,12 +36,12 @@ export function AttendanceSheet({ students, sectionId, classId, onSuccess }: Att
   useEffect(() => {
     if (existingRecords && existingRecords.length > 0) {
       const state: Record<string, string> = {}
-      existingRecords.forEach(r => { state[r.student_id] = r.status })
+      existingRecords.forEach((r: any) => { state[r.student_id] = r.status })
       setAttendance(state)
       setIsEditing(true)
     } else {
       const state: Record<string, string> = {}
-      students.forEach(s => { state[s.id] = '' })
+      students.forEach((s: any) => { state[s.id] = '' })
       setAttendance(state)
       setIsEditing(false)
     }
@@ -56,21 +56,21 @@ export function AttendanceSheet({ students, sectionId, classId, onSuccess }: Att
 
   const markAllPresent = () => {
     const state: Record<string, string> = {}
-    students.forEach(s => { state[s.id] = 'present' })
+    students.forEach((s: any) => { state[s.id] = 'present' })
     setAttendance(state)
   }
 
   const clearAll = () => {
     const state: Record<string, string> = {}
-    students.forEach(s => { state[s.id] = '' })
+    students.forEach((s: any) => { state[s.id] = '' })
     setAttendance(state)
   }
 
-  const allMarked = students.every(s => attendance[s.id])
-  const presentCount = Object.values(attendance).filter(v => v === 'present').length
-  const absentCount = Object.values(attendance).filter(v => v === 'absent').length
-  const lateCount = Object.values(attendance).filter(v => v === 'late').length
-  const excusedCount = Object.values(attendance).filter(v => v === 'excused').length
+  const allMarked = students.every((s: any) => attendance[s.id])
+  const presentCount = Object.values(attendance).filter((v: any) => v === 'present').length
+  const absentCount = Object.values(attendance).filter((v: any) => v === 'absent').length
+  const lateCount = Object.values(attendance).filter((v: any) => v === 'late').length
+  const excusedCount = Object.values(attendance).filter((v: any) => v === 'excused').length
   const unmarkedCount = students.length - Object.values(attendance).filter(Boolean).length
 
   const handleSubmit = async () => {
@@ -81,7 +81,7 @@ export function AttendanceSheet({ students, sectionId, classId, onSuccess }: Att
     setSubmitting(true)
     try {
       const supabase = createClient()
-      const records = students.map(s => ({
+      const records = students.map((s: any) => ({
         student_id: s.id,
         status: attendance[s.id] || 'present',
       }))
@@ -163,7 +163,7 @@ export function AttendanceSheet({ students, sectionId, classId, onSuccess }: Att
       {/* Student list */}
       <div className="bg-white rounded-xl border overflow-hidden">
         <div className="divide-y divide-gray-100">
-          {students.map((student) => {
+          {students.map((student: any) => {
             const status = attendance[student.id] || ''
             return (
               <div key={student.id} className="flex items-center justify-between px-4 py-3 hover:bg-gray-50">
@@ -179,7 +179,7 @@ export function AttendanceSheet({ students, sectionId, classId, onSuccess }: Att
                   </div>
                 </div>
                 <div className="flex gap-1.5">
-                  {(['present', 'absent', 'late', 'excused'] as const).map((s) => (
+                  {(['present', 'absent', 'late', 'excused'] as const).map((s: any) => (
                     <button
                       key={s}
                       onClick={() => toggleStatus(student.id, s)}

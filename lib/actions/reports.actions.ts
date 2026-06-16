@@ -361,7 +361,7 @@ export async function getFeeCollectionReport(opts: z.infer<typeof FeeReportSchem
     const e = typeMap.get(t)!
     e.amount += Number(s.amount)
     // Approximate: collected proportionally to invoice payments
-    const structureInvoices = invoices.filter(i => i.students.class_id === s.class_id)
+    const structureInvoices = invoices.filter(i => (i.students as any)?.class_id === s.class_id)
     e.collected += structureInvoices.reduce((sum, i) => sum + Number(i.paid_amount), 0)
   }
 

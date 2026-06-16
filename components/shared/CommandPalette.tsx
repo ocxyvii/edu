@@ -105,7 +105,7 @@ export function CommandPalette() {
               Quick Actions
             </span>
           }>
-            {quickActions.map(item => (
+            {quickActions.map((item: any) => (
               <CommandItemRow key={item.id} item={item} onSelect={() => runCommand(item)} icon={item.icon} />
             ))}
           </Command.Group>
@@ -115,7 +115,7 @@ export function CommandPalette() {
               Pages
             </span>
           }>
-            {globalPages.map(item => (
+            {globalPages.map((item: any) => (
               <CommandItemRow key={item.id} item={item} onSelect={() => runCommand(item)} icon={item.icon} />
             ))}
           </Command.Group>
@@ -125,8 +125,8 @@ export function CommandPalette() {
               Recent
             </span>
           }>
-            {['/school-admin', '/school-admin/students', '/school-admin/attendance'].map(href => {
-              const page = globalPages.find(p => p.href === href)
+            {['/school-admin', '/school-admin/students', '/school-admin/attendance'].map((href: any) => {
+              const page = globalPages.find((p: any) => p.href === href)
               if (!page) return null
               return (
                 <CommandItemRow

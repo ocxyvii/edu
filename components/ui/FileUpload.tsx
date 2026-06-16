@@ -49,7 +49,7 @@ export function FileUpload({
   }, [files, maxSize, multiple, onFilesSelected])
 
   const removeFile = (index: number) => {
-    const updated = files.filter((_, i) => i !== index)
+    const updated = files.filter((_: any, i: any) => i !== index)
     setFiles(updated)
     onFilesSelected(updated)
   }
@@ -99,7 +99,7 @@ export function FileUpload({
 
       {showPreview && files.length > 0 && (
         <div className="space-y-2">
-          {files.map((file, i) => {
+          {files.map((file: any, i: any) => {
             const Icon = getIcon(file)
             const previewUrl = file.type.startsWith('image/') ? URL.createObjectURL(file) : null
             return (

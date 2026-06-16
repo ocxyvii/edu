@@ -185,8 +185,8 @@ export function SalarySlipPDF({ entry, school }: SalarySlipPDFProps) {
   const deductions: Record<string, number> = (e?.deductions as Record<string, number>) ?? {}
   const monthName = MONTHS[(e?.month ?? 1) - 1] || ''
 
-  const totalAllowances = Object.values(allowances).reduce((s, v) => s + Number(v), 0)
-  const totalDeductions = Object.values(deductions).reduce((s, v) => s + Number(v), 0)
+  const totalAllowances = Object.values(allowances).reduce((s: any, v: any) => s + Number(v), 0)
+  const totalDeductions = Object.values(deductions).reduce((s: any, v: any) => s + Number(v), 0)
 
   return (
     <Document title={`Salary Slip - ${profile?.first_name ?? ''} ${profile?.last_name ?? ''} - ${monthName} ${e?.year}`} author={school?.name}>

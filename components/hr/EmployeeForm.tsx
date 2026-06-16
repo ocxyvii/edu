@@ -105,7 +105,7 @@ export function EmployeeForm({ open, onOpenChange, initialData }: EmployeeFormPr
     setAllowances(rest)
   }
 
-  const totalAllowances = Object.values(allowances).reduce((s, v) => s + (parseFloat(v) || 0), 0)
+  const totalAllowances = Object.values(allowances).reduce((s: any, v: any) => s + (parseFloat(v) || 0), 0)
   const gross = (parseFloat(basicSalary) || 0) + totalAllowances
   const isPending = createMutation.isPending || updateMutation.isPending
 
@@ -127,7 +127,7 @@ export function EmployeeForm({ open, onOpenChange, initialData }: EmployeeFormPr
         </DialogHeader>
 
         <div className="flex gap-2 mb-4">
-          {STEPS.map((s, i) => (
+          {STEPS.map((s: any, i: any) => (
             <div key={s} className={`flex-1 h-1.5 rounded-full ${i <= step ? 'bg-blue-500' : 'bg-gray-200'}`} />
           ))}
         </div>

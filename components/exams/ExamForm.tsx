@@ -86,7 +86,7 @@ export function ExamForm({ initialData, onSuccess }: ExamFormProps) {
       pass_marks: parseInt(passMarks),
       is_online: isOnline,
       instructions: instructions || undefined,
-      subjects: subjects.map(s => ({
+      subjects: subjects.map((s: any) => ({
         subject_id: s.subject_id,
         max_marks: parseInt(s.max_marks),
         pass_marks: parseInt(s.pass_marks),
@@ -115,7 +115,7 @@ export function ExamForm({ initialData, onSuccess }: ExamFormProps) {
       pass_marks: parseInt(passMarks),
       is_online: isOnline,
       instructions: instructions || undefined,
-      subjects: subjects.map(s => ({
+      subjects: subjects.map((s: any) => ({
         subject_id: s.subject_id,
         max_marks: parseInt(s.max_marks),
         pass_marks: parseInt(s.pass_marks),
@@ -136,11 +136,11 @@ export function ExamForm({ initialData, onSuccess }: ExamFormProps) {
 
   function addSubject() {
     if (!selectedSubject) return
-    if (subjects.find(s => s.subject_id === selectedSubject)) {
+    if (subjects.find((s: any) => s.subject_id === selectedSubject)) {
       toast.error('Subject already added')
       return
     }
-    const subj = subjectsList?.find(s => s.id === selectedSubject)
+    const subj = subjectsList?.find((s: any) => s.id === selectedSubject)
     setSubjects(prev => [...prev, {
       subject_id: selectedSubject,
       max_marks: totalMarks,
@@ -153,11 +153,11 @@ export function ExamForm({ initialData, onSuccess }: ExamFormProps) {
   }
 
   function removeSubject(id: string) {
-    setSubjects(prev => prev.filter(s => s.subject_id !== id))
+    setSubjects(prev => prev.filter((s: any) => s.subject_id !== id))
   }
 
   function updateSubject(id: string, field: string, value: string) {
-    setSubjects(prev => prev.map(s => s.subject_id === id ? { ...s, [field]: value } : s))
+    setSubjects(prev => prev.map((s: any) => s.subject_id === id ? { ...s, [field]: value } : s))
   }
 
   function handleSubmit(e: React.FormEvent) {
@@ -201,7 +201,7 @@ export function ExamForm({ initialData, onSuccess }: ExamFormProps) {
           <Select value={classId} onValueChange={setClassId}>
             <SelectTrigger><SelectValue placeholder="Select class" /></SelectTrigger>
             <SelectContent>
-              {classes?.map(c => (
+              {classes?.map((c: any) => (
                 <SelectItem key={c.id} value={c.id}>{c.name} {c.level ? `- Level ${c.level}` : ''}</SelectItem>
               ))}
             </SelectContent>
@@ -213,7 +213,7 @@ export function ExamForm({ initialData, onSuccess }: ExamFormProps) {
           <Select value={academicYearId} onValueChange={(v) => { setAcademicYearId(v); setTermId('') }}>
             <SelectTrigger><SelectValue placeholder="Select year" /></SelectTrigger>
             <SelectContent>
-              {academicYears?.map(y => (
+              {academicYears?.map((y: any) => (
                 <SelectItem key={y.id} value={y.id}>{y.name}{y.is_current ? ' (Current)' : ''}</SelectItem>
               ))}
             </SelectContent>
@@ -225,7 +225,7 @@ export function ExamForm({ initialData, onSuccess }: ExamFormProps) {
           <Select value={termId} onValueChange={setTermId} disabled={!academicYearId}>
             <SelectTrigger><SelectValue placeholder={!academicYearId ? 'Select year first' : 'Select term'} /></SelectTrigger>
             <SelectContent>
-              {terms?.map(t => (
+              {terms?.map((t: any) => (
                 <SelectItem key={t.id} value={t.id}>{t.name}{t.is_current ? ' (Current)' : ''}</SelectItem>
               ))}
             </SelectContent>
@@ -282,7 +282,7 @@ export function ExamForm({ initialData, onSuccess }: ExamFormProps) {
             <Select value={selectedSubject} onValueChange={setSelectedSubject}>
               <SelectTrigger><SelectValue placeholder="Choose a subject" /></SelectTrigger>
               <SelectContent>
-                {subjectsList?.map(s => (
+                {subjectsList?.map((s: any) => (
                   <SelectItem key={s.id} value={s.id}>
                     {s.name} ({s.code})
                   </SelectItem>
@@ -297,8 +297,8 @@ export function ExamForm({ initialData, onSuccess }: ExamFormProps) {
 
         {subjects.length > 0 && (
           <div className="space-y-2">
-            {subjects.map(s => {
-              const subj = subjectsList?.find(sl => sl.id === s.subject_id)
+            {subjects.map((s: any) => {
+              const subj = subjectsList?.find((sl: any) => sl.id === s.subject_id)
               return (
                 <Card key={s.subject_id}>
                   <CardContent className="p-3">

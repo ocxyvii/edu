@@ -18,7 +18,7 @@ export default function ResultsPage() {
 
   const groupedByExam = useMemo(() => {
     if (!results?.length) return []
-    const map = new Map<string, any[]>()
+    const map = new Map<string, any>()
     results.forEach((r: any) => {
       const key = r.exam_id
       if (!map.has(key)) {

@@ -80,7 +80,7 @@ export function ChartWrapper({
             <YAxis tick={{ fontSize: 11 }} stroke="#888" />
             <Tooltip contentStyle={{ fontSize: 12, borderRadius: 8 }} />
             <Legend wrapperStyle={{ fontSize: 12 }} />
-            {yKeys.map((key, i) => (
+            {yKeys.map((key: any, i: any) => (
               <Line
                 key={key}
                 type="monotone"
@@ -102,7 +102,7 @@ export function ChartWrapper({
             <YAxis tick={{ fontSize: 11 }} stroke="#888" />
             <Tooltip contentStyle={{ fontSize: 12, borderRadius: 8 }} />
             <Legend wrapperStyle={{ fontSize: 12 }} />
-            {yKeys.map((key, i) => (
+            {yKeys.map((key: any, i: any) => (
               <Bar key={key} dataKey={key} fill={colors[i % colors.length]} radius={[4, 4, 0, 0]} />
             ))}
           </BarChart>
@@ -121,7 +121,7 @@ export function ChartWrapper({
               label={({ name, percent }) => `${name} ${(percent * 100).toFixed(0)}%`}
               labelLine
             >
-              {data.map((_, i) => (
+              {data.map((_: any, i: any) => (
                 <Cell key={i} fill={colors[i % colors.length]} />
               ))}
             </Pie>
@@ -138,7 +138,7 @@ export function ChartWrapper({
             <YAxis tick={{ fontSize: 11 }} stroke="#888" />
             <Tooltip contentStyle={{ fontSize: 12, borderRadius: 8 }} />
             <Legend wrapperStyle={{ fontSize: 12 }} />
-            {yKeys.map((key, i) => (
+            {yKeys.map((key: any, i: any) => (
               <Area
                 key={key}
                 type="monotone"

@@ -49,7 +49,7 @@ export function AttendanceCalendar({
 
   const attendanceMap = useMemo(() => {
     const map = new Map<string, string>()
-    records.forEach(r => { map.set(r.date, r.status) })
+    records.forEach((r: any) => { map.set(r.date, r.status) })
     return map
   }, [records])
 
@@ -96,7 +96,7 @@ export function AttendanceCalendar({
   })
 
   const dayRecords = selectedDay
-    ? records.filter(r => r.date === selectedDay.date)
+    ? records.filter((r: any) => r.date === selectedDay.date)
     : []
 
   return (
@@ -127,12 +127,12 @@ export function AttendanceCalendar({
           </div>
 
           <div className="grid grid-cols-7 gap-1">
-            {['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map(d => (
+            {['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map((d: any) => (
               <div key={d} className="text-center text-xs font-medium text-muted-foreground py-1">
                 {d}
               </div>
             ))}
-            {calendarDays.map((day, i) => (
+            {calendarDays.map((day: any, i: any) => (
               <div
                 key={i}
                 className={cn(
@@ -162,25 +162,25 @@ export function AttendanceCalendar({
             </div>
             <div>
               <p className="text-lg font-bold text-green-600">
-                {records.filter(r => r.status === 'present').length}
+                {records.filter((r: any) => r.status === 'present').length}
               </p>
               <p className="text-muted-foreground">Present</p>
             </div>
             <div>
               <p className="text-lg font-bold text-red-600">
-                {records.filter(r => r.status === 'absent').length}
+                {records.filter((r: any) => r.status === 'absent').length}
               </p>
               <p className="text-muted-foreground">Absent</p>
             </div>
             <div>
               <p className="text-lg font-bold text-yellow-600">
-                {records.filter(r => r.status === 'late').length}
+                {records.filter((r: any) => r.status === 'late').length}
               </p>
               <p className="text-muted-foreground">Late</p>
             </div>
             <div>
               <p className="text-lg font-bold text-blue-600">
-                {records.filter(r => r.status === 'excused').length}
+                {records.filter((r: any) => r.status === 'excused').length}
               </p>
               <p className="text-muted-foreground">Excused</p>
             </div>
@@ -207,7 +207,7 @@ export function AttendanceCalendar({
               </div>
             </div>
           )}
-          {dayRecords.map((r, i) => (
+          {dayRecords.map((r: any, i: any) => (
             <p key={i} className="text-sm text-muted-foreground text-center">
               {r.status === 'present' ? 'Student was present' :
                r.status === 'absent' ? 'Student was absent' :

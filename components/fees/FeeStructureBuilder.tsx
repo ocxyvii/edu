@@ -55,7 +55,7 @@ export function FeeStructureBuilder() {
   })
 
   const createMutation = useMutation({
-    mutationFn: () => createFeeStructure(form),
+    mutationFn: () => createFeeStructure(form as any),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['fee-structures'] })
       resetForm()
@@ -65,7 +65,7 @@ export function FeeStructureBuilder() {
   })
 
   const updateMutation = useMutation({
-    mutationFn: () => updateFeeStructure(editingId!, form),
+    mutationFn: () => updateFeeStructure(editingId!, form as any),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['fee-structures'] })
       resetForm()
@@ -134,7 +134,7 @@ export function FeeStructureBuilder() {
       </div>
 
       {isLoading ? (
-        <div className="space-y-2">{[...Array(3)].map((_, i) => <div key={i} className="h-16 bg-gray-100 rounded animate-pulse" />)}</div>
+        <div className="space-y-2">{[...Array(3)].map((_: any, i: any) => <div key={i} className="h-16 bg-gray-100 rounded animate-pulse" />)}</div>
       ) : structures?.length === 0 ? (
         <Card><CardContent className="py-8 text-center text-muted-foreground">No fee structures yet. Create your first one.</CardContent></Card>
       ) : (
@@ -189,7 +189,7 @@ export function FeeStructureBuilder() {
                 <Select value={form.fee_type} onValueChange={(v) => setForm({ ...form, fee_type: v })}>
                   <SelectTrigger><SelectValue /></SelectTrigger>
                   <SelectContent>
-                    {FEE_TYPES.map(t => <SelectItem key={t.value} value={t.value}>{t.label}</SelectItem>)}
+                    {FEE_TYPES.map((t: any) => <SelectItem key={t.value} value={t.value}>{t.label}</SelectItem>)}
                   </SelectContent>
                 </Select>
               </div>

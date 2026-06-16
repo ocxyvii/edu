@@ -51,7 +51,7 @@ export function ActiveIssues() {
     setReturningIssueId(issueId)
     try {
       const fine = await calculateFine(issueId)
-      setFineInfo(fine)
+      setFineInfo(fine as any)
     } catch {
       setFineInfo({ fine: 0, daysOverdue: 0, finePerDay: 0 })
     }
@@ -105,7 +105,7 @@ export function ActiveIssues() {
       </div>
 
       {isLoading ? (
-        <div className="space-y-2">{[...Array(5)].map((_, i) => <Skeleton key={i} className="h-16 w-full" />)}</div>
+        <div className="space-y-2">{[...Array(5)].map((_: any, i: any) => <Skeleton key={i} className="h-16 w-full" />)}</div>
       ) : filtered?.length === 0 ? (
         <Card><CardContent className="py-12 text-center text-muted-foreground">No book issues found.</CardContent></Card>
       ) : (

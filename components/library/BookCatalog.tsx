@@ -50,7 +50,7 @@ export function BookCatalog({ onAddBook, onEditBook }: BookCatalogProps) {
     }
   }, [books])
 
-  if (isLoading) return <div className="space-y-3">{[...Array(6)].map((_, i) => <Skeleton key={i} className="h-24 w-full" />)}</div>
+  if (isLoading) return <div className="space-y-3">{[...Array(6)].map((_: any, i: any) => <Skeleton key={i} className="h-24 w-full" />)}</div>
 
   return (
     <div className="space-y-4">
@@ -68,7 +68,7 @@ export function BookCatalog({ onAddBook, onEditBook }: BookCatalogProps) {
           <SelectTrigger className="w-[150px]"><SelectValue placeholder="Category" /></SelectTrigger>
           <SelectContent>
             <SelectItem value=" ">All Categories</SelectItem>
-            {categories?.map(c => <SelectItem key={c} value={c}>{c}</SelectItem>)}
+            {categories?.map((c: any) => <SelectItem key={c} value={c}>{c}</SelectItem>)}
           </SelectContent>
         </Select>
         <Select value={availabilityFilter} onValueChange={setAvailabilityFilter}>

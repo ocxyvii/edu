@@ -50,7 +50,7 @@ export default function PublicAdmissionsPage() {
   const submitMutation = useMutation({
     mutationFn: async () => {
       setUploading(true)
-      const documents: { name: string; url: string; type: string }[] = []
+      const documents: { name: string; url: string; type: string; size: number }[] = []
 
       for (const file of files) {
         const ext = file.name.split('.').pop()?.toLowerCase() || 'bin'
@@ -66,7 +66,7 @@ export default function PublicAdmissionsPage() {
           .from('application-documents')
           .getPublicUrl(fileName)
 
-        documents.push({ name: file.name, url: publicUrl, type: file.type })
+        documents.push({ name: file.name, url: publicUrl, type: file.type, size: file.size })
       }
 
       setUploading(false)
@@ -75,7 +75,7 @@ export default function PublicAdmissionsPage() {
         school_id: school!.id,
         ...formData,
         documents,
-      })
+      } as any)
     },
     onSuccess: () => {
       toast.success('Application submitted successfully! We will contact you soon.')

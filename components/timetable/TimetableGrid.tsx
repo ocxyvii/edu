@@ -81,10 +81,12 @@ function DroppableCell({
   dayIndex,
   periodIndex,
   isToday,
+  children,
 }: {
   dayIndex: number
   periodIndex: number
   isToday: boolean
+  children?: React.ReactNode
 }) {
   const id = `cell-${dayIndex}-${periodIndex}`
   const { setNodeRef, isOver } = useDroppable({ id })
@@ -95,7 +97,9 @@ function DroppableCell({
       className={`border border-gray-100 p-0.5 min-h-[60px] w-[120px] transition-colors ${
         isOver ? 'bg-edu-blue-50 ring-2 ring-edu-blue-400' : ''
       } ${isToday ? 'bg-blue-50/30' : ''}`}
-    />
+    >
+      {children}
+    </td>
   )
 }
 
@@ -206,12 +210,12 @@ export default function TimetableGrid({
 
   const entryMap = useMemo(() => {
     const map = new Map<string, any[]>()
-    DAYS.forEach((_, di) => {
-      PERIODS.forEach((_, pi) => {
+    DAYS.forEach((_: any, di: any) => {
+      PERIODS.forEach((_: any, pi: any) => {
         map.set(`${di}-${pi}`, [])
       })
     })
-    entries?.forEach((e) => {
+    entries?.forEach((e: any) => {
       const di = DAYS.indexOf(e.day_of_week)
       for (let pi = 0; pi < PERIODS.length; pi++) {
         const [sH, sM] = PERIODS[pi].start.split(':').map(Number)
@@ -280,7 +284,7 @@ export default function TimetableGrid({
                 <Clock className="h-3 w-3 inline mr-1" />
                 Time
               </th>
-              {DAY_LABELS.map((label, i) => (
+              {DAY_LABELS.map((label: any, i: any) => (
                 <th
                   key={label}
                   className={`p-2 text-center text-[11px] font-semibold uppercase tracking-wider ${
@@ -294,7 +298,7 @@ export default function TimetableGrid({
             </tr>
           </thead>
           <tbody>
-            {PERIODS.map((period, pi) => {
+            {PERIODS.map((period: any, pi: any) => {
               const rowEntryCount = DAYS.reduce((sum, _, di) => sum + ((entryMap.get(`${di}-${pi}`) ?? []).length), 0)
               return (
                 <tr
@@ -308,7 +312,7 @@ export default function TimetableGrid({
                     <br />
                     <span className="text-[8px] text-gray-300">{period.end}</span>
                   </td>
-                  {DAYS.map((day, di) => {
+                  {DAYS.map((day: any, di: any) => {
                     const cellEntries = entryMap.get(`${di}-${pi}`) ?? []
                     const isToday = di === todayIndex
 

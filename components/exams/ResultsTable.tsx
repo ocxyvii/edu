@@ -32,7 +32,7 @@ export function ResultsTable({ examId }: ResultsTableProps) {
 
     if (searchQuery) {
       const q = searchQuery.toLowerCase()
-      list = list.filter(s =>
+      list = list.filter((s: any) =>
         s.name.toLowerCase().includes(q) ||
         s.admissionNumber.toLowerCase().includes(q)
       )
@@ -68,12 +68,12 @@ export function ResultsTable({ examId }: ResultsTableProps) {
     const subjectHeaders = data?.subjects.map((s: any) => `${s.subjects?.name ?? 'Subject'} (${s.max_marks})`) ?? []
     const headers = ['Rank', 'Student Name', 'Admission No', ...subjectHeaders, 'Total', 'Average', 'Percentage', 'Grade']
 
-    const rows = filtered.map(s => {
+    const rows = filtered.map((s: any) => {
       const subjectMarks = data?.subjects.map((sub: any) => s.subjectMarks[sub.subject_id]?.marks ?? '')
       return [s.rank, s.name, s.admissionNumber, ...subjectMarks, s.totalObtained, s.average, `${s.percentage}%`, s.overallGrade]
     })
 
-    const csv = [headers.join(','), ...rows.map(r => r.join(','))].join('\n')
+    const csv = [headers.join(','), ...rows.map((r: any) => r.join(','))].join('\n')
     const blob = new Blob([csv], { type: 'text/csv' })
     const url = URL.createObjectURL(blob)
     const a = document.createElement('a')
@@ -100,7 +100,7 @@ export function ResultsTable({ examId }: ResultsTableProps) {
       `<th style="text-align: center; padding: 6px 4px; border: 1px solid #d1d5db; font-size: 11px;">${s.subjects?.name ?? 'Subj'}</th>`
     ).join('') ?? ''
 
-    const rowsHtml = filtered.map(s => {
+    const rowsHtml = filtered.map((s: any) => {
       const subjectCells = data?.subjects.map((sub: any) => {
         const marks = s.subjectMarks[sub.subject_id]
         const val = marks?.marks
@@ -180,7 +180,7 @@ export function ResultsTable({ examId }: ResultsTableProps) {
     return (
       <Card>
         <CardContent className="p-6 space-y-3">
-          {[...Array(8)].map((_, i) => <Skeleton key={i} className="h-12 w-full" />)}
+          {[...Array(8)].map((_: any, i: any) => <Skeleton key={i} className="h-12 w-full" />)}
         </CardContent>
       </Card>
     )
@@ -255,7 +255,7 @@ export function ResultsTable({ examId }: ResultsTableProps) {
               </tr>
             </thead>
             <tbody>
-              {filtered.map(s => (
+              {filtered.map((s: any) => (
                 <tr key={s.studentId} className="border-b border-gray-100 hover:bg-gray-50 transition-colors">
                   <td className="py-2 px-3 text-center">
                     <span className={cn(

@@ -403,7 +403,7 @@ export async function updateSection(id: string, data: { name?: string; capacity?
           school_id: schoolId,
           user_id: data.class_teacher_id,
           title: 'Class Teacher Assignment',
-          body: `You have been assigned as class teacher for ${section.classes?.name} - Section ${section.name}`,
+          body: `You have been assigned as class teacher for ${(section.classes as any)?.name} - Section ${section.name}`,
           type: 'info',
           action_url: `/teacher/my-classes/${id}`,
           metadata: { section_id: id, type: 'class_teacher_assignment' },

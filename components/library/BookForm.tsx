@@ -174,7 +174,7 @@ export function BookForm({ open, onOpenChange, initialData }: BookFormProps) {
               <Select value={category} onValueChange={setCategory}>
                 <SelectTrigger><SelectValue placeholder="Select" /></SelectTrigger>
                 <SelectContent>
-                  {BOOK_CATEGORIES.map(c => <SelectItem key={c} value={c}>{c}</SelectItem>)}
+                  {BOOK_CATEGORIES.map((c: any) => <SelectItem key={c} value={c}>{c}</SelectItem>)}
                 </SelectContent>
               </Select>
             </div>

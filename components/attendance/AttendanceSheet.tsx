@@ -60,20 +60,20 @@ type AttendanceStatus = keyof typeof STATUS_CONFIG
 const STATUS_ORDER: AttendanceStatus[] = ['present', 'absent', 'late', 'excused']
 
 interface AttendanceSheetProps {
-  students: AttendanceSheetStudent[]
+  students?: AttendanceSheetStudent[]
   date: string
   classId: string
   sectionId?: string
-  existingAttendance: AttendanceRecord[]
+  existingAttendance?: AttendanceRecord[]
   isLoading?: boolean
 }
 
 export function AttendanceSheet({
-  students,
+  students = [],
   date,
   classId,
   sectionId,
-  existingAttendance,
+  existingAttendance = [],
   isLoading,
 }: AttendanceSheetProps) {
   const queryClient = useQueryClient()
@@ -83,11 +83,11 @@ export function AttendanceSheet({
   const [submitting, setSubmitting] = useState(false)
   const submittedRef = useRef(false)
 
-  const existingMap = new Map(existingAttendance.map(r => [r.student_id, r.status]))
+  const existingMap = new Map(existingAttendance.map((r: any) => [r.student_id, r.status]))
 
   useEffect(() => {
     const initial: Record<string, AttendanceStatus> = {}
-    students.forEach(s => {
+    students.forEach((s: any) => {
       initial[s.id] = (existingMap.get(s.id) as AttendanceStatus) ?? 'present'
     })
     setRecords(initial)
@@ -202,7 +202,7 @@ export function AttendanceSheet({
 
   const markAllPresent = useCallback(() => {
     const allPresent: Record<string, AttendanceStatus> = {}
-    students.forEach(s => { allPresent[s.id] = 'present' })
+    students.forEach((s: any) => { allPresent[s.id] = 'present' })
     setRecords(allPresent)
     setDirty(true)
   }, [students])
@@ -210,12 +210,12 @@ export function AttendanceSheet({
   if (isLoading) {
     return (
       <div className="space-y-3">
-        {[...Array(8)].map((_, i) => <Skeleton key={i} className="h-16 w-full" />)}
+        {[...Array(8)].map((_: any, i: any) => <Skeleton key={i} className="h-16 w-full" />)}
       </div>
     )
   }
 
-  const changedCount = students.filter(s => {
+  const changedCount = students.filter((s: any) => {
     const current = records[s.id]
     const original = existingMap.get(s.id) ?? 'present'
     return current && current !== original
@@ -256,7 +256,7 @@ export function AttendanceSheet({
       </div>
 
       <div className="space-y-1">
-        {students.map((student) => {
+        {students.map((student: any) => {
           const status = records[student.id] ?? 'present'
           const config = STATUS_CONFIG[status]
           const Icon = config.icon
@@ -307,16 +307,16 @@ export function AttendanceSheet({
         <div className="flex flex-wrap gap-2 text-sm pt-2">
           <span className="text-xs text-muted-foreground mr-1">Previously recorded:</span>
           <Badge variant="secondary" className="bg-green-50 text-green-700">
-            Present: {existingAttendance.filter(a => a.status === 'present').length}
+            Present: {existingAttendance.filter((a: any) => a.status === 'present').length}
           </Badge>
           <Badge variant="secondary" className="bg-red-50 text-red-700">
-            Absent: {existingAttendance.filter(a => a.status === 'absent').length}
+            Absent: {existingAttendance.filter((a: any) => a.status === 'absent').length}
           </Badge>
           <Badge variant="secondary" className="bg-yellow-50 text-yellow-700">
-            Late: {existingAttendance.filter(a => a.status === 'late').length}
+            Late: {existingAttendance.filter((a: any) => a.status === 'late').length}
           </Badge>
           <Badge variant="secondary" className="bg-blue-50 text-blue-700">
-            Excused: {existingAttendance.filter(a => a.status === 'excused').length}
+            Excused: {existingAttendance.filter((a: any) => a.status === 'excused').length}
           </Badge>
         </div>
       )}

@@ -17,7 +17,7 @@ export function LibraryReports() {
     refetchInterval: 60000,
   })
 
-  if (isLoading) return <div className="space-y-4">{[...Array(4)].map((_, i) => <Skeleton key={i} className="h-24 w-full" />)}</div>
+  if (isLoading) return <div className="space-y-4">{[...Array(4)].map((_: any, i: any) => <Skeleton key={i} className="h-24 w-full" />)}</div>
 
   if (!stats) return null
 

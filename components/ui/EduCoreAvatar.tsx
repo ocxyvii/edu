@@ -20,7 +20,7 @@ const sizeMap = {
 export function EduCoreAvatar({ name, avatarUrl, size = 'md', className }: EduCoreAvatarProps) {
   const initials = name
     .split(' ')
-    .map(w => w[0])
+    .map((w: any) => w[0])
     .join('')
     .toUpperCase()
     .slice(0, 2)
@@ -34,7 +34,7 @@ export function EduCoreAvatar({ name, avatarUrl, size = 'md', className }: EduCo
     'bg-cyan-100 text-cyan-700',
   ]
 
-  const colorIndex = name.split('').reduce((acc, c) => acc + c.charCodeAt(0), 0) % colors.length
+  const colorIndex = name.split('').reduce((acc: any, c: any) => acc + c.charCodeAt(0), 0) % colors.length
 
   return (
     <Avatar className={cn(sizeMap[size], 'shrink-0', className)}>

@@ -17,8 +17,8 @@ export function SalarySlip({ entry, school }: SalarySlipProps) {
   const profile = employee?.profiles
   const allowances: Record<string, number> = (entry?.allowances as Record<string, number>) ?? {}
   const deductions: Record<string, number> = (entry?.deductions as Record<string, number>) ?? {}
-  const totalAllowances = Object.values(allowances).reduce((s, v) => s + Number(v), 0)
-  const totalDeductions = Object.values(deductions).reduce((s, v) => s + Number(v), 0)
+  const totalAllowances = Object.values(allowances).reduce((s: any, v: any) => s + Number(v), 0)
+  const totalDeductions = Object.values(deductions).reduce((s: any, v: any) => s + Number(v), 0)
   const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June',
     'July', 'August', 'September', 'October', 'November', 'December']
   const monthName = MONTHS[(entry?.month ?? 1) - 1] || ''

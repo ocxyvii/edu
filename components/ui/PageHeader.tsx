@@ -22,7 +22,7 @@ export function PageHeader({ title, subtitle, breadcrumbs, actions, className }:
     <div className={cn('mb-6', className)}>
       {breadcrumbs && breadcrumbs.length > 0 && (
         <nav className="mb-2 flex items-center gap-1.5 text-sm text-muted-foreground">
-          {breadcrumbs.map((crumb, i) => (
+          {breadcrumbs.map((crumb: any, i: any) => (
             <span key={i} className="flex items-center gap-1.5">
               {i > 0 && <ChevronRight className="h-3 w-3" />}
               {crumb.href ? (

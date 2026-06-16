@@ -171,7 +171,7 @@ export function IssueBookModal({ open, onOpenChange, selectedBookId }: IssueBook
                 </div>
               ) : (
                 <div className="space-y-1 max-h-48 overflow-y-auto">
-                  {members?.map((m) => (
+                  {members?.map((m: any) => (
                     <div
                       key={m.id}
                       className="flex items-center justify-between p-2 rounded hover:bg-gray-50 cursor-pointer border"

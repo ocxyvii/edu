@@ -62,7 +62,7 @@ export function ReportCard({ data, schoolName = 'EduCore School' }: ReportCardPr
     }
   }
 
-  const isEmpty = data.subjects.every(s => s.marksObtained === null)
+  const isEmpty = data.subjects.every((s: any) => s.marksObtained === null)
 
   if (isEmpty) {
     return (
@@ -132,7 +132,7 @@ export function ReportCard({ data, schoolName = 'EduCore School' }: ReportCardPr
             </tr>
           </thead>
           <tbody>
-            {data.subjects.map(s => {
+            {data.subjects.map((s: any) => {
               const passed = s.marksObtained !== null && s.marksObtained >= s.passMarks
               return (
                 <tr key={s.code}>

@@ -143,8 +143,8 @@ export function Sidebar({ role, schoolName, schoolLogo, userName, userAvatar, us
   }, [collapsed])
 
   useEffect(() => {
-    if (!collapsed && menuItems[role].some(i => i.children?.some(c => pathname.startsWith(c.href)))) {
-      const parent = menuItems[role].find(i => i.children?.some(c => pathname.startsWith(c.href)))
+    if (!collapsed && menuItems[role].some((i: any) => i.children?.some((c: any) => pathname.startsWith(c.href)))) {
+      const parent = menuItems[role].find((i: any) => i.children?.some((c: any) => pathname.startsWith(c.href)))
       if (parent) setExpanded(parent.label)
     }
   }, [pathname, collapsed, role])
@@ -154,7 +154,7 @@ export function Sidebar({ role, schoolName, schoolLogo, userName, userAvatar, us
   }, [pathname])
 
   const isActive = (href: string) => pathname === href || pathname.startsWith(href + '/')
-  const isAnyChildActive = (item: MenuItem) => item.children?.some(c => isActive(c.href)) ?? false
+  const isAnyChildActive = (item: MenuItem) => item.children?.some((c: any) => isActive(c.href)) ?? false
 
   const handleLogout = async () => {
     const supabase = createClient()
@@ -167,8 +167,8 @@ export function Sidebar({ role, schoolName, schoolLogo, userName, userAvatar, us
   const mobileItems = mobileNavItems[role] || []
 
   const menuItemsForMobile = menuForRole
-    .filter(item => mobileItems.includes(item.label))
-    .map(item => {
+    .filter((item: any) => mobileItems.includes(item.label))
+    .map((item: any) => {
       if (item.children && item.children.length > 0) {
         const firstChild = item.children[0]
         return { label: item.label, href: firstChild.href, icon: item.icon }
@@ -231,7 +231,7 @@ export function Sidebar({ role, schoolName, schoolLogo, userName, userAvatar, us
 
         {/* Navigation */}
         <nav className="flex-1 space-y-1 overflow-y-auto p-3 scrollbar-thin">
-          {menuForRole.map((item) => {
+          {menuForRole.map((item: any) => {
             if (item.children) {
               const isExpanded = collapsed ? false : (expanded === item.label || isAnyChildActive(item))
               const Icon = item.icon
@@ -270,7 +270,7 @@ export function Sidebar({ role, schoolName, schoolLogo, userName, userAvatar, us
                           transition={{ duration: 0.2 }}
                           className="ml-4 mt-1 space-y-1 border-l border-gray-200 pl-3 overflow-hidden"
                         >
-                          {item.children.map((child) => (
+                          {item.children.map((child: any) => (
                             <Link
                               key={child.href}
                               href={child.href}
@@ -354,7 +354,7 @@ export function Sidebar({ role, schoolName, schoolLogo, userName, userAvatar, us
           <Menu className="h-5 w-5" />
           <span>Menu</span>
         </button>
-        {menuItemsForMobile.map((item) => {
+        {menuItemsForMobile.map((item: any) => {
           const Icon = item.icon
           const active = item.href ? isActive(item.href) : false
           return (
@@ -398,7 +398,7 @@ export function Sidebar({ role, schoolName, schoolLogo, userName, userAvatar, us
             </div>
 
             <nav className="flex-1 space-y-1 overflow-y-auto p-4">
-              {menuForRole.map((item) => {
+              {menuForRole.map((item: any) => {
                 if (item.children) {
                   const isExpanded = expanded === item.label || isAnyChildActive(item)
                   const Icon = item.icon
@@ -425,7 +425,7 @@ export function Sidebar({ role, schoolName, schoolLogo, userName, userAvatar, us
                             exit={{ height: 0, opacity: 0 }}
                             className="ml-4 mt-1 space-y-1 border-l border-gray-200 pl-3 overflow-hidden"
                           >
-                            {item.children.map((child) => (
+                            {item.children.map((child: any) => (
                               <Link
                                 key={child.href}
                                 href={child.href}

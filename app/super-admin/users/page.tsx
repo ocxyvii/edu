@@ -87,7 +87,7 @@ export default function SuperAdminUsersPage() {
                     <td className="py-3 px-4 font-medium">{u.first_name} {u.last_name}</td>
                     <td className="py-3 px-4 text-muted-foreground">{u.email}</td>
                     <td className="py-3 px-4">
-                      <Badge className={roleColors[u.role] ?? ''} variant="secondary" className="capitalize">{u.role?.replace('_', ' ')}</Badge>
+                      <Badge className={`${roleColors[u.role] ?? ''} capitalize`} variant="secondary">{u.role?.replace('_', ' ')}</Badge>
                     </td>
                     <td className="py-3 px-4 text-muted-foreground">{u.school_name}</td>
                     <td className="py-3 px-4 text-muted-foreground">{u.created_at ? format(new Date(u.created_at), 'MMM d, yyyy') : '-'}</td>
@@ -119,7 +119,7 @@ export default function SuperAdminUsersPage() {
                 </div>
                 <div>
                   <p className="font-medium">{selectedUser.first_name} {selectedUser.last_name}</p>
-                  <Badge className={roleColors[selectedUser.role] ?? ''} variant="secondary" className="capitalize text-xs">{selectedUser.role?.replace('_', ' ')}</Badge>
+                  <Badge className={`${roleColors[selectedUser.role] ?? ''} capitalize text-xs`} variant="secondary">{selectedUser.role?.replace('_', ' ')}</Badge>
                 </div>
               </div>
               <Separator />

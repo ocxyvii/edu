@@ -50,7 +50,7 @@ export default function StudentTimetablePage() {
     const map: Record<string, typeof entries> = {}
     DAYS.forEach((d: any) => { map[d] = [] })
     entries?.forEach((e: any) => {
-      if (map[e.day_of_week]) map[e.day_of_week].push(e)
+      map[e.day_of_week]?.push(e)
     })
     return map
   }, [entries])

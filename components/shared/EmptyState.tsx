@@ -4,7 +4,7 @@ import { cn } from '@/lib/utils'
 import { Button } from '@/components/ui/button'
 import { Users, Search, FileSearch, CreditCard, BookOpen, Bell, Inbox, AlertCircle } from 'lucide-react'
 
-const presets = {
+const presets: Record<string, { icon: React.ElementType; title: string; description: string; actionLabel?: string }> = {
   noStudents: {
     icon: Users,
     title: 'No students yet',

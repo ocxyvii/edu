@@ -81,7 +81,7 @@ export function MobileNav({ role, unreadCount = 0, visible }: MobileNavProps) {
           style={{ paddingBottom: 'env(safe-area-inset-bottom, 0px)' }}
         >
           <div className="flex items-center justify-around h-16">
-            {items.map((item) => {
+            {items.map((item: any) => {
               const isActive = pathname === item.href || pathname.startsWith(item.href + '/')
               const Icon = item.icon
 

@@ -16,7 +16,7 @@ export function ApplicationStats() {
   if (isLoading) {
     return (
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-        {[...Array(4)].map((_, i) => (
+        {[...Array(4)].map((_: any, i: any) => (
           <Card key={i}><CardHeader className="pb-2"><Skeleton className="h-4 w-24" /></CardHeader><CardContent><Skeleton className="h-8 w-16" /></CardContent></Card>
         ))}
       </div>
@@ -34,7 +34,7 @@ export function ApplicationStats() {
 
   return (
     <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-      {cards.map(card => (
+      {cards.map((card: any) => (
         <Card key={card.label}>
           <CardHeader className="pb-2 flex flex-row items-center justify-between space-y-0">
             <CardTitle className="text-sm font-medium text-muted-foreground">{card.label}</CardTitle>

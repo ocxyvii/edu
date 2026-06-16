@@ -16,7 +16,7 @@ export function IdleTimeoutProvider({ children }: { children: React.ReactNode })
     const resetTimer = () => { lastActivity.current = Date.now() }
 
     const events = ['mousedown', 'keydown', 'touchstart', 'scroll', 'mousemove']
-    events.forEach(event => window.addEventListener(event, resetTimer, { passive: true }))
+    events.forEach((event: any) => window.addEventListener(event, resetTimer, { passive: true }))
 
     checkInterval.current = setInterval(async () => {
       const elapsed = Date.now() - lastActivity.current
@@ -43,7 +43,7 @@ export function IdleTimeoutProvider({ children }: { children: React.ReactNode })
     }, CHECK_INTERVAL_MS)
 
     return () => {
-      events.forEach(event => window.removeEventListener(event, resetTimer))
+      events.forEach((event: any) => window.removeEventListener(event, resetTimer))
       if (checkInterval.current) clearInterval(checkInterval.current)
     }
   }, [router])

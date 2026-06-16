@@ -254,14 +254,14 @@ export function ReportCardPDF({ data, schoolName = 'EduCore School' }: ReportCar
             <Text style={[styles.tableHeaderCell, styles.statusCol]}>Status</Text>
             <Text style={[styles.tableHeaderCell, styles.remarksCol, { textAlign: 'left' }]}>Remarks</Text>
           </View>
-          {data.subjects.map((s, i) => {
+          {data.subjects.map((s: any, i: any) => {
             const passed = s.marksObtained !== null && s.marksObtained >= s.passMarks
             return (
-              <View key={s.code} style={[styles.tableRow, i % 2 === 0 && { backgroundColor: '#fafafa' }]}>
+              <View key={s.code} style={[styles.tableRow, i % 2 === 0 ? { backgroundColor: '#fafafa' } : {}]}>
                 <Text style={[styles.tableCell, styles.codeCol]}>{s.code}</Text>
                 <Text style={[styles.tableCellLeft, styles.subjectCol]}>{s.subject}</Text>
                 <Text style={[styles.tableCell, styles.maxCol]}>{s.maxMarks}</Text>
-                <Text style={[styles.tableCell, styles.scoreCol, s.marksObtained === null && { color: '#9ca3af' }]}>
+                <Text style={[styles.tableCell, styles.scoreCol, s.marksObtained === null ? { color: '#9ca3af' } : {}]}>
                   {s.marksObtained ?? '-'}
                 </Text>
                 <Text style={[styles.tableCell, styles.gradeCol, { fontWeight: 'bold' }, gradeStyle(s.grade)]}>

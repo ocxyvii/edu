@@ -1,7 +1,7 @@
 'use client'
 
 import { useQuery } from '@tanstack/react-query'
-import { getFeeDashboard, getFeeStructures, getClasses } from '@/lib/actions/fees.actions'
+import { getFeeDashboard, getFeeStructures } from '@/lib/actions/fees.actions'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Skeleton } from '@/components/ui/skeleton'
 import { Badge } from '@/components/ui/badge'
@@ -17,7 +17,7 @@ export function FinanceDashboard() {
     refetchInterval: 30000,
   })
 
-  if (isLoading) return <div className="space-y-4">{[...Array(4)].map((_, i) => <Skeleton key={i} className="h-24 w-full" />)}</div>
+  if (isLoading) return <div className="space-y-4">{[...Array(4)].map((_: any, i: any) => <Skeleton key={i} className="h-24 w-full" />)}</div>
 
   if (!dashboard) return null
 
@@ -97,7 +97,7 @@ export function FinanceDashboard() {
                 <ResponsiveContainer width="100%" height="100%">
                   <RePie>
                     <Pie data={methodData} dataKey="value" nameKey="name" cx="50%" cy="50%" outerRadius={80} label={({ name, percent }) => `${name} ${(percent * 100).toFixed(0)}%`}>
-                      {methodData.map((_, i) => <Cell key={i} fill={COLORS[i % COLORS.length]} />)}
+                      {methodData.map((_: any, i: any) => <Cell key={i} fill={COLORS[i % COLORS.length]} />)}
                     </Pie>
                     <Tooltip formatter={(value: number) => `KES ${value.toLocaleString()}`} />
                     <Legend />

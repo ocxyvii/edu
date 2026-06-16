@@ -52,7 +52,7 @@ export function InvoiceTable() {
     )
   }, [invoices, search])
 
-  if (isLoading) return <div className="space-y-2">{[...Array(5)].map((_, i) => <Skeleton key={i} className="h-14 w-full" />)}</div>
+  if (isLoading) return <div className="space-y-2">{[...Array(5)].map((_: any, i: any) => <Skeleton key={i} className="h-14 w-full" />)}</div>
 
   return (
     <div className="space-y-4">

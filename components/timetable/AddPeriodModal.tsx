@@ -136,7 +136,7 @@ export default function AddPeriodModal({
             <Select value={subjectId} onValueChange={setSubjectId}>
               <SelectTrigger><SelectValue placeholder="Select subject" /></SelectTrigger>
               <SelectContent>
-                {subjects.map(s => (
+                {subjects.map((s: any) => (
                   <SelectItem key={s.id} value={s.id}>{s.name} ({s.code})</SelectItem>
                 ))}
               </SelectContent>
@@ -148,7 +148,7 @@ export default function AddPeriodModal({
             <Select value={teacherId} onValueChange={setTeacherId}>
               <SelectTrigger><SelectValue placeholder="Select teacher" /></SelectTrigger>
               <SelectContent>
-                {teachers.map(t => (
+                {teachers.map((t: any) => (
                   <SelectItem key={t.id} value={t.id}>
                     {t.profiles?.first_name} {t.profiles?.last_name}
                   </SelectItem>
@@ -162,7 +162,7 @@ export default function AddPeriodModal({
             <Select value={dayOfWeek} onValueChange={setDayOfWeek}>
               <SelectTrigger><SelectValue /></SelectTrigger>
               <SelectContent>
-                {DAYS.map((d, i) => (
+                {DAYS.map((d: any, i: any) => (
                   <SelectItem key={d} value={d}>{DAY_LABELS[i]}</SelectItem>
                 ))}
               </SelectContent>

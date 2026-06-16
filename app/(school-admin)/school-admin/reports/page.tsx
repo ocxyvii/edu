@@ -118,7 +118,7 @@ export default function ReportsPage() {
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
             <StatCard icon={CalendarCheck} label="Avg Attendance" value={attendance ? `${attendance.summary.averageAttendance}%` : '-'} variant="primary" />
             <StatCard icon={Users} label="Students Tracked" value={attendance?.summary.totalStudents ?? '-'} />
-            <StatCard icon={TrendingUp} label="At Risk (<75%)" value={attendance?.summary.atRiskCount ?? '-'} variant={attendance?.summary.atRiskCount && attendance.summary.atRiskCount > 0 ? 'destructive' : 'success'} />
+            <StatCard icon={TrendingUp} label="At Risk (<75%)" value={attendance?.summary.atRiskCount ?? '-'} variant={attendance?.summary.atRiskCount && attendance.summary.atRiskCount > 0 ? 'danger' : 'success'} />
           </div>
 
           {attendance?.dailyRates && attendance.dailyRates.length > 0 && (
@@ -171,7 +171,7 @@ export default function ReportsPage() {
             <StatCard icon={DollarSign} label="Expected" value={fees ? formatCurrency(fees.summary.expected) : '-'} variant="primary" />
             <StatCard icon={TrendingUp} label="Collected" value={fees ? formatCurrency(fees.summary.collected) : '-'} variant="success" />
             <StatCard icon={BarChart3} label="Collection Rate" value={fees ? `${fees.summary.collectionRate}%` : '-'} />
-            <StatCard icon={Users} label="Overdue" value={fees?.summary.overdue ?? '-'} variant="destructive" />
+            <StatCard icon={Users} label="Overdue" value={fees?.summary.overdue ?? '-'} variant="danger" />
           </div>
 
           {fees?.monthlyTrend && fees.monthlyTrend.length > 0 && (

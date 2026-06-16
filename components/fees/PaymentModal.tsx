@@ -119,7 +119,7 @@ export function PaymentModal({ open, onOpenChange }: PaymentModalProps) {
           <div>
             <Label>Payment Method</Label>
             <div className="grid grid-cols-5 gap-2 mt-1">
-              {PAYMENT_METHODS.map(m => (
+              {PAYMENT_METHODS.map((m: any) => (
                 <button
                   key={m.value}
                   type="button"
