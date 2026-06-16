@@ -71,6 +71,7 @@ export interface EnrollmentResult {
   studentName: string
   sectionName: string | null
   className: string | null
+  schoolName: string
 }
 
 export interface SchoolOption {
