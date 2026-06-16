@@ -30,7 +30,7 @@ export default function NewStudentPage() {
     queryFn: () => getClasses(),
   })
 
-  const selectedClass = classes?.find(c => c.id === form.class_id)
+  const selectedClass = classes?.find((c: any) => c.id === form.class_id)
 
   const mutation = useMutation({
     mutationFn: () => createStudent(form),
@@ -138,7 +138,7 @@ export default function NewStudentPage() {
                 <Select value={form.class_id} onValueChange={(v) => { update('class_id', v); update('section_id', '') }}>
                   <SelectTrigger><SelectValue placeholder="Select class" /></SelectTrigger>
                   <SelectContent>
-                    {classes?.map(c => <SelectItem key={c.id} value={c.id}>{c.name}</SelectItem>)}
+                    {classes?.map((c: any) => <SelectItem key={c.id} value={c.id}>{c.name}</SelectItem>)}
                   </SelectContent>
                 </Select>
               </div>

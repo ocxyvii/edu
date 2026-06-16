@@ -69,7 +69,7 @@ export default function ReportsPage() {
                         { name: 'Collected', value: overview?.kpis?.totalFeeCollected ?? 0 },
                         { name: 'Outstanding', value: overview?.kpis?.totalFeeOutstanding ?? 0 },
                       ]} cx="50%" cy="50%" labelLine={false} label={({ name, percent }) => `${name} ${(percent * 100).toFixed(0)}%`} outerRadius={80} dataKey="value">
-                        {COLORS.slice(0, 2).map(c => <Cell key={c} fill={c} />)}
+                        {COLORS.slice(0, 2).map((c: any) => <Cell key={c} fill={c} />)}
                       </Pie>
                       <Tooltip />
                     </PieChart>

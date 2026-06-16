@@ -64,8 +64,8 @@ export default function StudentAssignmentsPage() {
     }
   }
 
-  const pending = assignments?.filter(a => !a.isSubmitted) ?? []
-  const submitted = assignments?.filter(a => a.isSubmitted) ?? []
+  const pending = assignments?.filter((a: any) => !a.isSubmitted) ?? []
+  const submitted = assignments?.filter((a: any) => a.isSubmitted) ?? []
 
   return (
     <div className="space-y-8">

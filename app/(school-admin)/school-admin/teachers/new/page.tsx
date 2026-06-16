@@ -42,7 +42,7 @@ export default function NewTeacherPage() {
 
   function toggleSubject(id: string) {
     setSelectedSubjectIds(prev =>
-      prev.includes(id) ? prev.filter(s => s !== id) : [...prev, id]
+      prev.includes(id) ? prev.filter((s: any) => s !== id) : [...prev, id]
     )
   }
 

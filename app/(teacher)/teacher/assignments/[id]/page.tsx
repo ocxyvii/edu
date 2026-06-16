@@ -50,8 +50,8 @@ export default function AssignmentDetailPage() {
     return <p className="text-center py-12 text-muted-foreground">Assignment not found</p>
   }
 
-  const pendingCount = submissions?.filter(s => s.status === 'submitted' || s.status === 'late').length ?? 0
-  const gradedCount = submissions?.filter(s => s.status === 'graded').length ?? 0
+  const pendingCount = submissions?.filter((s: any) => s.status === 'submitted' || s.status === 'late').length ?? 0
+  const gradedCount = submissions?.filter((s: any) => s.status === 'graded').length ?? 0
 
   return (
     <div className="space-y-8">

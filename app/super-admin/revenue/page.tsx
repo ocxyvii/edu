@@ -23,8 +23,8 @@ export default function RevenuePage() {
       const { data: schools } = await supabase.from('schools').select('id, name, subscription_plan, is_active')
       const { data: payments } = await supabase.from('payments').select('amount, paid_at, school_id, payment_method')
 
-      const totalRevenue = (payments ?? []).reduce((s, p) => s + Number(p.amount), 0)
-      const activeSchools = (schools ?? []).filter(s => s.is_active).length
+      const totalRevenue = (payments ?? []).reduce((s: any, p: any) => s + Number(p.amount), 0)
+      const activeSchools = (schools ?? []).filter((s: any) => s.is_active).length
       const avgPerSchool = activeSchools > 0 ? Math.round(totalRevenue / activeSchools) : 0
       const totalTransactions = payments?.length ?? 0
 
@@ -40,13 +40,13 @@ export default function RevenuePage() {
       const monthlyRevenue = Array.from(monthlyMap.values()).sort((a, b) => a.month.localeCompare(b.month))
 
       // School breakdown
-      const schoolRevenue = (schools ?? []).map(s => {
-        const schoolPayments = (payments ?? []).filter(p => p.school_id === s.id)
+      const schoolRevenue = (schools ?? []).map((s: any) => {
+        const schoolPayments = (payments ?? []).filter((p: any) => p.school_id === s.id)
         return {
           name: s.name,
           plan: s.subscription_plan,
           active: s.is_active,
-          revenue: schoolPayments.reduce((sum, p) => sum + Number(p.amount), 0),
+          revenue: schoolPayments.reduce((sum: any, p: any) => sum + Number(p.amount), 0),
           transactions: schoolPayments.length,
         }
       }).sort((a, b) => b.revenue - a.revenue)

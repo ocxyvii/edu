@@ -22,14 +22,14 @@ export default function StudentTimetablePage() {
   const todayEntries = useMemo(() => {
     if (!todayStr || !entries) return []
     return entries
-      .filter(e => e.day_of_week === todayStr)
+      .filter((e: any) => e.day_of_week === todayStr)
       .sort((a, b) => a.start_time.localeCompare(b.start_time))
   }, [entries, todayStr])
 
   const nextClass = useMemo(() => {
     if (!todayEntries.length || currentPeriodIndex < 0) return null
     const nowMin = new Date().getHours() * 60 + new Date().getMinutes()
-    const upcoming = todayEntries.filter(e => {
+    const upcoming = todayEntries.filter((e: any) => {
       const [h, m] = e.start_time.split(':').map(Number)
       return h * 60 + m > nowMin
     })
@@ -39,7 +39,7 @@ export default function StudentTimetablePage() {
   const currentClass = useMemo(() => {
     if (!todayEntries.length || currentPeriodIndex < 0) return null
     const nowMin = new Date().getHours() * 60 + new Date().getMinutes()
-    return todayEntries.find(e => {
+    return todayEntries.find((e: any) => {
       const [sH, sM] = e.start_time.split(':').map(Number)
       const [eH, eM] = e.end_time.split(':').map(Number)
       return nowMin >= sH * 60 + sM && nowMin < eH * 60 + eM
@@ -168,7 +168,7 @@ export default function StudentTimetablePage() {
                       {di === todayIndex && <Badge variant="outline" className="ml-2 text-[10px]">Today</Badge>}
                     </h4>
                     <div className="space-y-1.5">
-                      {dayEntries_list.map(e => (
+                      {dayEntries_list.map((e: any) => (
                         <div key={e.id} className="flex items-center gap-3 p-2.5 rounded-lg border border-gray-100 hover:bg-gray-50 transition-colors">
                           <Badge variant="outline" className="w-16 text-center font-mono text-[10px] shrink-0">
                             {e.start_time.slice(0, 5)}

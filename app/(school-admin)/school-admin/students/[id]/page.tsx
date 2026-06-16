@@ -110,7 +110,7 @@ export default function StudentDetailPage() {
           <Card>
             <CardHeader><CardTitle>Fee Invoices</CardTitle></CardHeader>
             <CardContent>
-              {invoices?.filter(i => i.student_id === id).length === 0 ? (
+              {invoices?.filter((i: any) => i.student_id === id).length === 0 ? (
                 <p className="text-muted-foreground text-sm py-8 text-center">No invoices for this student</p>
               ) : (
                 <div className="overflow-x-auto">
@@ -126,7 +126,7 @@ export default function StudentDetailPage() {
                       </tr>
                     </thead>
                     <tbody>
-                      {invoices?.filter(i => i.student_id === id).map((inv: any) => (
+                      {invoices?.filter((i: any) => i.student_id === id).map((inv: any) => (
                         <tr key={inv.id} className="border-b border-gray-100">
                           <td className="py-2 px-2">{inv.invoice_number}</td>
                           <td className="py-2 px-2">KES {Number(inv.amount).toLocaleString()}</td>

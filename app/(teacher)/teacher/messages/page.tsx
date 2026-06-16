@@ -110,7 +110,7 @@ export default function MessagesPage() {
               <Select value={form.student_id} onValueChange={handleStudentSelect}>
                 <SelectTrigger><SelectValue placeholder="Choose student to message their parent" /></SelectTrigger>
                 <SelectContent>
-                  {groupedStudents.map(group => (
+                  {groupedStudents.map((group: any) => (
                     <div key={group.class}>
                       <div className="px-2 py-1.5 text-xs font-semibold text-muted-foreground uppercase tracking-wider">
                         {group.class}
@@ -170,7 +170,7 @@ export default function MessagesPage() {
         <Tabs defaultValue="inbox">
           <TabsList>
             <TabsTrigger value="inbox" className="gap-2">
-              <Inbox className="h-4 w-4" /> Inbox ({received.filter(m => !m.is_read).length})
+              <Inbox className="h-4 w-4" /> Inbox ({received.filter((m: any) => !m.is_read).length})
             </TabsTrigger>
             <TabsTrigger value="sent" className="gap-2">
               <SendHorizontal className="h-4 w-4" /> Sent

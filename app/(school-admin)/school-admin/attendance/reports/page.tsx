@@ -45,7 +45,7 @@ export default function AttendanceReportsPage() {
 
   const sections = useMemo(() => {
     if (!selectedClass || !classes) return []
-    const cls = classes.find(c => c.id === selectedClass)
+    const cls = classes.find((c: any) => c.id === selectedClass)
     return cls?.sections ?? []
   }, [selectedClass, classes])
 
@@ -64,7 +64,7 @@ export default function AttendanceReportsPage() {
     if (!reportData) return []
     if (!searchQuery) return reportData
     const q = searchQuery.toLowerCase()
-    return reportData.filter(r =>
+    return reportData.filter((r: any) =>
       r.firstName.toLowerCase().includes(q) ||
       r.lastName.toLowerCase().includes(q) ||
       r.admissionNumber.toLowerCase().includes(q)
@@ -73,10 +73,10 @@ export default function AttendanceReportsPage() {
 
   const overallStats = useMemo(() => {
     if (!filtered.length) return null
-    const total = filtered.reduce((s, r) => s + r.total, 0)
-    const present = filtered.reduce((s, r) => s + r.present, 0)
-    const absent = filtered.reduce((s, r) => s + r.absent, 0)
-    const late = filtered.reduce((s, r) => s + r.late, 0)
+    const total = filtered.reduce((s: any, r: any) => s + r.total, 0)
+    const present = filtered.reduce((s: any, r: any) => s + r.present, 0)
+    const absent = filtered.reduce((s: any, r: any) => s + r.absent, 0)
+    const late = filtered.reduce((s: any, r: any) => s + r.late, 0)
     return {
       total,
       present,
@@ -93,7 +93,7 @@ export default function AttendanceReportsPage() {
     }
 
     const headers = ['Admission No', 'First Name', 'Last Name', 'Class', 'Total Days', 'Present', 'Absent', 'Late', 'Excused', 'Attendance %']
-    const rows = filtered.map(r => [
+    const rows = filtered.map((r: any) => [
       r.admissionNumber,
       r.firstName,
       r.lastName,
@@ -105,7 +105,7 @@ export default function AttendanceReportsPage() {
       r.excused,
       r.percentage,
     ])
-    const csv = [headers.join(','), ...rows.map(r => r.join(','))].join('\n')
+    const csv = [headers.join(','), ...rows.map((r: any) => r.join(','))].join('\n')
     const blob = new Blob([csv], { type: 'text/csv' })
     const url = URL.createObjectURL(blob)
     const a = document.createElement('a')
@@ -127,7 +127,7 @@ export default function AttendanceReportsPage() {
       return
     }
 
-    const rowsHtml = filtered.map(r => {
+    const rowsHtml = filtered.map((r: any) => {
       const color = r.percentage < 75 ? 'color: #dc2626;' : r.percentage < 90 ? 'color: #ca8a04;' : 'color: #16a34a;'
       return `<tr>
         <td style="padding: 6px 8px; border-bottom: 1px solid #e5e7eb;">${r.admissionNumber}</td>
@@ -227,7 +227,7 @@ export default function AttendanceReportsPage() {
               </SelectTrigger>
               <SelectContent>
                 <SelectItem value="all">All Classes</SelectItem>
-                {classes?.map(c => (
+                {classes?.map((c: any) => (
                   <SelectItem key={c.id} value={c.id}>{c.name}</SelectItem>
                 ))}
               </SelectContent>

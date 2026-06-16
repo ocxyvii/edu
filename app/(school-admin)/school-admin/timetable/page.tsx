@@ -118,7 +118,7 @@ export default function TimetablePage() {
     window.print()
   }
 
-  const currentSection = sections.find(s => s.id === selectedSectionId)
+  const currentSection = sections.find((s: any) => s.id === selectedSectionId)
 
   return (
     <div className="space-y-6">

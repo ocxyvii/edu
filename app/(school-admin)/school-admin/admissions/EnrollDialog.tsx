@@ -66,11 +66,11 @@ export function EnrollDialog({ application: app, onClose, onComplete }: Props) {
   // Pre-fill class from application notes if available
   useEffect(() => {
     if (applicationNotes?.class_id && classes && !classId) {
-      const match = classes.find(c => c.id === applicationNotes.class_id)
+      const match = classes.find((c: any) => c.id === applicationNotes.class_id)
       if (match) setClassId(applicationNotes.class_id)
     }
   }, [applicationNotes, classes, classId])
-  const selectedClass = classes?.find(c => c.id === classId)
+  const selectedClass = classes?.find((c: any) => c.id === classId)
   const sections = (selectedClass as any)?.sections ?? []
 
   const enrollMutation = useMutation({
@@ -148,7 +148,7 @@ export function EnrollDialog({ application: app, onClose, onComplete }: Props) {
             <tr><td>Student Name</td><td>${app.student_name}</td></tr>
             <tr><td>Admission Number</td><td><strong>${result.admissionNumber}</strong></td></tr>
             <tr><td>Class</td><td>${selectedClass?.name || ''}</td></tr>
-            <tr><td>Section</td><td>${sections.find(s => s.id === sectionId)?.name || ''}</td></tr>
+            <tr><td>Section</td><td>${sections.find((s: any) => s.id === sectionId)?.name || ''}</td></tr>
             <tr><td>Enrollment Date</td><td>${new Date(enrollmentDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</td></tr>
           </table>
           <h2>Login Credentials</h2>

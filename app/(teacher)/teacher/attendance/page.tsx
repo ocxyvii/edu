@@ -12,7 +12,7 @@ export default function TeacherAttendancePage() {
 
   const { data: myClasses, isLoading: classesLoading, error } = useTeacherClassesRealtime()
 
-  const selectedClass = myClasses?.find(c => c.section_id === selectedSectionId)
+  const selectedClass = myClasses?.find((c: any) => c.section_id === selectedSectionId)
 
   const { data: students, isLoading: studentsLoading } = useQuery({
     queryKey: ['attendance-students', selectedSectionId],
@@ -50,7 +50,7 @@ export default function TeacherAttendancePage() {
         : { data: [] }
 
       const all = [...(bySection ?? []), ...(byClass ?? [])]
-      const unique = Array.from(new Map(all.map(s => [s.id, s])).values())
+      const unique = Array.from(new Map(all.map((s: any) => [s.id, s])).values())
 
       return unique.map((s: any) => ({
         id: s.id,

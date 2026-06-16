@@ -78,7 +78,7 @@ export default function ReportsHubPage() {
               <SelectValue />
             </SelectTrigger>
             <SelectContent>
-              {quickFilters.map(f => (
+              {quickFilters.map((f: any) => (
                 <SelectItem key={f.value} value={f.value}>{f.label}</SelectItem>
               ))}
             </SelectContent>
@@ -133,7 +133,7 @@ export default function ReportsHubPage() {
 
       {/* Report Cards Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {reportCards.map(card => {
+        {reportCards.map((card: any) => {
           const Icon = card.icon
           return (
             <Link key={card.href} href={card.href}>

@@ -272,7 +272,7 @@ export default function ChildDetailPage({ params }: { params: Promise<{ id: stri
             </CardHeader>
             <CardContent>
               <div className="grid grid-cols-7 gap-1.5">
-                {['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map(d => (
+                {['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map((d: any) => (
                   <div key={d} className="text-center text-xs font-medium text-muted-foreground py-1">{d}</div>
                 ))}
                 {/* Empty cells for first day offset */}
@@ -477,7 +477,7 @@ export default function ChildDetailPage({ params }: { params: Promise<{ id: stri
         {/* ── TAB 5: Assignments ── */}
         <TabsContent value="assignments" className="space-y-6 mt-6">
           <div className="flex gap-2">
-            {['all', 'pending', 'submitted', 'graded'].map(f => (
+            {['all', 'pending', 'submitted', 'graded'].map((f: any) => (
               <Button
                 key={f}
                 variant={assignFilter === f ? 'default' : 'outline'}

@@ -32,21 +32,21 @@ export default function ParentsPage() {
 
       if (!parentRecords?.length) return []
 
-      const parentIds = parentRecords.map(p => p.id)
+      const parentIds = parentRecords.map((p: any) => p.id)
       const { data: profiles } = await supabase
         .from('profiles')
         .select('id, first_name, last_name, email, phone, avatar_url')
         .in('id', parentIds)
 
-      return parentRecords.map(p => {
-        const profile = profiles?.find(pr => pr.id === p.id)
+      return parentRecords.map((p: any) => {
+        const profile = profiles?.find((pr: any) => pr.id === p.id)
         return { ...p, profile }
       })
     },
   })
 
   const activeCount = parents?.length ?? 0
-  const filtered = parents?.filter(p => {
+  const filtered = parents?.filter((p: any) => {
     if (!search) return true
     const q = search.toLowerCase()
     const name = `${p.profile?.first_name ?? ''} ${p.profile?.last_name ?? ''}`.toLowerCase()
@@ -62,9 +62,9 @@ export default function ParentsPage() {
 
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
         <StatCard icon={Users} label="Total Parents" value={activeCount} variant="primary" />
-        <StatCard icon={UserCheck} label="Primary Contacts" value={parents?.filter(p => p.is_primary_contact).length ?? 0} variant="success" />
-        <StatCard icon={Mail} label="With Email" value={parents?.filter(p => p.profile?.email).length ?? 0} />
-        <StatCard icon={Phone} label="With Phone" value={parents?.filter(p => p.profile?.phone).length ?? 0} />
+        <StatCard icon={UserCheck} label="Primary Contacts" value={parents?.filter((p: any) => p.is_primary_contact).length ?? 0} variant="success" />
+        <StatCard icon={Mail} label="With Email" value={parents?.filter((p: any) => p.profile?.email).length ?? 0} />
+        <StatCard icon={Phone} label="With Phone" value={parents?.filter((p: any) => p.profile?.phone).length ?? 0} />
       </div>
 
       <div className="relative max-w-sm">

@@ -34,7 +34,7 @@ export default function FinanceReportPage() {
     const rows = report.defaulters.map((d: any) => [
       d.name, d.admission_number, d.invoice_number, d.amount, d.paid, d.outstanding, d.due_date, d.days_overdue, d.status,
     ])
-    const csv = [headers, ...rows].map(r => r.join(',')).join('\n')
+    const csv = [headers, ...rows].map((r: any) => r.join(',')).join('\n')
     const blob = new Blob([csv], { type: 'text/csv' })
     const url = URL.createObjectURL(blob)
     const a = document.createElement('a')

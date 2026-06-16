@@ -29,8 +29,8 @@ export default function StudentMaterialsPage() {
         <Card><CardContent className="py-12 text-center text-muted-foreground">No course materials available yet.</CardContent></Card>
       ) : (
         <div className="space-y-6">
-          {courses.map(course => {
-            const courseMaterials = materials.filter(m => m.course_id === course.id)
+          {courses.map((course: any) => {
+            const courseMaterials = materials.filter((m: any) => m.course_id === course.id)
             return (
               <Card key={course.id}>
                 <CardContent className="p-6">
@@ -46,7 +46,7 @@ export default function StudentMaterialsPage() {
                   </div>
                   {courseMaterials.length > 0 && (
                     <div className="space-y-2">
-                      {courseMaterials.map(m => (
+                      {courseMaterials.map((m: any) => (
                         <div key={m.id} className="flex items-center gap-3 p-3 rounded-lg border border-gray-100 hover:bg-gray-50">
                           {m.type === 'video' ? <Video className="h-4 w-4 text-blue-500" /> :
                            m.type === 'link' ? <LinkIcon className="h-4 w-4 text-purple-500" /> :

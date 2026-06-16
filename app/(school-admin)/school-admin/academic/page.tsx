@@ -195,7 +195,7 @@ export default function AcademicPage() {
               <CardTitle>Terms</CardTitle>
               <CardDescription>
                 {selectedYearId
-                  ? `Terms for ${years?.find(y => y.id === selectedYearId)?.name ?? 'selected year'}`
+                  ? `Terms for ${years?.find((y: any) => y.id === selectedYearId)?.name ?? 'selected year'}`
                   : 'Select a year to view terms'}
               </CardDescription>
             </div>

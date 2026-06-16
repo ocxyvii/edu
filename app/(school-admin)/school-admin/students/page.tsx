@@ -71,15 +71,15 @@ export default function StudentsPage() {
     let result = [...students]
     if (search) {
       const q = search.toLowerCase()
-      result = result.filter(s =>
+      result = result.filter((s: any) =>
         s.profiles?.first_name?.toLowerCase().includes(q) ||
         s.profiles?.last_name?.toLowerCase().includes(q) ||
         s.admission_number?.toLowerCase().includes(q)
       )
     }
-    if (filterClass !== 'all') result = result.filter(s => s.class_id === filterClass)
-    if (filterStatus !== 'all') result = result.filter(s => s.status === filterStatus)
-    if (filterGender !== 'all') result = result.filter(s => s.profiles?.gender === filterGender)
+    if (filterClass !== 'all') result = result.filter((s: any) => s.class_id === filterClass)
+    if (filterStatus !== 'all') result = result.filter((s: any) => s.status === filterStatus)
+    if (filterGender !== 'all') result = result.filter((s: any) => s.profiles?.gender === filterGender)
     result.sort((a, b) => {
       const aVal = sortField === 'name' ? `${a.profiles?.first_name} ${a.profiles?.last_name}` : a[sortField]
       const bVal = sortField === 'name' ? `${b.profiles?.first_name} ${b.profiles?.last_name}` : b[sortField]
@@ -93,7 +93,7 @@ export default function StudentsPage() {
 
   function exportCSV() {
     const headers = ['Admission No', 'First Name', 'Last Name', 'Gender', 'Class', 'Section', 'Status']
-    const rows = filtered.map(s => [
+    const rows = filtered.map((s: any) => [
       s.admission_number,
       s.profiles?.first_name ?? '',
       s.profiles?.last_name ?? '',
@@ -102,7 +102,7 @@ export default function StudentsPage() {
       s.sections?.name ?? '',
       s.status,
     ])
-    const csv = [headers, ...rows].map(r => r.join(',')).join('\n')
+    const csv = [headers, ...rows].map((r: any) => r.join(',')).join('\n')
     const blob = new Blob([csv], { type: 'text/csv' })
     const url = URL.createObjectURL(blob)
     const a = document.createElement('a')
@@ -148,7 +148,7 @@ export default function StudentsPage() {
               <SelectTrigger className="w-[150px]"><SelectValue placeholder="Class" /></SelectTrigger>
               <SelectContent>
                 <SelectItem value="all">All Classes</SelectItem>
-                {classes?.map(c => <SelectItem key={c.id} value={c.id}>{c.name}</SelectItem>)}
+                {classes?.map((c: any) => <SelectItem key={c.id} value={c.id}>{c.name}</SelectItem>)}
               </SelectContent>
             </Select>
             <Select value={filterStatus} onValueChange={setFilterStatus}>
@@ -239,7 +239,7 @@ export default function StudentsPage() {
                                     <Select value={transferForm.class_id} onValueChange={(v) => setTransferForm({ ...transferForm, class_id: v })}>
                                       <SelectTrigger><SelectValue placeholder="Select class" /></SelectTrigger>
                                       <SelectContent>
-                                        {classes?.map(c => <SelectItem key={c.id} value={c.id}>{c.name}</SelectItem>)}
+                                        {classes?.map((c: any) => <SelectItem key={c.id} value={c.id}>{c.name}</SelectItem>)}
                                       </SelectContent>
                                     </Select>
                                   </div>

@@ -26,7 +26,7 @@ export default function NotificationsPage() {
         <Card><CardContent className="py-12 text-center text-muted-foreground">No notifications yet.</CardContent></Card>
       ) : (
         <div className="space-y-3">
-          {announcements.map(a => (
+          {announcements.map((a: any) => (
             <Card key={a.id}>
               <CardContent className="flex items-start gap-4 py-5">
                 <div className="p-2.5 rounded-full bg-emerald-100 flex-shrink-0">

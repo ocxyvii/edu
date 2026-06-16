@@ -92,7 +92,7 @@ export default function AuditLogsPage() {
         l.created_at, l.action, l.table_name, l.record_id || '',
         l.user_id || '', l.school_id || '', l.ip_address || '', (l.user_agent || '').replace(/,/g, ' '),
       ])
-      const csv = [headers.join(','), ...rows.map(r => r.map(v => `"${v}"`).join(','))].join('\n')
+      const csv = [headers.join(','), ...rows.map((r: any) => r.map((v: any) => `"${v}"`).join(','))].join('\n')
       const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' })
       const a = document.createElement('a')
       a.href = URL.createObjectURL(blob)
@@ -147,14 +147,14 @@ export default function AuditLogsPage() {
               <SelectTrigger className="w-32"><SelectValue placeholder="Action" /></SelectTrigger>
               <SelectContent>
                 <SelectItem value="all">All Actions</SelectItem>
-                {ACTIONS.map(a => <SelectItem key={a} value={a}>{a}</SelectItem>)}
+                {ACTIONS.map((a: any) => <SelectItem key={a} value={a}>{a}</SelectItem>)}
               </SelectContent>
             </Select>
             <Select value={tableFilter} onValueChange={v => { setTableFilter(v); setPage(1) }}>
               <SelectTrigger className="w-36"><SelectValue placeholder="Table" /></SelectTrigger>
               <SelectContent>
                 <SelectItem value="all">All Tables</SelectItem>
-                {TABLES.map(t => <SelectItem key={t} value={t}>{t}</SelectItem>)}
+                {TABLES.map((t: any) => <SelectItem key={t} value={t}>{t}</SelectItem>)}
               </SelectContent>
             </Select>
             <Input type="date" value={dateFrom} onChange={e => { setDateFrom(e.target.value); setPage(1) }} className="w-36" />

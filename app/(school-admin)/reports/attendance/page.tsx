@@ -46,7 +46,7 @@ export default function AttendanceReportPage() {
     if (!report?.students) return []
     if (!search) return report.students
     const q = search.toLowerCase()
-    return report.students.filter(s =>
+    return report.students.filter((s: any) =>
       s.name.toLowerCase().includes(q) || s.admission_number.toLowerCase().includes(q)
     )
   }, [report?.students, search])
@@ -54,8 +54,8 @@ export default function AttendanceReportPage() {
   const exportCsv = () => {
     if (!filteredStudents.length) return
     const headers = ['Name', 'Admission No', 'Present', 'Absent', 'Late', 'Excused', 'Total', 'Percentage']
-    const rows = filteredStudents.map(s => [s.name, s.admission_number, s.present, s.absent, s.late, s.excused, s.total, s.percentage])
-    const csv = [headers, ...rows].map(r => r.join(',')).join('\n')
+    const rows = filteredStudents.map((s: any) => [s.name, s.admission_number, s.present, s.absent, s.late, s.excused, s.total, s.percentage])
+    const csv = [headers, ...rows].map((r: any) => r.join(',')).join('\n')
     const blob = new Blob([csv], { type: 'text/csv' })
     const url = URL.createObjectURL(blob)
     const a = document.createElement('a')

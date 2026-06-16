@@ -64,7 +64,7 @@ export default function CreateTeacherExamPage() {
       total_marks: parseInt(totalMarks),
       pass_marks: parseInt(passMarks),
       instructions: instructions || undefined,
-      subjects: subjects.map(s => ({
+      subjects: subjects.map((s: any) => ({
         subject_id: s.subject_id,
         max_marks: parseInt(s.max_marks),
         pass_marks: parseInt(s.pass_marks),
@@ -82,7 +82,7 @@ export default function CreateTeacherExamPage() {
 
   function addSubject() {
     if (!selectedSubject) return
-    if (subjects.find(s => s.subject_id === selectedSubject)) {
+    if (subjects.find((s: any) => s.subject_id === selectedSubject)) {
       toast.error('Subject already added')
       return
     }
@@ -148,7 +148,7 @@ export default function CreateTeacherExamPage() {
                 <Select value={classId} onValueChange={setClassId}>
                   <SelectTrigger><SelectValue placeholder="Select class" /></SelectTrigger>
                   <SelectContent>
-                    {classes?.map(c => (
+                    {classes?.map((c: any) => (
                       <SelectItem key={c.id} value={c.id}>{c.name} {c.level ? `- Level ${c.level}` : ''}</SelectItem>
                     ))}
                   </SelectContent>
@@ -160,7 +160,7 @@ export default function CreateTeacherExamPage() {
                 <Select value={academicYearId} onValueChange={(v) => { setAcademicYearId(v); setTermId('') }}>
                   <SelectTrigger><SelectValue placeholder="Select year" /></SelectTrigger>
                   <SelectContent>
-                    {academicYears?.map(y => (
+                    {academicYears?.map((y: any) => (
                       <SelectItem key={y.id} value={y.id}>{y.name}{y.is_current ? ' (Current)' : ''}</SelectItem>
                     ))}
                   </SelectContent>
@@ -172,7 +172,7 @@ export default function CreateTeacherExamPage() {
                 <Select value={termId} onValueChange={setTermId} disabled={!academicYearId}>
                   <SelectTrigger><SelectValue placeholder={!academicYearId ? 'Select year first' : 'Select term'} /></SelectTrigger>
                   <SelectContent>
-                    {terms?.map(t => (
+                    {terms?.map((t: any) => (
                       <SelectItem key={t.id} value={t.id}>{t.name}{t.is_current ? ' (Current)' : ''}</SelectItem>
                     ))}
                   </SelectContent>
@@ -230,29 +230,29 @@ export default function CreateTeacherExamPage() {
 
               {subjects.length > 0 && (
                 <div className="space-y-2">
-                  {subjects.map(s => {
+                  {subjects.map((s: any) => {
                     const subj = teacherSubjects?.find((ts: any) => ts.id === s.subject_id)
                     return (
                       <Card key={s.subject_id}>
                         <CardContent className="p-3">
                           <div className="flex items-center justify-between mb-2">
                             <span className="font-medium text-sm">{subj?.name} ({subj?.code})</span>
-                            <Button type="button" variant="ghost" size="sm" onClick={() => setSubjects(prev => prev.filter(x => x.subject_id !== s.subject_id))}>
+                            <Button type="button" variant="ghost" size="sm" onClick={() => setSubjects(prev => prev.filter((x: any) => x.subject_id !== s.subject_id))}>
                               <X className="h-4 w-4" />
                             </Button>
                           </div>
                           <div className="grid grid-cols-3 gap-2">
                             <div>
                               <Label className="text-xs">Max Marks</Label>
-                              <Input type="number" value={s.max_marks} onChange={e => setSubjects(prev => prev.map(x => x.subject_id === s.subject_id ? { ...x, max_marks: e.target.value } : x))} className="h-8 text-sm" />
+                              <Input type="number" value={s.max_marks} onChange={e => setSubjects(prev => prev.map((x: any) => x.subject_id === s.subject_id ? { ...x, max_marks: e.target.value } : x))} className="h-8 text-sm" />
                             </div>
                             <div>
                               <Label className="text-xs">Pass Marks</Label>
-                              <Input type="number" value={s.pass_marks} onChange={e => setSubjects(prev => prev.map(x => x.subject_id === s.subject_id ? { ...x, pass_marks: e.target.value } : x))} className="h-8 text-sm" />
+                              <Input type="number" value={s.pass_marks} onChange={e => setSubjects(prev => prev.map((x: any) => x.subject_id === s.subject_id ? { ...x, pass_marks: e.target.value } : x))} className="h-8 text-sm" />
                             </div>
                             <div>
                               <Label className="text-xs">Duration (min)</Label>
-                              <Input type="number" value={s.duration_minutes} onChange={e => setSubjects(prev => prev.map(x => x.subject_id === s.subject_id ? { ...x, duration_minutes: e.target.value } : x))} className="h-8 text-sm" />
+                              <Input type="number" value={s.duration_minutes} onChange={e => setSubjects(prev => prev.map((x: any) => x.subject_id === s.subject_id ? { ...x, duration_minutes: e.target.value } : x))} className="h-8 text-sm" />
                             </div>
                           </div>
                         </CardContent>

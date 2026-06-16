@@ -90,7 +90,7 @@ export default function SuperAdminSettingsPage() {
                 { label: 'Public Admissions', key: 'public_admissions', default: true },
                 { label: 'SMS Notifications', key: 'sms', default: false },
                 { label: 'Multi-language', key: 'multi_language', default: false },
-              ].map(f => (
+              ].map((f: any) => (
                 <div key={f.key} className="flex items-center justify-between py-1.5">
                   <span className="text-sm">{f.label}</span>
                   <label className="relative inline-flex items-center cursor-pointer">

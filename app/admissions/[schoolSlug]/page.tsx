@@ -184,7 +184,7 @@ export default function PublicAdmissionsPage() {
                     <Select value={formData.applying_for_class} onValueChange={(v) => setFormData(f => ({ ...f, applying_for_class: v }))}>
                       <SelectTrigger id="applying_for_class"><SelectValue placeholder="Select class" /></SelectTrigger>
                       <SelectContent>
-                        {GRADES.map(g => <SelectItem key={g} value={g}>{g}</SelectItem>)}
+                        {GRADES.map((g: any) => <SelectItem key={g} value={g}>{g}</SelectItem>)}
                       </SelectContent>
                     </Select>
                   </div>

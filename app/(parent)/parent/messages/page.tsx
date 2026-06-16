@@ -104,7 +104,7 @@ export default function ParentMessagesPage() {
       ) : (
         <Tabs defaultValue="inbox">
           <TabsList>
-            <TabsTrigger value="inbox" className="gap-2"><Inbox className="h-4 w-4" /> Inbox ({messages?.received?.filter(m => !m.is_read).length ?? 0})</TabsTrigger>
+            <TabsTrigger value="inbox" className="gap-2"><Inbox className="h-4 w-4" /> Inbox ({messages?.received?.filter((m: any) => !m.is_read).length ?? 0})</TabsTrigger>
             <TabsTrigger value="sent" className="gap-2"><SendHorizontal className="h-4 w-4" /> Sent</TabsTrigger>
             <TabsTrigger value="announcements" className="gap-2"><Megaphone className="h-4 w-4" /> Announcements</TabsTrigger>
           </TabsList>
@@ -160,7 +160,7 @@ export default function ParentMessagesPage() {
           <TabsContent value="announcements" className="space-y-3 mt-4">
             {!announcements?.length ? (
               <Card><CardContent className="py-12 text-center text-muted-foreground">No announcements yet.</CardContent></Card>
-            ) : announcements.map(a => (
+            ) : announcements.map((a: any) => (
               <Card key={a.id}>
                 <CardContent className="py-4">
                   <div className="flex items-start gap-3">

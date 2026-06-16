@@ -34,9 +34,9 @@ export default function ParentResultsPage() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {children.map((item: any) => {
             const student = (item as any).students
-            const childResults = allResults.filter(r => r.student_id === student?.id) ?? []
+            const childResults = allResults.filter((r: any) => r.student_id === student?.id) ?? []
             const avg = childResults.length > 0
-              ? childResults.reduce((s, r) => s + Number(r.marks_obtained), 0) / childResults.length
+              ? childResults.reduce((s: any, r: any) => s + Number(r.marks_obtained), 0) / childResults.length
               : 0
 
             return (
@@ -58,7 +58,7 @@ export default function ParentResultsPage() {
                     <p className="text-xs sm:text-sm text-muted-foreground text-center py-4">No results published yet.</p>
                   ) : (
                     <div className="space-y-1.5 sm:space-y-2">
-                      {childResults.map(r => (
+                      {childResults.map((r: any) => (
                         <div key={r.id} className="flex items-center justify-between p-2 sm:p-3 rounded-lg border border-gray-100">
                           <div className="flex items-center gap-1.5 sm:gap-2 min-w-0 flex-1">
                             <TrendingUp className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-muted-foreground shrink-0" />

@@ -35,7 +35,7 @@ export default function CreateAssignmentPage() {
   } = useTeacherClassesRealtime()
 
   const selectedClass = myClasses?.find(
-    c => `${c.class_id}|${c.section_id}` === selectedClassKey
+    (c: any) => `${c.class_id}|${c.section_id}` === selectedClassKey
   )
 
   const { data: subjects, isLoading: subjectsLoading } = useQuery({

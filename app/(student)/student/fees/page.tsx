@@ -151,7 +151,7 @@ export default function StudentFeesPage() {
                 <p className="text-center py-8 text-muted-foreground">No fee invoices found.</p>
               ) : (
                 <div className="space-y-3">
-                  {invoices.map(inv => (
+                  {invoices.map((inv: any) => (
                     <div key={inv.id} className="flex items-center justify-between p-4 rounded-lg border">
                       <div className="flex-1">
                         <div className="flex items-center gap-2">
@@ -190,7 +190,7 @@ export default function StudentFeesPage() {
                 <p className="text-center py-8 text-muted-foreground">No payments recorded yet.</p>
               ) : (
                 <div className="space-y-3">
-                  {payments.map(p => (
+                  {payments.map((p: any) => (
                     <div key={p.id} className="flex items-center justify-between p-3 rounded-lg border hover:bg-gray-50 transition-colors">
                       <div className="flex items-center gap-3">
                         <div className="h-9 w-9 rounded-full bg-green-100 flex items-center justify-center">

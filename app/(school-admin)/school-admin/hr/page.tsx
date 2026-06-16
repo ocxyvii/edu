@@ -124,7 +124,7 @@ export default function HRPage() {
                   <Select value={String(payrollYear)} onValueChange={v => setPayrollYear(Number(v))}>
                     <SelectTrigger className="w-24 h-9"><SelectValue /></SelectTrigger>
                     <SelectContent>
-                      {[2024, 2025, 2026].map(y => <SelectItem key={y} value={String(y)}>{y}</SelectItem>)}
+                      {[2024, 2025, 2026].map((y: any) => <SelectItem key={y} value={String(y)}>{y}</SelectItem>)}
                     </SelectContent>
                   </Select>
                   <Button variant="outline" size="sm" onClick={() => generateMutation.mutate()} disabled={generateMutation.isPending}>

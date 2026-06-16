@@ -40,7 +40,7 @@ export default function MaterialsPage() {
   const { data: sections } = useTeacherClassesRealtime()
 
   const uniqueClasses = sections?.reduce((acc: any[], s) => {
-    if (!acc.find(c => c.id === s.class_id)) acc.push({ id: s.class_id, name: s.class_name })
+    if (!acc.find((c: any) => c.id === s.class_id)) acc.push({ id: s.class_id, name: s.class_name })
     return acc
   }, []) ?? []
 
@@ -107,7 +107,7 @@ export default function MaterialsPage() {
                   <Select value={courseForm.subject_id} onValueChange={(v) => setCourseForm(p => ({ ...p, subject_id: v }))}>
                     <SelectTrigger><SelectValue placeholder="Select subject" /></SelectTrigger>
                     <SelectContent>
-                      {subjects?.map(s => (
+                      {subjects?.map((s: any) => (
                         <SelectItem key={s.id} value={s.id}>{s.name} ({s.code})</SelectItem>
                       ))}
                     </SelectContent>
@@ -131,7 +131,7 @@ export default function MaterialsPage() {
                   <Select value={materialForm.course_id} onValueChange={(v) => setMaterialForm(p => ({ ...p, course_id: v }))}>
                     <SelectTrigger><SelectValue placeholder="Select course" /></SelectTrigger>
                     <SelectContent>
-                      {courses.map(c => (
+                      {courses.map((c: any) => (
                         <SelectItem key={c.id} value={c.id}>{c.title}</SelectItem>
                       ))}
                     </SelectContent>
@@ -233,8 +233,8 @@ export default function MaterialsPage() {
         </CardContent></Card>
       ) : (
         <div className="space-y-6">
-          {courses.map(course => {
-            const courseMaterials = materials.filter(m => m.course_id === course.id)
+          {courses.map((course: any) => {
+            const courseMaterials = materials.filter((m: any) => m.course_id === course.id)
             return (
               <Card key={course.id}>
                 <CardHeader>
@@ -251,7 +251,7 @@ export default function MaterialsPage() {
                 {courseMaterials.length > 0 && (
                   <CardContent>
                     <div className="space-y-2">
-                      {courseMaterials.map(m => (
+                      {courseMaterials.map((m: any) => (
                         <div key={m.id} className="flex items-center gap-3 p-3 rounded-lg border border-gray-100 hover:bg-gray-50">
                           {m.type === 'video' ? <Video className="h-4 w-4 text-blue-500" /> :
                            m.type === 'link' ? <LinkIcon className="h-4 w-4 text-purple-500" /> :

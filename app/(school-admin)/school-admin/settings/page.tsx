@@ -86,7 +86,7 @@ export default function AdminSettingsPage() {
             </CardHeader>
             <CardContent>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {['name', 'email', 'phone', 'address', 'city', 'state', 'country', 'postal_code', 'website'].map(field => (
+                {['name', 'email', 'phone', 'address', 'city', 'state', 'country', 'postal_code', 'website'].map((field: any) => (
                   <div key={field} className="space-y-1.5">
                     <Label className="text-xs capitalize">{field.replace(/_/g, ' ')}</Label>
                     <Input

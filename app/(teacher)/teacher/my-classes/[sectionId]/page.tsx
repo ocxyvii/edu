@@ -79,16 +79,16 @@ async function fetchRoster(sectionId: string) {
     : { data: [] }
 
   const all = [...(bySection ?? []), ...(byClass ?? [])]
-  const unique = Array.from(new Map(all.map(s => [s.id, s])).values())
+  const unique = Array.from(new Map(all.map((s: any) => [s.id, s])).values())
 
   const today = new Date().toISOString().split('T')[0]
   const { data: todayAtt } = await supabase
     .from('attendance')
     .select('student_id, status')
     .eq('date', today)
-    .in('student_id', unique.map(s => s.id))
+    .in('student_id', unique.map((s: any) => s.id))
 
-  const attMap = new Map((todayAtt ?? []).map(a => [a.student_id, a.status]))
+  const attMap = new Map((todayAtt ?? []).map((a: any) => [a.student_id, a.status]))
 
   const students = unique.map((s: any) => {
     const profile = s.profiles
@@ -141,15 +141,15 @@ export default function ClassRosterPage() {
   const section = data?.section as any
   const students = data?.students ?? []
 
-  const filtered = students.filter(s =>
+  const filtered = students.filter((s: any) =>
     s.full_name.toLowerCase().includes(search.toLowerCase()) ||
     s.admission_number?.toLowerCase().includes(search.toLowerCase())
   )
 
-  const presentToday = students.filter(s => s.today_status === 'present').length
-  const absentToday = students.filter(s => s.today_status === 'absent').length
-  const lateToday = students.filter(s => s.today_status === 'late').length
-  const unmarked = students.filter(s => s.today_status === 'not_marked').length
+  const presentToday = students.filter((s: any) => s.today_status === 'present').length
+  const absentToday = students.filter((s: any) => s.today_status === 'absent').length
+  const lateToday = students.filter((s: any) => s.today_status === 'late').length
+  const unmarked = students.filter((s: any) => s.today_status === 'not_marked').length
 
   if (isLoading) {
     return (
@@ -233,7 +233,7 @@ export default function ClassRosterPage() {
 
       {/* Tabs */}
       <div className="flex gap-1 bg-gray-100 p-1 rounded-lg w-fit">
-        {(['roster', 'attendance'] as const).map(tab => (
+        {(['roster', 'attendance'] as const).map((tab: any) => (
           <button
             key={tab}
             onClick={() => setActiveTab(tab)}

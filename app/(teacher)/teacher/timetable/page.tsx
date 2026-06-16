@@ -122,7 +122,7 @@ export default function TeacherTimetablePage() {
   const todayEntries = useMemo(() => {
     if (!todayStr || !timetable) return []
     return timetable
-      .filter(e => e.day_of_week === todayStr)
+      .filter((e: any) => e.day_of_week === todayStr)
       .sort((a, b) => a.start_time.localeCompare(b.start_time))
   }, [timetable, todayStr])
 
@@ -130,7 +130,7 @@ export default function TeacherTimetablePage() {
     if (!todayEntries.length || currentPeriodIndex < 0) return null
     const now = new Date()
     const nowMin = now.getHours() * 60 + now.getMinutes()
-    const upcoming = todayEntries.filter(e => {
+    const upcoming = todayEntries.filter((e: any) => {
       const [h, m] = e.start_time.split(':').map(Number)
       return h * 60 + m > nowMin
     })
@@ -142,7 +142,7 @@ export default function TeacherTimetablePage() {
     if (!todayEntries.length || currentPeriodIndex < 0) return null
     const now = new Date()
     const nowMin = now.getHours() * 60 + now.getMinutes()
-    return todayEntries.find(e => {
+    return todayEntries.find((e: any) => {
       const [sH, sM] = e.start_time.split(':').map(Number)
       const [eH, eM] = e.end_time.split(':').map(Number)
       return nowMin >= sH * 60 + sM && nowMin < eH * 60 + eM
@@ -158,7 +158,7 @@ export default function TeacherTimetablePage() {
     return map
   }, [timetable])
 
-  const selectedSection = sections?.find(s => s.section_id === selectedSectionId)
+  const selectedSection = sections?.find((s: any) => s.section_id === selectedSectionId)
 
   if (classesLoading) {
     return (
@@ -180,7 +180,7 @@ export default function TeacherTimetablePage() {
           <Select value={selectedSectionId} onValueChange={setSelectedSectionId}>
             <SelectTrigger className="w-[260px]"><SelectValue placeholder="Select your section" /></SelectTrigger>
             <SelectContent>
-              {sections.map(s => (
+              {sections.map((s: any) => (
                 <SelectItem key={s.section_id} value={s.section_id}>
                   {s.class_name} - {s.section_name}
                 </SelectItem>
@@ -308,7 +308,7 @@ export default function TeacherTimetablePage() {
               <p className="text-sm font-medium mb-2">Assigned Subjects</p>
               {subjectData?.subjects && subjectData.subjects.length > 0 ? (
                 <div className="space-y-1.5">
-                  {subjectData.subjects.map(s => (
+                  {subjectData.subjects.map((s: any) => (
                     <div key={s.id} className="flex items-center justify-between p-2.5 rounded-lg border border-gray-100">
                       <span className="text-sm font-medium">{s.name}{s.code ? ` (${s.code})` : ''}</span>
                       <Button variant="ghost" size="icon" className="h-7 w-7 text-red-500 hover:text-red-700"
@@ -329,7 +329,7 @@ export default function TeacherTimetablePage() {
               <p className="text-sm font-medium mb-2">Add More Subjects</p>
               {availableSubjects && availableSubjects.length > 0 ? (
                 <div className="space-y-1.5">
-                  {availableSubjects.map(s => (
+                  {availableSubjects.map((s: any) => (
                     <div key={s.id} className="flex items-center justify-between p-2.5 rounded-lg border border-gray-100">
                       <span className="text-sm">{s.name}{s.code ? ` (${s.code})` : ''}</span>
                       <Button size="sm" variant="outline" className="h-7 text-xs"
@@ -381,7 +381,7 @@ export default function TeacherTimetablePage() {
                       {di === todayIndex && <Badge variant="outline" className="ml-2 text-[10px]">Today</Badge>}
                     </h4>
                     <div className="space-y-1.5">
-                      {dayEntries_list.map(e => (
+                      {dayEntries_list.map((e: any) => (
                         <div key={e.id} className="flex items-center gap-3 p-2.5 rounded-lg border border-gray-100 hover:bg-gray-50 transition-colors">
                           <Badge variant="outline" className="w-16 text-center font-mono text-[10px] shrink-0">
                             {e.start_time.slice(0, 5)}

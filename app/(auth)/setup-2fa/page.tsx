@@ -92,11 +92,11 @@ export default function Setup2FAPage() {
 
       const codes = Array.from({ length: 10 }, () => {
         const buf = crypto.getRandomValues(new Uint8Array(4))
-        return Array.from(buf).map(b => b.toString(16).padStart(2, '0').toUpperCase()).join('').match(/.{4}/g)!.join('-')
+        return Array.from(buf).map((b: any) => b.toString(16).padStart(2, '0').toUpperCase()).join('').match(/.{4}/g)!.join('-')
       })
 
       const { hashBackupCode } = await import('@/lib/security/encryption')
-      const hashedCodes = await Promise.all(codes.map(c => hashBackupCode(c)))
+      const hashedCodes = await Promise.all(codes.map((c: any) => hashBackupCode(c)))
 
       const { data: { user } } = await supabase.auth.getUser()
       if (!user) throw new Error('Not authenticated')

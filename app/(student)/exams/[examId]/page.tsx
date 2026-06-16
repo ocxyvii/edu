@@ -152,7 +152,7 @@ export default function OnlineExamEngine() {
     submitMutation.mutate()
   }
 
-  const answeredCount = Object.values(answers).filter(v => v !== '' && v !== undefined).length
+  const answeredCount = Object.values(answers).filter((v: any) => v !== '' && v !== undefined).length
   const progress = questions.length > 0 ? (answeredCount / questions.length) * 100 : 0
   const currentQuestion = questions[currentIndex]
 
@@ -284,7 +284,7 @@ export default function OnlineExamEngine() {
                 value={answers[currentQuestion.id] ?? ''}
                 onValueChange={(v) => handleAnswer(currentQuestion.id, v)}
               >
-                {['True', 'False'].map(opt => (
+                {['True', 'False'].map((opt: any) => (
                   <div key={opt} className="flex items-center space-x-2 p-3 rounded-lg border hover:bg-gray-50 cursor-pointer">
                     <RadioGroupItem value={opt.toLowerCase()} id={`${currentQuestion.id}-${opt}`} />
                     <Label htmlFor={`${currentQuestion.id}-${opt}`} className="flex-1 cursor-pointer">{opt}</Label>

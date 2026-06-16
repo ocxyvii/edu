@@ -100,7 +100,7 @@ export default function AttendancePage() {
                 <span className="flex items-center gap-1"><span className="w-3 h-3 rounded bg-blue-400" /> Excused</span>
               </div>
               <div className="grid grid-cols-7 gap-1">
-                {['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map(d => (
+                {['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map((d: any) => (
                   <div key={d} className="text-center text-xs font-medium text-muted-foreground py-1">{d}</div>
                 ))}
                 {calendarDays.map((day, i) => (

@@ -33,11 +33,11 @@ export default function SuperAdminFinancePage() {
             .eq('school_id', school.id)
             .eq('is_active', true)
 
-          const total = invoices?.reduce((s, i) => s + Number(i.amount), 0) ?? 0
-          const collected = invoices?.reduce((s, i) => s + Number(i.paid_amount), 0) ?? 0
-          const outstanding = invoices?.reduce((s, i) => s + Number(i.balance), 0) ?? 0
-          const overdueCount = invoices?.filter(i => i.status === 'overdue').length ?? 0
-          const paidCount = invoices?.filter(i => i.status === 'paid').length ?? 0
+          const total = invoices?.reduce((s: any, i: any) => s + Number(i.amount), 0) ?? 0
+          const collected = invoices?.reduce((s: any, i: any) => s + Number(i.paid_amount), 0) ?? 0
+          const outstanding = invoices?.reduce((s: any, i: any) => s + Number(i.balance), 0) ?? 0
+          const overdueCount = invoices?.filter((i: any) => i.status === 'overdue').length ?? 0
+          const paidCount = invoices?.filter((i: any) => i.status === 'paid').length ?? 0
           const invoiceCount = invoices?.length ?? 0
 
           return {
@@ -76,15 +76,15 @@ export default function SuperAdminFinancePage() {
         const month = d.getMonth()
         const year = d.getFullYear()
         const collected = (payments ?? [])
-          .filter(p => {
+          .filter((p: any) => {
             const pd = new Date(p.paid_at)
             return pd.getMonth() === month && pd.getFullYear() === year
           })
-          .reduce((s, p) => s + Number(p.amount), 0)
+          .reduce((s: any, p: any) => s + Number(p.amount), 0)
         monthlyTrend.push({ month: monthNames[month], collected })
       }
 
-      const totalPlatformCollected = (payments ?? []).reduce((s, p) => s + Number(p.amount), 0)
+      const totalPlatformCollected = (payments ?? []).reduce((s: any, p: any) => s + Number(p.amount), 0)
 
       return { monthlyTrend, totalPlatformCollected }
     },

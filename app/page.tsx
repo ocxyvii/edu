@@ -155,7 +155,7 @@ export default function LandingPage() {
               { label: 'Active Students', value: '25,000+' },
               { label: 'Teachers', value: '2,000+' },
               { label: 'Parents Connected', value: '15,000+' },
-            ].map(stat => (
+            ].map((stat: any) => (
               <div key={stat.label}>
                 <p className="text-2xl font-bold text-edu-blue-600">{stat.value}</p>
                 <p className="text-sm text-gray-500 mt-1">{stat.label}</p>

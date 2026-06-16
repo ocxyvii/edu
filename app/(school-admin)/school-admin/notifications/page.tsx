@@ -58,7 +58,7 @@ export default function NotificationsPage() {
 
       if (!allUsers?.length) throw new Error('No users found')
 
-      const notificationsData = allUsers.map(u => ({
+      const notificationsData = allUsers.map((u: any) => ({
         user_id: u.id,
         school_id: profile?.school_id,
         title: form.title,
@@ -78,7 +78,7 @@ export default function NotificationsPage() {
     onError: (e: Error) => toast.error(e.message),
   })
 
-  const unreadCount = notifications?.filter(n => !n.is_read).length ?? 0
+  const unreadCount = notifications?.filter((n: any) => !n.is_read).length ?? 0
 
   return (
     <div className="space-y-6">
@@ -125,7 +125,7 @@ export default function NotificationsPage() {
             <div>
               <label className="text-sm font-medium">Type</label>
               <div className="flex gap-2 mt-1">
-                {(['info', 'success', 'warning', 'error'] as const).map(t => (
+                {(['info', 'success', 'warning', 'error'] as const).map((t: any) => (
                   <button
                     key={t}
                     onClick={() => setForm(f => ({ ...f, type: t }))}

@@ -59,7 +59,7 @@ export default function TeachersPage() {
     let result = [...teachers]
     if (search) {
       const q = search.toLowerCase()
-      result = result.filter(t =>
+      result = result.filter((t: any) =>
         t.profiles?.first_name?.toLowerCase().includes(q) ||
         t.profiles?.last_name?.toLowerCase().includes(q) ||
         t.employee_number?.toLowerCase().includes(q) ||

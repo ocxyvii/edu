@@ -121,7 +121,7 @@ export default function StudentDashboard() {
 
       {/* KPI Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-        {kpis.map(kpi => {
+        {kpis.map((kpi: any) => {
           const Icon = kpi.icon
           return (
             <Card key={kpi.label}>

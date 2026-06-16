@@ -150,7 +150,7 @@ export default function StudentExamsPage() {
               <h2 className="text-xl font-semibold text-green-700 flex items-center gap-2">
                 <Play className="h-5 w-5" /> Active Exams
               </h2>
-              {categorized.ongoing.map(e => renderExamCard(e, 'ongoing'))}
+              {categorized.ongoing.map((e: any) => renderExamCard(e, 'ongoing'))}
             </div>
           )}
 
@@ -159,7 +159,7 @@ export default function StudentExamsPage() {
               <h2 className="text-xl font-semibold text-blue-700 flex items-center gap-2">
                 <Clock className="h-5 w-5" /> Upcoming Exams
               </h2>
-              {categorized.upcoming.map(e => renderExamCard(e, 'upcoming'))}
+              {categorized.upcoming.map((e: any) => renderExamCard(e, 'upcoming'))}
             </div>
           )}
 
@@ -168,7 +168,7 @@ export default function StudentExamsPage() {
               <h2 className="text-xl font-semibold text-gray-700 flex items-center gap-2">
                 <CheckCircle className="h-5 w-5" /> Completed Exams
               </h2>
-              {categorized.completed.map(e => renderExamCard(e, 'completed'))}
+              {categorized.completed.map((e: any) => renderExamCard(e, 'completed'))}
             </div>
           )}
         </>

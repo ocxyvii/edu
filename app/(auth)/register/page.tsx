@@ -168,7 +168,7 @@ export default function RegisterPage() {
 
   // ── Auto-fill school name / slug when school changes ──
   useEffect(() => {
-    const school = schools.find(s => s.id === form.schoolId)
+    const school = schools.find((s: any) => s.id === form.schoolId)
     if (school) {
       setForm(prev => ({
         ...prev,
@@ -185,7 +185,7 @@ export default function RegisterPage() {
   // ── Auto-select current academic year ──
   useEffect(() => {
     if (academicYears.length > 0 && !form.academicYearId) {
-      const current = academicYears.find(y => y.is_current)
+      const current = academicYears.find((y: any) => y.is_current)
       if (current) {
         setForm(prev => ({ ...prev, academicYearId: current.id, academicYearName: current.name }))
       }
@@ -194,7 +194,7 @@ export default function RegisterPage() {
 
   // ── Set academic year name when selected ──
   useEffect(() => {
-    const ay = academicYears.find(y => y.id === form.academicYearId)
+    const ay = academicYears.find((y: any) => y.id === form.academicYearId)
     if (ay) {
       setForm(prev => ({ ...prev, academicYearName: ay.name, classId: '', className: '' }))
     }
@@ -202,7 +202,7 @@ export default function RegisterPage() {
 
   // ── Set class name when selected ──
   useEffect(() => {
-    const cls = classes.find(c => c.id === form.classId)
+    const cls = classes.find((c: any) => c.id === form.classId)
     if (cls) setForm(prev => ({ ...prev, className: cls.name }))
   }, [form.classId, classes])
 
@@ -240,9 +240,9 @@ export default function RegisterPage() {
       else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.parentEmail)) errs.parentEmail = 'Invalid email'
     }
     if (s === 4) {
-      const hasTranscript = form.documents.some(d => d.type === 'transcript')
-      const hasBirthCert = form.documents.some(d => d.type === 'birth_certificate')
-      const hasPhoto = form.documents.some(d => d.type === 'passport_photo')
+      const hasTranscript = form.documents.some((d: any) => d.type === 'transcript')
+      const hasBirthCert = form.documents.some((d: any) => d.type === 'birth_certificate')
+      const hasPhoto = form.documents.some((d: any) => d.type === 'passport_photo')
       if (!hasTranscript) errs.transcript = 'Report card / transcript is required'
       if (!hasBirthCert) errs.birthCert = 'Birth certificate is required'
       if (!hasPhoto) errs.photo = 'Passport photo is required'
@@ -296,7 +296,7 @@ export default function RegisterPage() {
         }
         setForm(prev => ({
           ...prev,
-          documents: [...prev.documents.filter(d => d.type !== docType), doc],
+          documents: [...prev.documents.filter((d: any) => d.type !== docType), doc],
         }))
         toast.success(`${file.name} uploaded`)
       } catch (e: any) {
@@ -310,7 +310,7 @@ export default function RegisterPage() {
   }
 
   const removeDocument = (docType: ApplicationDocument['type']) => {
-    setForm(prev => ({ ...prev, documents: prev.documents.filter(d => d.type !== docType) }))
+    setForm(prev => ({ ...prev, documents: prev.documents.filter((d: any) => d.type !== docType) }))
   }
 
   // ── Submit ──
@@ -709,7 +709,7 @@ export default function RegisterPage() {
       </div>
 
       {docFields.map(({ key, label, desc, required }) => {
-        const doc = form.documents.find(d => d.type === key)
+        const doc = form.documents.find((d: any) => d.type === key)
         return (
           <div key={key} className="border rounded-lg p-4">
             <div className="flex items-start justify-between gap-3">
