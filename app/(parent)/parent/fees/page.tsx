@@ -59,7 +59,7 @@ export default function ParentFeesPage() {
   const payments = data?.payments ?? []
   const children = data?.children ?? []
 
-  const totalOutstanding = invoices.reduce((s, i) => s + Number(i.balance), 0)
+  const totalOutstanding = invoices.reduce((s: number, i: any) => s + Number(i.balance), 0)
 
   const openPayDialog = (inv: any) => {
     setSelectedInvoice(inv)
@@ -83,11 +83,11 @@ export default function ParentFeesPage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <Card>
               <CardHeader className="pb-2"><CardTitle className="text-sm font-medium">Total Invoiced</CardTitle></CardHeader>
-              <CardContent><div className="text-2xl font-bold">KES {invoices.reduce((s, i) => s + Number(i.amount), 0).toLocaleString()}</div></CardContent>
+              <CardContent><div className="text-2xl font-bold">KES {invoices.reduce((s: number, i: any) => s + Number(i.amount), 0).toLocaleString()}</div></CardContent>
             </Card>
             <Card>
               <CardHeader className="pb-2"><CardTitle className="text-sm font-medium">Total Paid</CardTitle></CardHeader>
-              <CardContent><div className="text-2xl font-bold text-green-600">KES {payments.reduce((s, p) => s + Number(p.amount), 0).toLocaleString()}</div></CardContent>
+              <CardContent><div className="text-2xl font-bold text-green-600">KES {payments.reduce((s: number, p: any) => s + Number(p.amount), 0).toLocaleString()}</div></CardContent>
             </Card>
             <Card>
               <CardHeader className="pb-2"><CardTitle className="text-sm font-medium">Outstanding</CardTitle></CardHeader>
@@ -98,7 +98,7 @@ export default function ParentFeesPage() {
           {children.map((child: any) => {
             const studentId = (child as any).students?.id
             const studentName = `${(child as any).students?.profiles?.first_name} ${(child as any).students?.profiles?.last_name}`
-            const childInvoices = invoices.filter(i => i.student_id === studentId)
+            const childInvoices = invoices.filter((i: any) => i.student_id === studentId)
 
             if (childInvoices.length === 0) return null
 
@@ -109,7 +109,7 @@ export default function ParentFeesPage() {
                   <CardDescription>Fee invoices</CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-3">
-                  {childInvoices.map(inv => (
+                  {childInvoices.map((inv: any) => (
                     <div key={inv.id} className="flex items-center justify-between p-4 rounded-lg border border-gray-100">
                       <div>
                         <p className="font-medium">{inv.description || (inv.fee_structures as any)?.name || 'Fee Invoice'}</p>
@@ -141,8 +141,8 @@ export default function ParentFeesPage() {
               <CardHeader><CardTitle>Payment History</CardTitle></CardHeader>
               <CardContent>
                 <div className="space-y-3">
-                  {payments.map(p => {
-                    const inv = invoices.find(i => i.id === p.invoice_id)
+                  {payments.map((p: any) => {
+                    const inv = invoices.find((i: any) => i.id === p.invoice_id)
                     const child = (child: any) => (child as any).students?.id === inv?.student_id
                     const childName = children.find(child) as any
                     return (
