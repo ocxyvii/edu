@@ -417,7 +417,7 @@ export default function ChildDetailPage({ params }: { params: Promise<{ id: stri
                       <tbody>
                         {feesData.invoices.map((inv: any) => (
                           <tr key={inv.id} className="border-b border-gray-50">
-                            <td className="py-3">{inv.fee_structures?.name || inv.description || 'Fee'}</td>
+                            <td className="py-3">{(inv.fee_structures as any)?.name || inv.description || 'Fee'}</td>
                             <td className="py-3 text-right">KES {Number(inv.amount).toLocaleString()}</td>
                             <td className="py-3 text-right">KES {Number(inv.paid_amount).toLocaleString()}</td>
                             <td className="py-3 text-right font-medium">{Number(inv.balance) > 0 ? `KES ${Number(inv.balance).toLocaleString()}` : '—'}</td>

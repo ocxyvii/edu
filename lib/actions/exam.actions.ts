@@ -206,7 +206,7 @@ export async function publishResults(examId: string) {
   revalidatePath(`/school-admin/exams/${examId}/results`)
 }
 
-export async function generateReportCard(studentId: string, examId: string) {
+export async function generateReportCard(studentId: string, examId: string): Promise<any> {
   const { supabase, schoolId } = await getAuthContext()
 
   const { data: exam } = await supabase

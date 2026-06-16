@@ -19,7 +19,7 @@ async function getTeacherContext() {
 
 // ── Section roster ──────────────────────────────────────────
 
-export async function getSectionRoster(sectionId: string) {
+export async function getSectionRoster(sectionId: string): Promise<any> {
   const { supabase, schoolId } = await getTeacherContext()
 
   const { data: section } = await supabase
@@ -112,7 +112,7 @@ export async function getSectionRoster(sectionId: string) {
 
 // ── Student detail ──────────────────────────────────────────
 
-export async function getStudentDetail(studentId: string) {
+export async function getStudentDetail(studentId: string): Promise<any> {
   const { supabase, schoolId } = await getTeacherContext()
 
   const { data: student } = await supabase
@@ -199,7 +199,7 @@ export async function addTeacherNote(data: z.infer<typeof AddNoteSchema>) {
   revalidatePath(`/teacher/classes`)
 }
 
-export async function getTeacherNotes(studentId: string) {
+export async function getTeacherNotes(studentId: string): Promise<any> {
   const { supabase, userId } = await getTeacherContext()
 
   const { data } = await supabase
@@ -225,7 +225,7 @@ export async function deleteTeacherNote(noteId: string) {
 
 // ── Attendance history for a student ────────────────────────
 
-export async function getStudentAttendanceHistory(studentId: string, months = 3) {
+export async function getStudentAttendanceHistory(studentId: string, months = 3): Promise<any> {
   const { supabase, schoolId } = await getTeacherContext()
 
   const startDate = new Date()

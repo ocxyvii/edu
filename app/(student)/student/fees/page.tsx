@@ -106,7 +106,7 @@ export default function StudentFeesPage() {
                   {arrears.invoices.map((inv: any) => (
                     <div key={inv.id} className="flex items-center justify-between p-3 rounded bg-white border border-red-200">
                       <div>
-                        <p className="font-medium text-sm">{inv.fee_structures?.name || 'Fee'}</p>
+                        <p className="font-medium text-sm">{(inv.fee_structures as any)?.name || 'Fee'}</p>
                         <p className="text-xs text-red-600">
                           {inv.invoice_number} · Due: {inv.due_date ? format(new Date(inv.due_date), 'MMM d, yyyy') : 'N/A'}
                         </p>
@@ -155,12 +155,12 @@ export default function StudentFeesPage() {
                     <div key={inv.id} className="flex items-center justify-between p-4 rounded-lg border">
                       <div className="flex-1">
                         <div className="flex items-center gap-2">
-                          <p className="font-medium">{inv.fee_structures?.name || inv.description || 'Fee Invoice'}</p>
+                          <p className="font-medium">{(inv.fee_structures as any)?.name || inv.description || 'Fee Invoice'}</p>
                           {inv.status === 'paid' && <CheckCircle className="h-4 w-4 text-green-500" />}
                         </div>
                         <p className="text-xs text-muted-foreground mt-0.5">
                           {inv.invoice_number && <span className="font-mono">{inv.invoice_number} · </span>}
-                          {inv.fee_structures?.fee_type && <span className="capitalize">{inv.fee_structures.fee_type} · </span>}
+                          {(inv.fee_structures as any)?.fee_type && <span className="capitalize">{(inv.fee_structures as any).fee_type} · </span>}
                           Due: {inv.due_date ? format(new Date(inv.due_date), 'MMM d, yyyy') : 'Not set'}
                         </p>
                       </div>

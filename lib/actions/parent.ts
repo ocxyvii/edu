@@ -45,7 +45,7 @@ async function verifyChildOwnership(studentId: string) {
 
 // ── Dashboard ──────────────────────────────────────────────
 
-export async function getParentDashboard() {
+export async function getParentDashboard(): Promise<any> {
   const supabase = await createClient()
   const { data: { user } } = await supabase.auth.getUser()
   if (!user) throw new Error('Not authenticated')
@@ -149,7 +149,7 @@ export async function getParentDashboard() {
 
 // ── Child Attendance ───────────────────────────────────────
 
-export async function getChildAttendance(studentId: string, month?: number, year?: number) {
+export async function getChildAttendance(studentId: string, month?: number, year?: number): Promise<any> {
   const { supabase } = await getParentContext()
   await verifyChildOwnership(studentId)
 
@@ -183,7 +183,7 @@ export async function getChildAttendance(studentId: string, month?: number, year
 
 // ── Child Results ──────────────────────────────────────────
 
-export async function getChildResults(studentId: string) {
+export async function getChildResults(studentId: string): Promise<any> {
   const supabase = await createClient()
   const { data: { user } } = await supabase.auth.getUser()
   if (!user) throw new Error('Not authenticated')
@@ -205,7 +205,7 @@ export async function getChildResults(studentId: string) {
 
 // ── Child Fees ─────────────────────────────────────────────
 
-export async function getChildFees(studentId: string) {
+export async function getChildFees(studentId: string): Promise<any> {
   const supabase = await createClient()
   const { data: { user } } = await supabase.auth.getUser()
   if (!user) throw new Error('Not authenticated')
@@ -247,7 +247,7 @@ export async function getChildFees(studentId: string) {
 
 // ── Child Assignments ──────────────────────────────────────
 
-export async function getChildAssignments(studentId: string, filterStatus?: string) {
+export async function getChildAssignments(studentId: string, filterStatus?: string): Promise<any> {
   const supabase = await createClient()
   const { data: { user } } = await supabase.auth.getUser()
   if (!user) throw new Error('Not authenticated')
@@ -300,7 +300,7 @@ export async function getChildAssignments(studentId: string, filterStatus?: stri
 
 // ── Child Teachers ─────────────────────────────────────────
 
-export async function getChildTeachers(studentId: string) {
+export async function getChildTeachers(studentId: string): Promise<any> {
   const supabase = await createClient()
   const { data: { user } } = await supabase.auth.getUser()
   if (!user) throw new Error('Not authenticated')
@@ -349,7 +349,7 @@ export async function getChildTeachers(studentId: string) {
 
 // ── Child Detail ───────────────────────────────────────────
 
-export async function getChildDetail(studentId: string) {
+export async function getChildDetail(studentId: string): Promise<any> {
   const supabase = await createClient()
   const { data: { user } } = await supabase.auth.getUser()
   if (!user) throw new Error('Not authenticated')
@@ -396,7 +396,7 @@ export async function getChildDetail(studentId: string) {
 
 // ── Parent Fees (all children) ─────────────────────────────
 
-export async function getParentFees() {
+export async function getParentFees(): Promise<any> {
   const supabase = await createClient()
   const { data: { user } } = await supabase.auth.getUser()
   if (!user) throw new Error('Not authenticated')
@@ -497,7 +497,7 @@ export async function processPayment(data: {
 
 // ── Parent Teachers (all children) ─────────────────────────
 
-export async function getParentTeachers() {
+export async function getParentTeachers(): Promise<any> {
   const supabase = await createClient()
   const { data: { user } } = await supabase.auth.getUser()
   if (!user) throw new Error('Not authenticated')
@@ -564,7 +564,7 @@ export async function sendParentMessage(data: { recipient_id: string; subject?: 
 
 // ── Messages ───────────────────────────────────────────────
 
-export async function getParentMessages() {
+export async function getParentMessages(): Promise<any> {
   const supabase = await createClient()
   const { userId, schoolId } = await getParentContext()
 
@@ -613,7 +613,7 @@ export async function getUnreadMessageCount() {
 
 // ── Announcements ──────────────────────────────────────────
 
-export async function getParentAnnouncements() {
+export async function getParentAnnouncements(): Promise<any> {
   const supabase = await createClient()
   const { schoolId } = await getParentContext()
 

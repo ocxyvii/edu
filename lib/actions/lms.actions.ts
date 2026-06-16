@@ -117,7 +117,7 @@ export async function updateCourse(id: string, data: z.infer<typeof UpdateCourse
   revalidatePath('/teacher/courses')
 }
 
-export async function getTeacherCourses() {
+export async function getTeacherCourses(): Promise<any> {
   const { supabase, userId, schoolId } = await getTeacherContext()
 
   const { data: courses } = await supabase
@@ -151,7 +151,7 @@ export async function getTeacherCourses() {
   }))
 }
 
-export async function getCourse(id: string) {
+export async function getCourse(id: string): Promise<any> {
   const { supabase, schoolId } = await getTeacherContext()
 
   const { data: course, error } = await supabase
@@ -172,7 +172,7 @@ export async function getCourse(id: string) {
   return { ...course, materials: materials ?? [] }
 }
 
-export async function getTeachersSubjects() {
+export async function getTeachersSubjects(): Promise<any> {
   const { supabase, userId, schoolId } = await getTeacherContext()
 
   const { data } = await supabase
@@ -184,7 +184,7 @@ export async function getTeachersSubjects() {
   return data?.map((ts: any) => ts.subjects) ?? []
 }
 
-export async function getTeachersClassesForSubject(subjectId: string) {
+export async function getTeachersClassesForSubject(subjectId: string): Promise<any> {
   const { supabase, userId, schoolId } = await getTeacherContext()
 
   const { data: subjects } = await supabase
@@ -198,7 +198,7 @@ export async function getTeachersClassesForSubject(subjectId: string) {
   return [subjects.classes]
 }
 
-export async function getClassesForSchool() {
+export async function getClassesForSchool(): Promise<any> {
   const { supabase, schoolId } = await getTeacherContext()
 
   const { data } = await supabase
@@ -442,7 +442,7 @@ export async function getQuestionsForSubject(subjectId: string) {
 
 // ── Student Course Access ─────────────────────────────────────
 
-export async function getStudentCourses() {
+export async function getStudentCourses(): Promise<any> {
   const { supabase, schoolId, classId } = await getStudentContext()
 
   const { data: courses } = await supabase
@@ -472,7 +472,7 @@ export async function getStudentCourses() {
   }))
 }
 
-export async function getStudentCourseDetail(courseId: string) {
+export async function getStudentCourseDetail(courseId: string): Promise<any> {
   const { supabase, schoolId, studentId, classId } = await getStudentContext()
 
   const { data: course, error } = await supabase
@@ -524,7 +524,7 @@ export async function getStudentCourseDetail(courseId: string) {
   }
 }
 
-export async function getStudentCourseProgress(courseId: string) {
+export async function getStudentCourseProgress(courseId: string): Promise<any> {
   const { supabase, schoolId, studentId } = await getStudentContext()
 
   const { data: materials } = await supabase
@@ -597,7 +597,7 @@ export async function trackProgress(materialId: string, progressPercent: number)
   if (error) throw new Error(error.message)
 }
 
-export async function getTeachersWithSubjects() {
+export async function getTeachersWithSubjects(): Promise<any> {
   const { supabase, schoolId } = await getTeacherContext()
 
   const { data } = await supabase

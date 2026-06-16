@@ -18,7 +18,7 @@ async function getSchoolId() {
 
 // ── Dashboard ────────────────────────────────────────────────
 
-export async function getDashboardStats() {
+export async function getDashboardStats(): Promise<any> {
   const supabase = await createClient()
   const schoolId = await getSchoolId()
   const today = new Date().toISOString().split('T')[0]
@@ -81,7 +81,7 @@ export async function getDashboardStats() {
   }
 }
 
-export async function getWeeklyAttendance() {
+export async function getWeeklyAttendance(): Promise<any> {
   const supabase = await createClient()
   const schoolId = await getSchoolId()
   const days = []
@@ -102,7 +102,7 @@ export async function getWeeklyAttendance() {
   }))
 }
 
-export async function getMonthlyFees() {
+export async function getMonthlyFees(): Promise<any> {
   const supabase = await createClient()
   const schoolId = await getSchoolId()
   const months = []
@@ -129,7 +129,7 @@ export async function getMonthlyFees() {
 
 // ── Academic Years ────────────────────────────────────────────
 
-export async function getAcademicYears() {
+export async function getAcademicYears(): Promise<any> {
   const supabase = await createClient()
   const schoolId = await getSchoolId()
   const { data } = await supabase
@@ -190,7 +190,7 @@ export async function setCurrentAcademicYear(id: string) {
 
 // ── Terms ────────────────────────────────────────────────────
 
-export async function getTerms(academicYearId: string) {
+export async function getTerms(academicYearId: string): Promise<any> {
   const supabase = await createClient()
   const schoolId = await getSchoolId()
   const { data } = await supabase
@@ -238,7 +238,7 @@ export async function setCurrentTerm(id: string) {
   revalidatePath('/school-admin/academic')
 }
 
-export async function getCurrentAcademicYear() {
+export async function getCurrentAcademicYear(): Promise<any> {
   const supabase = await createClient()
   const schoolId = await getSchoolId()
   const { data } = await supabase
@@ -250,7 +250,7 @@ export async function getCurrentAcademicYear() {
   return data ?? null
 }
 
-export async function getCurrentTerm() {
+export async function getCurrentTerm(): Promise<any> {
   const supabase = await createClient()
   const schoolId = await getSchoolId()
   const { data } = await supabase
@@ -264,7 +264,7 @@ export async function getCurrentTerm() {
 
 // ── Classes ──────────────────────────────────────────────────
 
-export async function getClasses() {
+export async function getClasses(): Promise<any> {
   const supabase = await createClient()
   const schoolId = await getSchoolId()
 
@@ -427,7 +427,7 @@ export async function deleteSection(id: string) {
 
 // ── Students ─────────────────────────────────────────────────
 
-export async function getStudents() {
+export async function getStudents(): Promise<any> {
   const supabase = await createClient()
   const schoolId = await getSchoolId()
   const { data } = await supabase
@@ -438,7 +438,7 @@ export async function getStudents() {
   return data ?? []
 }
 
-export async function getStudent(id: string) {
+export async function getStudent(id: string): Promise<any> {
   const supabase = await createClient()
   const schoolId = await getSchoolId()
   const { data } = await supabase
@@ -450,7 +450,7 @@ export async function getStudent(id: string) {
   return data
 }
 
-export async function getStudentsByClass(classId: string) {
+export async function getStudentsByClass(classId: string): Promise<any> {
   const supabase = await createClient()
   const schoolId = await getSchoolId()
   const { data } = await supabase
@@ -588,7 +588,7 @@ export async function deleteStudent(id: string) {
 
 // ── Teachers ─────────────────────────────────────────────────
 
-export async function getTeachers() {
+export async function getTeachers(): Promise<any> {
   const supabase = await createClient()
   const schoolId = await getSchoolId()
   const { data } = await supabase
@@ -599,7 +599,7 @@ export async function getTeachers() {
   return data ?? []
 }
 
-export async function getTeacher(id: string) {
+export async function getTeacher(id: string): Promise<any> {
   const supabase = await createClient()
   const schoolId = await getSchoolId()
   const { data } = await supabase
@@ -783,7 +783,7 @@ export async function deleteTeacher(id: string) {
 
 // ── Subjects ─────────────────────────────────────────────────
 
-export async function getSubjects() {
+export async function getSubjects(): Promise<any> {
   const supabase = await createClient()
   const schoolId = await getSchoolId()
   const { data } = await supabase.from('subjects').select('*').eq('school_id', schoolId).order('name')
@@ -804,7 +804,7 @@ export async function createSubject(data: { name: string; code: string; descript
 
 // ── Fees ─────────────────────────────────────────────────────
 
-export async function getFeeStructures() {
+export async function getFeeStructures(): Promise<any> {
   const supabase = await createClient()
   const schoolId = await getSchoolId()
   const { data } = await supabase
@@ -896,7 +896,7 @@ export async function generateInvoices(data: {
   revalidatePath('/school-admin/fees')
 }
 
-export async function getFeeInvoices() {
+export async function getFeeInvoices(): Promise<any> {
   const supabase = await createClient()
   const schoolId = await getSchoolId()
   const { data } = await supabase
@@ -908,7 +908,7 @@ export async function getFeeInvoices() {
   return data ?? []
 }
 
-export async function getFeeInvoicesByClass(classId: string) {
+export async function getFeeInvoicesByClass(classId: string): Promise<any> {
   const supabase = await createClient()
   const schoolId = await getSchoolId()
   const { data } = await supabase
@@ -944,7 +944,7 @@ export async function recordPayment(data: {
   revalidatePath('/school-admin/fees')
 }
 
-export async function getFeeSummary() {
+export async function getFeeSummary(): Promise<any> {
   const supabase = await createClient()
   const schoolId = await getSchoolId()
   const { data: invoices } = await supabase
@@ -961,7 +961,7 @@ export async function getFeeSummary() {
 
 // ── Timetable ────────────────────────────────────────────────
 
-export async function getTimetable(sectionId: string) {
+export async function getTimetable(sectionId: string): Promise<any> {
   const supabase = await createClient()
   const schoolId = await getSchoolId()
   const { data } = await supabase
@@ -1026,7 +1026,7 @@ export async function deleteTimetableEntry(id: string) {
 
 // ── Notifications ────────────────────────────────────────────
 
-export async function getUnreadNotificationCount() {
+export async function getUnreadNotificationCount(): Promise<any> {
   const supabase = await createClient()
   const { data: { user } } = await supabase.auth.getUser()
   if (!user) return 0
@@ -1040,7 +1040,7 @@ export async function getUnreadNotificationCount() {
 
 // ── School Info ──────────────────────────────────────────────
 
-export async function getSchool() {
+export async function getSchool(): Promise<any> {
   const supabase = await createClient()
   const schoolId = await getSchoolId()
   const { data } = await supabase.from('schools').select('*').eq('id', schoolId).single()

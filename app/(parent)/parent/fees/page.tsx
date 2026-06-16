@@ -112,9 +112,9 @@ export default function ParentFeesPage() {
                   {childInvoices.map(inv => (
                     <div key={inv.id} className="flex items-center justify-between p-4 rounded-lg border border-gray-100">
                       <div>
-                        <p className="font-medium">{inv.description || inv.fee_structures?.name || 'Fee Invoice'}</p>
+                        <p className="font-medium">{inv.description || (inv.fee_structures as any)?.name || 'Fee Invoice'}</p>
                         <p className="text-xs text-muted-foreground">
-                          {inv.fee_structures?.fee_type ? `${inv.fee_structures.fee_type} · ` : ''}
+                          {(inv.fee_structures as any)?.fee_type ? `${(inv.fee_structures as any).fee_type} · ` : ''}
                           Due: {inv.due_date ? format(new Date(inv.due_date), 'MMM d, yyyy') : 'Not set'}
                         </p>
                       </div>
@@ -174,7 +174,7 @@ export default function ParentFeesPage() {
             <DialogTitle>Make Payment</DialogTitle>
             <DialogDescription>
               {selectedInvoice && (
-                <>Invoice: {selectedInvoice.description || selectedInvoice.fee_structures?.name || 'Fee'} · Balance: KES {Number(selectedInvoice.balance).toLocaleString()}</>
+                <>Invoice: {selectedInvoice.description || (selectedInvoice.fee_structures as any)?.name || 'Fee'} · Balance: KES {Number(selectedInvoice.balance).toLocaleString()}</>
               )}
             </DialogDescription>
           </DialogHeader>

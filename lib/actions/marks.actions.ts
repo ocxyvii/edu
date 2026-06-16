@@ -69,7 +69,7 @@ export async function saveMarks(data: z.infer<typeof BulkMarksEntrySchema>) {
   return { count: parsed.entries.length }
 }
 
-export async function getMarksForExam(examId: string, subjectId: string, classId?: string) {
+export async function getMarksForExam(examId: string, subjectId: string, classId?: string): Promise<any> {
   const { supabase, schoolId } = await getAuthContext()
 
   let query = supabase
@@ -107,7 +107,7 @@ export async function getMarksForExam(examId: string, subjectId: string, classId
   }
 }
 
-export async function getAllMarksForExam(examId: string) {
+export async function getAllMarksForExam(examId: string): Promise<any> {
   const { supabase, schoolId } = await getAuthContext()
 
   const { data: exam } = await supabase

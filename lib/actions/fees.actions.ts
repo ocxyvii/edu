@@ -167,7 +167,7 @@ export async function getInvoices(filters?: {
   status?: string
   fee_structure_id?: string
   student_id?: string
-}) {
+}): Promise<any> {
   const supabase = await createClient()
   const schoolId = await getSchoolId()
 
@@ -187,7 +187,7 @@ export async function getInvoices(filters?: {
   return data ?? []
 }
 
-export async function getInvoice(id: string) {
+export async function getInvoice(id: string): Promise<any> {
   const supabase = await createClient()
   const schoolId = await getSchoolId()
   const { data } = await supabase

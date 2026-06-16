@@ -32,7 +32,7 @@ const AttendanceReportSchema = z.object({
   dateRange: DateRangeSchema.optional(),
 })
 
-export async function getAttendanceReport(opts: z.infer<typeof AttendanceReportSchema> = {}) {
+export async function getAttendanceReport(opts: z.infer<typeof AttendanceReportSchema> = {}): Promise<any> {
   const { supabase, schoolId } = await getAuthContext()
   const { classId, sectionId, dateRange } = AttendanceReportSchema.parse(opts)
 
@@ -153,7 +153,7 @@ const AcademicReportSchema = z.object({
   classId: z.string().optional(),
 })
 
-export async function getAcademicPerformanceReport(opts: z.infer<typeof AcademicReportSchema>) {
+export async function getAcademicPerformanceReport(opts: z.infer<typeof AcademicReportSchema>): Promise<any> {
   const { supabase, schoolId } = await getAuthContext()
   const { examId, classId } = AcademicReportSchema.parse(opts)
 
@@ -299,7 +299,7 @@ const FeeReportSchema = z.object({
   dateRange: DateRangeSchema.optional(),
 })
 
-export async function getFeeCollectionReport(opts: z.infer<typeof FeeReportSchema> = {}) {
+export async function getFeeCollectionReport(opts: z.infer<typeof FeeReportSchema> = {}): Promise<any> {
   const { supabase, schoolId } = await getAuthContext()
   const { termId, dateRange } = FeeReportSchema.parse(opts)
 
@@ -427,7 +427,7 @@ const StudentProgressSchema = z.object({
   academicYearId: z.string().optional(),
 })
 
-export async function getStudentProgressReport(opts: z.infer<typeof StudentProgressSchema>) {
+export async function getStudentProgressReport(opts: z.infer<typeof StudentProgressSchema>): Promise<any> {
   const { supabase, schoolId } = await getAuthContext()
   const { studentId, academicYearId } = StudentProgressSchema.parse(opts)
 
@@ -555,7 +555,7 @@ const OverviewSchema = z.object({
   academicYearId: z.string().optional(),
 })
 
-export async function getSchoolOverviewReport(opts: z.infer<typeof OverviewSchema> = {}) {
+export async function getSchoolOverviewReport(opts: z.infer<typeof OverviewSchema> = {}): Promise<any> {
   const { supabase, schoolId } = await getAuthContext()
   const { academicYearId } = OverviewSchema.parse(opts)
 
@@ -671,7 +671,7 @@ const TeacherPerformanceSchema = z.object({
   termId: z.string().optional(),
 })
 
-export async function getTeacherPerformanceReport(opts: z.infer<typeof TeacherPerformanceSchema> = {}) {
+export async function getTeacherPerformanceReport(opts: z.infer<typeof TeacherPerformanceSchema> = {}): Promise<any> {
   const { supabase, schoolId } = await getAuthContext()
   const { termId } = TeacherPerformanceSchema.parse(opts)
 

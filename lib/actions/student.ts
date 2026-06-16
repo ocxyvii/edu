@@ -37,7 +37,7 @@ async function getStudentInfo() {
 
 // ── Dashboard ────────────────────────────────────────────────
 
-export async function getStudentDashboard() {
+export async function getStudentDashboard(): Promise<any> {
   const supabase = await createClient()
   const { studentId, classId, sectionId, schoolId } = await getStudentInfo()
   const { data: classInfo } = await supabase
@@ -141,7 +141,7 @@ export async function getStudentDashboard() {
 
 // ── Timetable ────────────────────────────────────────────────
 
-export async function getStudentTimetable() {
+export async function getStudentTimetable(): Promise<any> {
   const supabase = await createClient()
   const { sectionId, schoolId } = await getStudentInfo()
 
@@ -158,7 +158,7 @@ export async function getStudentTimetable() {
 
 // ── Assignments ──────────────────────────────────────────────
 
-export async function getStudentAssignments() {
+export async function getStudentAssignments(): Promise<any> {
   const supabase = await createClient()
   const { classId, sectionId, schoolId, studentId } = await getStudentInfo()
 
@@ -209,7 +209,7 @@ export async function submitAssignment(data: {
 
 // ── Attendance ───────────────────────────────────────────────
 
-export async function getStudentAttendance() {
+export async function getStudentAttendance(): Promise<any> {
   const supabase = await createClient()
   const { studentId, schoolId } = await getStudentInfo()
 
@@ -237,7 +237,7 @@ export async function getStudentAttendance() {
 
 // ── Exams ────────────────────────────────────────────────────
 
-export async function getStudentExams() {
+export async function getStudentExams(): Promise<any> {
   const supabase = await createClient()
   const { classId, schoolId } = await getStudentInfo()
 
@@ -253,7 +253,7 @@ export async function getStudentExams() {
 
 // ── Results ──────────────────────────────────────────────────
 
-export async function getStudentResults() {
+export async function getStudentResults(): Promise<any> {
   const supabase = await createClient()
   const { studentId } = await getStudentInfo()
 
@@ -269,7 +269,7 @@ export async function getStudentResults() {
 
 // ── Fees ─────────────────────────────────────────────────────
 
-export async function getStudentFees() {
+export async function getStudentFees(): Promise<any> {
   const supabase = await createClient()
   const { studentId, schoolId } = await getStudentInfo()
 
@@ -322,7 +322,7 @@ export async function getStudentFees() {
   }
 }
 
-export async function getStudentPaymentReceipt(paymentId: string) {
+export async function getStudentPaymentReceipt(paymentId: string): Promise<any> {
   const supabase = await createClient()
   const { studentId, schoolId } = await getStudentInfo()
 
@@ -353,7 +353,7 @@ export async function getStudentPaymentReceipt(paymentId: string) {
 
 // ── Profile ──────────────────────────────────────────────────
 
-export async function getStudentProfile() {
+export async function getStudentProfile(): Promise<any> {
   const supabase = await createClient()
   const { userId } = await getStudentInfo()
 
@@ -396,7 +396,7 @@ export async function changeStudentPassword(currentPassword: string, newPassword
 
 // ── Materials ───────────────────────────────────────────────
 
-export async function getStudentMaterials() {
+export async function getStudentMaterials(): Promise<any> {
   const supabase = await createClient()
   const { schoolId, classId } = await getStudentInfo()
 
@@ -424,7 +424,7 @@ export async function getStudentMaterials() {
 
 // ── Messages ─────────────────────────────────────────────────
 
-export async function getStudentMessages() {
+export async function getStudentMessages(): Promise<any> {
   const supabase = await createClient()
   const { studentId, schoolId } = await getStudentInfo()
 
@@ -449,7 +449,7 @@ export async function markMessageRead(messageId: string) {
     .eq('recipient_id', studentId)
 }
 
-export async function getUnreadMessageCount() {
+export async function getUnreadMessageCount(): Promise<any> {
   const supabase = await createClient()
   const { studentId, schoolId } = await getStudentInfo()
   const { count } = await supabase
@@ -463,7 +463,7 @@ export async function getUnreadMessageCount() {
 
 // ── Parent-sent queries (for students messaging parents) ─────
 
-export async function getStudentParents() {
+export async function getStudentParents(): Promise<any> {
   const supabase = await createClient()
   const { studentId, schoolId } = await getStudentInfo()
 
