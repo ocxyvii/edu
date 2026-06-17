@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
 import { useParams } from 'next/navigation'
-import { getAssignment, getSubmissions, gradeSubmission } from '@/lib/actions/teacher'
+import { getTeacherAssignments, getAssignmentSubmissions, gradeSubmission } from '@/lib/actions/assignments.actions'
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -21,14 +21,16 @@ export default function AssignmentDetailPage() {
   const [marks, setMarks] = useState<Record<string, string>>({})
   const [feedback, setFeedback] = useState<Record<string, string>>({})
 
-  const { data: assignment, isLoading } = useQuery({
-    queryKey: ['assignment', id],
-    queryFn: () => getAssignment(id),
+  const { data: assignments, isLoading } = useQuery({
+    queryKey: ['teacher-assignments'],
+    queryFn: () => getTeacherAssignments(),
   })
 
+  const assignment = assignments?.find((a: any) => a.id === id)
+
   const { data: submissions } = useQuery({
-    queryKey: ['submissions', id],
-    queryFn: () => getSubmissions(id),
+    queryKey: ['assignment-submissions', id],
+    queryFn: () => getAssignmentSubmissions(id),
     enabled: !!id,
   })
 
@@ -36,7 +38,7 @@ export default function AssignmentDetailPage() {
     mutationFn: ({ submissionId, marks: m, feedback: f }: { submissionId: string; marks: number; feedback: string }) =>
       gradeSubmission(submissionId, m, f),
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['submissions', id] })
+      queryClient.invalidateQueries({ queryKey: ['assignment-submissions', id] })
       toast.success('Submission graded')
     },
     onError: (err: Error) => toast.error(err.message),

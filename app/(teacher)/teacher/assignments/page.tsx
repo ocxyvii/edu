@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
-import { getAssignments } from '@/lib/actions/teacher'
+import { getTeacherAssignments } from '@/lib/actions/assignments.actions'
 import Link from 'next/link'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
@@ -13,7 +13,7 @@ import { Plus, Eye, ClipboardList } from 'lucide-react'
 export default function AssignmentsPage() {
   const { data: assignments, isLoading } = useQuery({
     queryKey: ['teacher-assignments'],
-    queryFn: () => getAssignments(),
+    queryFn: () => getTeacherAssignments(),
   })
 
   return (
@@ -46,14 +46,19 @@ export default function AssignmentsPage() {
                     {a.classes?.name} · {a.subjects?.name}
                     {a.sections?.name && ` · ${a.sections.name}`}
                   </p>
+                  <p className="text-xs text-gray-400 mt-0.5">
+                    {a.submission_count} submission{a.submission_count !== 1 ? 's' : ''}
+                    {a.pending_count > 0 && ` · ${a.pending_count} pending`}
+                    {a.graded_count > 0 && ` · ${a.graded_count} graded`}
+                  </p>
                 </div>
                 <div className="flex items-center gap-4 flex-shrink-0">
                   <div className="text-right text-xs text-gray-500">
                     <p>Due {new Date(a.due_date).toLocaleDateString()}</p>
                     <p>Max {a.max_marks} marks</p>
                   </div>
-                  <Badge className={new Date(a.due_date) < new Date() ? 'bg-red-100 text-red-800' : 'bg-green-100 text-green-800'}>
-                    {new Date(a.due_date) < new Date() ? 'Overdue' : 'Active'}
+                  <Badge className={a.is_overdue ? 'bg-red-100 text-red-800' : 'bg-green-100 text-green-800'}>
+                    {a.is_overdue ? 'Overdue' : 'Active'}
                   </Badge>
                   <Eye className="h-4 w-4 text-gray-400" />
                 </div>

@@ -786,20 +786,39 @@ export async function deleteTeacher(id: string) {
 export async function getSubjects(): Promise<any> {
   const supabase = await createClient()
   const schoolId = await getSchoolId()
-  const { data } = await supabase.from('subjects').select('*').eq('school_id', schoolId).order('name')
+  const { data } = await supabase.from('subjects').select('*, classes(name)').eq('school_id', schoolId).order('name')
   return data ?? []
 }
 
-export async function createSubject(data: { name: string; code: string; description?: string; credit_hours?: number }) {
+export async function createSubject(data: { name: string; code?: string; class_id: string; description?: string; credit_hours?: number }) {
   const supabase = await createClient()
   const schoolId = await getSchoolId()
   const { error } = await supabase.from('subjects').insert({
-    ...data,
-    school_id: schoolId,
+    name: data.name,
+    code: data.code ?? null,
+    class_id: data.class_id,
+    description: data.description ?? null,
     credit_hours: data.credit_hours ?? 1,
+    school_id: schoolId,
   })
   if (error) throw new Error(error.message)
-  revalidatePath('/school-admin/classes')
+  revalidatePath('/school-admin/subjects')
+}
+
+export async function updateSubject(id: string, data: { name?: string; code?: string; class_id?: string; credit_hours?: number; description?: string }) {
+  const supabase = await createClient()
+  const schoolId = await getSchoolId()
+  const { error } = await supabase.from('subjects').update(data).eq('id', id).eq('school_id', schoolId)
+  if (error) throw new Error(error.message)
+  revalidatePath('/school-admin/subjects')
+}
+
+export async function deleteSubject(id: string) {
+  const supabase = await createClient()
+  const schoolId = await getSchoolId()
+  const { error } = await supabase.from('subjects').delete().eq('id', id).eq('school_id', schoolId)
+  if (error) throw new Error(error.message)
+  revalidatePath('/school-admin/subjects')
 }
 
 // ── Fees ─────────────────────────────────────────────────────

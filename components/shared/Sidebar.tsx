@@ -50,6 +50,7 @@ const menuItems: MenuRecord = {
       children: [
         { href: '/school-admin/academic', label: 'Academic Setup' },
         { href: '/school-admin/classes', label: 'Classes & Sections' },
+        { href: '/school-admin/subjects', label: 'Subjects' },
       ],
     },
     { href: '/school-admin/students', label: 'Students', icon: GraduationCap },

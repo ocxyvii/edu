@@ -61,15 +61,23 @@ export async function getStudentDashboard(): Promise<any> {
       .eq('day_of_week', dayName)
       .order('start_time'),
 
-    supabase
-      .from('assignments')
-      .select('id, title, subject_id, subjects(name), due_date, max_marks')
-      .eq('school_id', schoolId)
-      .eq('class_id', classId)
-      .or(`section_id.eq.${sectionId},section_id.is.null`)
-      .gte('due_date', today)
-      .order('due_date', { ascending: true })
-      .limit(5),
+    (async () => {
+      const { data: mySubmissions } = await supabase
+        .from('submissions')
+        .select('assignment_id')
+        .eq('student_id', studentId)
+      const submittedIds = mySubmissions?.map(s => s.assignment_id) ?? []
+      const { data } = await supabase
+        .from('assignments')
+        .select('id, title, subject_id, teachers(profiles(first_name, last_name)), subjects(name), due_date, max_marks')
+        .eq('school_id', schoolId)
+        .eq('class_id', classId)
+        .or(`section_id.eq.${sectionId},section_id.is.null`)
+        .gte('due_date', today)
+        .order('due_date', { ascending: true })
+        .limit(10)
+      return data?.filter(a => !submittedIds.includes(a.id)) ?? []
+    })(),
 
     supabase
       .from('attendance')
@@ -127,7 +135,7 @@ export async function getStudentDashboard(): Promise<any> {
     class: classInfo ?? null,
     section: sectionInfo ?? null,
     todayClasses: timetable.data ?? [],
-    pendingAssignments: assignments.data ?? [],
+    pendingAssignments: assignments ?? [],
     attendancePercent,
     avgMarks: Math.round(avgMarks * 10) / 10,
     totalDays,
@@ -172,16 +180,19 @@ export async function getStudentAssignments(): Promise<any> {
 
   const { data: assignments } = await supabase
     .from('assignments')
-    .select('*, subjects(name)')
+    .select('*, subjects(name), teachers(profiles(first_name, last_name, avatar_url))')
     .eq('school_id', schoolId)
     .eq('class_id', classId)
     .or(`section_id.eq.${sectionId},section_id.is.null`)
-    .order('due_date', { ascending: false })
+    .order('due_date', { ascending: true })
 
   return (assignments ?? []).map(a => ({
     ...a,
     isSubmitted: submittedIds.has(a.id),
     submission: submissionMap.get(a.id) ?? null,
+    teacherName: `${(a.teachers as any)?.profiles?.first_name ?? ''} ${(a.teachers as any)?.profiles?.last_name ?? ''}`.trim(),
+    daysLeft: Math.ceil((new Date(a.due_date).getTime() - Date.now()) / (1000 * 60 * 60 * 24)),
+    isOverdue: new Date(a.due_date) < new Date() && !submittedIds.has(a.id),
   }))
 }
 
@@ -204,6 +215,18 @@ export async function submitAssignment(data: {
   }, { onConflict: 'assignment_id,student_id' })
 
   if (error) throw new Error(error.message)
+
+  await supabase.from('notifications').insert({
+    school_id: schoolId,
+    user_id: (await supabase.auth.getUser()).data.user?.id,
+    title: 'Assignment Submitted',
+    body: `Your assignment has been submitted successfully for review.`,
+    type: 'info',
+    is_read: false,
+    action_url: '/student/assignments',
+    metadata: { assignment_id: data.assignmentId }
+  })
+
   revalidatePath('/student/assignments')
 }
 

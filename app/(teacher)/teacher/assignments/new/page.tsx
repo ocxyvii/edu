@@ -2,7 +2,8 @@
 
 import { useTeacherClassesRealtime } from '@/lib/hooks/useTeacherClasses'
 import { useQuery, useMutation } from '@tanstack/react-query'
-import { createClient } from '@/lib/supabase/client'
+import { getSubjectsByClass } from '@/lib/actions/teacher'
+import { createAssignment } from '@/lib/actions/assignments.actions'
 import { useRouter } from 'next/navigation'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -41,28 +42,7 @@ export default function CreateAssignmentPage() {
   const { data: subjects, isLoading: subjectsLoading } = useQuery({
     queryKey: ['class-subjects', selectedClass?.class_id],
     enabled: !!selectedClass?.class_id,
-    queryFn: async () => {
-      const supabase = createClient()
-      const { data: { user } } = await supabase.auth.getUser()
-
-      const { data } = await supabase
-        .from('teacher_subjects')
-        .select('subjects(id, name, code)')
-        .eq('teacher_id', user!.id)
-        .eq('section_id', selectedClass!.section_id)
-
-      if (!data || data.length === 0) {
-        const { data: allSubjects } = await supabase
-          .from('subjects')
-          .select('id, name, code')
-          .eq('class_id', selectedClass!.class_id)
-          .eq('is_active', true)
-          .order('name')
-        return allSubjects ?? []
-      }
-
-      return (data ?? []).map((ts: any) => ts.subjects).filter(Boolean)
-    },
+    queryFn: () => getSubjectsByClass(selectedClass!.class_id),
   })
 
   const {
@@ -77,34 +57,19 @@ export default function CreateAssignmentPage() {
 
   const createMutation = useMutation({
     mutationFn: async (formData: AssignmentFormData) => {
-      const supabase = createClient()
-      const { data: { user } } = await supabase.auth.getUser()
-      if (!user) throw new Error('Not authenticated')
-
-      const { data: profile } = await supabase
-        .from('profiles')
-        .select('school_id')
-        .eq('id', user.id)
-        .single()
-
       const dueDateTime = new Date(
         `${formData.due_date}T${formData.due_time}:00`
       ).toISOString()
 
-      const { error } = await supabase.from('assignments').insert({
-        school_id: profile!.school_id,
-        teacher_id: user.id,
-        class_id: selectedClass!.class_id,
-        section_id: selectedClass!.section_id,
-        subject_id: formData.subject_id,
+      await createAssignment({
         title: formData.title,
         description: formData.description,
-        due_date: dueDateTime,
-        max_marks: formData.max_marks,
-        is_published: true,
+        classId: selectedClass!.class_id,
+        sectionId: selectedClass!.section_id,
+        subjectId: formData.subject_id,
+        dueDate: dueDateTime,
+        maxMarks: formData.max_marks,
       })
-
-      if (error) throw error
     },
     onSuccess: () => {
       toast.success('Assignment created')
@@ -232,6 +197,11 @@ export default function CreateAssignmentPage() {
 
             {subjectsLoading ? (
               <div className="h-12 bg-gray-100 rounded-lg animate-pulse" />
+            ) : subjects?.length === 0 ? (
+              <div className="p-4 bg-amber-50 border border-amber-200 rounded-lg">
+                <p className="text-amber-800 font-medium text-sm">No subjects found for this class.</p>
+                <p className="text-amber-700 text-xs mt-1">Ask your school admin to add subjects first.</p>
+              </div>
             ) : (
               <div className="space-y-2">
                 <label className="text-sm font-medium text-gray-700">
@@ -242,7 +212,7 @@ export default function CreateAssignmentPage() {
                   className="w-full border border-gray-300 rounded-lg px-3 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white"
                 >
                   <option value="">— Select a subject —</option>
-                  {(subjects ?? []).map((sub: any) => (
+                  {subjects?.map((sub: any) => (
                     <option key={sub.id} value={sub.id}>
                       {sub.name}{sub.code ? ` (${sub.code})` : ''}
                     </option>

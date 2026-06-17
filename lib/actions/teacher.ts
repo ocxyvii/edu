@@ -823,6 +823,19 @@ export async function getTeachersSubjects(): Promise<any> {
   return data?.map((ts: any) => ts.subjects) ?? []
 }
 
+export async function getSubjectsByClass(classId: string): Promise<any> {
+  const supabase = await createClient()
+  const { schoolId } = await getTeacherInfo()
+  const { data } = await supabase
+    .from('subjects')
+    .select('id, name, code')
+    .eq('class_id', classId)
+    .eq('school_id', schoolId)
+    .eq('is_active', true)
+    .order('name')
+  return data ?? []
+}
+
 export async function getMaterials(): Promise<any> {
   const supabase = await createClient()
   const { userId, schoolId } = await getTeacherInfo()

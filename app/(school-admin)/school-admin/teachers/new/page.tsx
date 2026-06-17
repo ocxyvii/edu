@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { useQuery, useMutation } from '@tanstack/react-query'
 import { useRouter } from 'next/navigation'
+import Link from 'next/link'
 import { createTeacher, getSubjects } from '@/lib/actions/school-admin'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
@@ -131,7 +132,7 @@ export default function NewTeacherPage() {
         </CardHeader>
         <CardContent>
           {subjects?.length === 0 ? (
-            <p className="text-sm text-muted-foreground">No subjects created yet. Add subjects in Academic Setup first.</p>
+            <p className="text-sm text-muted-foreground">No subjects created yet. <Link href="/school-admin/subjects" className="text-edu-blue-600 hover:underline">Add subjects</Link> first.</p>
           ) : (
             <div className="flex flex-wrap gap-2">
               {subjects?.map((subject: any) => (
